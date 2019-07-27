@@ -101,17 +101,18 @@
 	Пусть $\xi$ и $\{\xi_i\}_{i=1}^{+\infty}$~--- случайные величины, тогда $\xi_n \overset{\P}{\rightarrow} \xi$ сходится по вероятности, если $\forall \varepsilon > 0 : \P \big(\omega : | \xi_n (\omega) - \xi ( \omega ) | > \varepsilon \big) \rightarrow 0$ при $n \rightarrow +\infty$.
 \end{definition}
 \begin{theorem}[Закон больших чисел в форме Чебышёва]
-	Пусть $\{\xi_i\}_{i=1}^{+\infty}$~--- последовательность  попарно некоррелированных случайных величин таких, что $\forall n \in \N : \D \xi_n \leqslant C$. Обозначим $S_n = \sum\limits_{i=1}^n \xi_i$, тогда $\dfrac{S_n - \E S_n}{n} \overset{\P}{\rightarrow} 0$ при $n \rightarrow +\infty$.
+	Пусть $\{\xi_i\}_{i=1}^{+\infty}$~--- последовательность  попарно некоррелированных случайных величин таких, что $\forall n \in \N : \D \xi_n \leqslant C$. Обозначим $S_n = \sum\limits_{i=1}^n \xi_i$, тогда $\dfrac{S_n - \E S_n}{n} \overset{\P}{\rightarrow} 0$ при $n \rightarrow +\infty$ или так: $P \left(\left| \dfrac{S_n - \E S_n}{n} \right| > \varepsilon\right) \rightarrow 0$ при $n \rightarrow +\infty, \forall \varepsilon > 0$.
 	\begin{proof}
 		По неравенству Чебышёва 
-		$$\P \left(\left| \dfrac{S_n - \E S_n}{n} \right| > \varepsilon\right) \leqslant \dfrac{\D S_n}{n^2 \varepsilon^2}.$$ 
-		Применяя лемму о дисперсии суммы, получаем 
-		$$\dfrac{1}{n^2\varepsilon^2} \sum\limits_{i=1}^n \D \xi_i \rightarrow 0.$$
+		$$\P \left(\left| \dfrac{S_n - \E S_n}{n} \right| > \varepsilon\right) \leqslant \dfrac{\D S_n}{n^2 \varepsilon^2} \leqslant \dfrac{nC}{n^2\varepsilon^2} \rightarrow 0.$$ 
+		%Применяя лемму о дисперсии суммы, получаем 
+		%$$\dfrac{1}{n^2\varepsilon^2} \sum\limits_{i=1}^n \D \xi_i \rightarrow 0.$$
 	\end{proof}
 \end{theorem}
 \begin{consequence}
-	Пусть $\{ \xi_n \}_{i=1}^{+\infty}$~--- независимые случайные величины такие, что $\forall n \in \N: \D \xi_n \leqslant C \wedge \E \xi_n = a$. Тогда $\dfrac{S_n}{n} \xrightarrow{\P} a$ при $n \rightarrow + \infty$.	
+	Пусть $\{ \xi_n \}_{i=1}^{+\infty}$~--- независимые случайные величины такие, что $\forall n \in \N: \D \xi_n \leqslant C$ и $\E \xi_n = a$. Тогда $\dfrac{S_n}{n} \xrightarrow{\P} a$ при $n \rightarrow + \infty$. Ну или так: $P \left(\left| \dfrac{S_n}{n} - a \right| > \varepsilon\right) \rightarrow 0$ при $n \rightarrow +\infty, \forall \varepsilon > 0$.	
 \end{consequence}
+
 \subsection{Условные математические ожидания (УМО)}
 Пусть $(\Omega, \F, \P)$~--- вероятностное пространство; $\xi: \Omega \rightarrow \R$~--- случайная величина; $\F_\xi = \{ \xi^{-1}(B), B \in \B(\R) \}$~--- $\sigma$-алгебра, порожденная $\xi$. Если $\G$~--- под $\sigma$-алгебра $\sigma$-алгебры $\F$, то  $\xi$ называется $\G$-измеримой, если $\F_\xi \subset \G$.
 \begin{definition}
@@ -124,10 +125,18 @@
 \end{definition}
 \begin{definition}
 	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство. Функция множеств $\nu: \F \rightarrow \R$~--- заряд (мера со знаком), если $\nu$~--- $\sigma$-аддитивна на $\F$, то есть $\nu \left( \bigsqcup\limits_{i=1}^{+\infty} A_i \right) = \sum\limits_{i=1}^{+\infty} \nu (A_i)$ для $\{ A_i \}_{i=1}^{+\infty} \in \F$, ряд в правой части сходится абсолютно и  $\sup\limits_{A \in \F} | \nu(A) | < + \infty$.
+	
+	Любой заряд можно разложить в разность двух мер.
 \end{definition}
+
 \begin{definition}
-	Заряд $\nu$ называется абсолютно непрерывным относительно меры $\P$, если $\forall A \in \F: \big(\P (A) = 0~\Rightarrow~\nu (A) = 0\big)$.
+	Заряд $\nu$ называется абсолютно непрерывным относительно меры $\P$ (не обязательно вероятностной), если $\forall A \in \F: \big(\P (A) = 0~\Rightarrow~\nu (A) = 0\big)$.
 \end{definition}
+
 \begin{theorem}[Радона-Никодима][б/д]
 	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство, $\nu$~--- заряд на $\F$, абсолютно непрерывный относительно меры $\P$. Тогда существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \F, \P)$ такая, что $\E \eta < +\infty$ и $\nu(A) = \int\limits_A \eta \, d \P = \E \eta \cdot I_A$.
 \end{theorem}
+
+\begin{statement}
+    Вероятностная мера $\P(A) = \int\limits_A p(x)dx$, то есть плотность~--- это производная Радона-Никодима $\P_{\xi}$ по мере Лебега на $\R$.
+\end{statement}

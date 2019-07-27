@@ -1,7 +1,7 @@
 
 	\section{Лекция от 12.05.2018}
 	\begin{theorem}[Линдберга][б/д]
-		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые случайные величины, \(E\xi_k^ < +\infty ~ \forall k,\) обозначим \(m_k = E\xi_k, ~\sigma^2_k = D\xi_k > 0: S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ D_n^2 = \sum\limits_{k = 1}^{n}\sigma^2_k\) и \(F_k(x)\)~--- функция распределения \(\xi_k\). Пусть выполнено условие Линдберга, то есть:
+		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые случайные величины, \(E\xi_k^2 < +\infty ~ \forall k,\) обозначим \(m_k = E\xi_k, ~\sigma^2_k = D\xi_k > 0: S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ D_n^2 = \sum\limits_{k = 1}^{n}\sigma^2_k\) и \(F_k(x)\)~--- функция распределения \(\xi_k\). Пусть выполнено условие Линдберга, то есть:
 		\[
 			\forall \varepsilon > 0 ~ \frac{1}{D^2_n} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x - m_k| > \varepsilon D_n\}}(x-m_k)^2 dF_k(x) \underset{n \to \infty}{\longrightarrow} 0.
 		\]
@@ -15,8 +15,9 @@
 		\[
 			\frac{1}{D_n^{2 + \delta}} \sum\limits_{i = 1}^{n} E|\xi_k - m_k|^{2 + \delta} \underset{n \to \infty}{\longrightarrow} 0
 		\]
-		для некоторого \(\delta > 0,\) тогда выполнено условие Линдберга.
+		для некоторого \( \delta > 0, \) тогда выполнено условие Линдберга.
 		\begin{proof}
+		    Пусть фиксировано \( \varepsilon > 0. \)
 			\begin{gather*}
 				E|\xi_k - m_k|^{2 + \delta} = \int\limits_\R |x - m_k|^{2 + \delta} dF_k(x) \geqslant \\
 				\geqslant \int\limits_{|x - m_k| \geqslant \varepsilon D_n} |x - m_k|^{2 + \delta} dF_k(x) \geqslant \varepsilon^\delta D_n^\delta \int\limits_{|x - m_k| > \varepsilon D_n} |x -m_k|^2 dF_k(x)\\
@@ -27,7 +28,7 @@
 		\begin{proof}
 			Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(+\infty > D\xi_1 = \sigma^2 > 0, ~E\xi_1 = a \Rightarrow \)
 			\begin{gather*}
-				\frac{1}{D_n} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x-a|>\varepsilon D_n\}} |x - a|^2 dF_k(x)=\\
+				\frac{1}{D_n^2} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x-a|>\varepsilon D_n\}} |x - a|^2 dF_k(x)=\\
 				= \frac{1}{n\sigma^2} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x-a| > \varepsilon D_n\}} |x-a|^2dF_1(x) = \\
 				\frac{1}{\sigma^2} \int\limits_{|x-a| > \varepsilon \sqrt{n}\sigma} |x-a|^2 dF_1(x) \to 0, \text{ т.к. }\{x:|x-a| > \varepsilon\sqrt{n}\sigma\} \to \varnothing;\\
 				\int\limits_\R |x-a|^2 dF_1(x) < +\infty.
@@ -39,13 +40,13 @@
 			= E((\xi_k - m_k)^2\cdot T(|\xi_k - m_k| > \varepsilon D_n)) \leqslant (2k)^2 EI(|\xi_k - m_k| > \varepsilon D_n) =\\
 			=  (2k)^2P(|\xi_k - m_k| > \varepsilon D_n),
 		\end{gather*}
-		то по неравенству Чебышева это не превосходит \[(2k)^2 \frac{\sigma_k^2}{\varepsilon^2 D_n^2}.\] Рассмотрим сумму \[\frac{1}{D_n^2} \sum\limits_{k = 1}^{n} \int\limits_{x: |x- m_k| > \varepsilon D_n} |x-m_k|^2 dF_k(x) \leqslant \frac{(2k)^2}{D_n^2} \sum\limits_{k = 1}^{n} \frac{\sigma^2_k}{\varepsilon^2 D_n^2} = \frac{(2k)^2}{\varepsilon^2D_n^2} \to 0 \text{ при } n \to \infty.\]
+		то по неравенству Чебышева это не превосходит \[(2k)^2 \frac{\sigma_k^2}{\varepsilon^2 D_n^2}.\] Рассмотрим сумму \[\frac{1}{D_n^2} \sum\limits_{k = 1}^{n} \int\limits_{x: |x- m_k| > \varepsilon D_n} |x-m_k|^2 dF_k(x) \leqslant \frac{(2k)^2}{D_n^2} \sum\limits_{k = 1}^{n} \frac{\sigma^2_k}{\varepsilon^2 D_n^2} = \frac{(2k)^2}{\varepsilon^2D_n^2} \overset{n \to \infty}{\to 0} \text{ т.к. } D_n \to \infty.\]
 	\end{enumerate}
 
 	\begin{note}
 		Условие Линдберга является необходимым и достаточным условием для справедливости ЦПТ. При выполнении условия бесконечной малости слагаемых:
 		\[
-			\max\limits_{a < x \leqslant n}P\left(\frac{|\xi_k - m_k}{D_n} \geqslant \varepsilon\right) \to 0 \text{ при } n \to \infty.
+			\max\limits_{a < x \leqslant n}P\left(\frac{|\xi_k - m_k|}{D_n} \geqslant \varepsilon\right) \to 0 \text{ при } n \to \infty.
 		\]
 	\end{note}
 	\begin{theorem}[Берри-Эссена(б/д)]
@@ -61,11 +62,11 @@
 	\end{definition}
 
 	\begin{definition}
-		Случайный вектор \(\vec{\xi}\)~--- гауссовский, если он представляется в следующем виде: \(\vec{\xi} = A\vec{\eta} + \vec{B}, \)где \(\vec{B} \in \R^n, ~A\in \operatorname{Mat}(n\times m)\) и \(\vec{\eta} = (\eta_1, \ldots, \eta_m)\)~--- независимые и \(\sim N(0, 1).\)
+		Случайный вектор \(\vec{\xi}\)~--- гауссовский, если он представляется в следующем виде: \(\vec{\xi} = A\vec{\eta} + \vec{B}, \)где \(\vec{B} \in \R^n, ~A\in \operatorname{Mat}(n\times m)\) и \(\vec{\eta} = (\eta_1, \ldots, \eta_m)^T\)~--- независимые и \(\sim N(0, 1).\)
 	\end{definition}
 
 	\begin{definition}
-		Случайный вектор \(\vec{\xi}\)~--- гауссовский, если \(\forall \lambda \in \R^n\) случайная величина \((\lambda, \xi)\) имеет нормальное распределение.
+		Случайный вектор \(\vec{\xi}\)~--- гауссовский, если \(\forall \lambda \in \R^n\) случайная величина \((\vec{\lambda}, \vec{\xi}\) имеет нормальное распределение.
 	\end{definition}
 
 	\begin{theorem}[об эквивалентности определений гауссовских векторов]
@@ -73,7 +74,7 @@
 	\end{theorem}
 	\begin{proof}
 		\begin{enumerate}
-			\item Опр 1 \(\Rightarrow\) Опр 2. Пусть \(\varphi_\xi(t) = e^{i(t, \vec{m} - (Rt, t))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
+			\item Опр 1 \(\Rightarrow\) Опр 2. Пусть \(\varphi_\xi(t) = Ee^{i(\vec{t},\vec{\xi})} = e^{i(t, \vec{m} - (Rt, t))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
     \begin{array}{ccccc}
          d_1                              \\
                    &\ddots &  & \text{\huge0}\\
@@ -88,8 +89,8 @@
          \frac{1}{\sqrt{d_1}}                              \\
                    &\ddots &  & \text{\huge0}\\
       &               & \frac{1}{\sqrt{d_k}}               \\
-      & \text{\huge0} &   & 0            \\
-      &               &   &   & 0
+      & \text{\huge0} &   & 1            \\
+      &               &   &   & 1
     \end{array}
     \right),\) в таком случае 
 
@@ -141,7 +142,7 @@
 	\begin{property}[Коши]
 		Гауссовские вектора --- нормальные случайные величины.
 		\begin{proof}
-			Следует из определения \(3\) для \(\lambda_j = (0, \ldots, 0, 1, 0, \ldots, 0).\)
+			Следует из определения \(3\) для \(\lambda_j = (0, \ldots, 0, 1, 0, \ldots, 0)\) (спроецируем гауссовский вектор на одну из компонент).
 		\end{proof}
 	\end{property}
 

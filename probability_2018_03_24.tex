@@ -2,13 +2,13 @@
 \begin{lemma}[о существовании УМО]
 	Пусть $\xi$~--- случайная величина с $\E | \xi| < +\infty$. Тогда $\forall \G \subset \F~\text{(под}\sigma\text{-алгебра)}: \E( \xi | \G )$ существует и единственно почти наверное.
 	\begin{proof}
-		Рассмотрим вероятностное пространство $(\Omega, \G, \P)$. Положим, что $\forall A \in \G: Q(A) = \int\limits_A \xi \, d\P  = \E(\xi \cdot I_A)$, следовательно, $Q(A)$~--- заряд на $(\Omega, \G, \P)$, абсолютно непрерывный относительно меры $\P$. Тогда по теореме Радона-Никодима существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \G, \P)$ с $\E \eta < + \infty$ такая, что $Q(A) = \int\limits_A \eta  \, d\P$. Значит, $\eta$~--- УМО. Действительно, $\eta$ $\G$-измерима и $\forall A \in \G: \int\limits_A \eta  \, d\P = \int\limits_A \xi  \, d\P$.
+		Рассмотрим вероятностное пространство $(\Omega, \G, \P)$. Положим, что $\forall A \in \G: Q(A) = \int\limits_A \xi \, d\P  = \E(\xi \cdot I_A)$, следовательно, $Q(A)$~--- заряд на $(\Omega, \G, \P)$, абсолютно непрерывный относительно меры $\P$. Тогда по теореме Радона-Никодима существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \G, \P)$ с $\E \eta < + \infty$ такая, что $Q(A) = \int\limits_A \eta  \, d\P$. Значит, $\eta$~--- УМО. Действительно, $\eta$ $\G$-измерима и $\forall A \in \G: \int\limits_A \eta  \, d\P = \int\limits_A \xi  \, d\P \Rightarrow \eta = \E(\xi|\G)$.
 	\end{proof}
 \end{lemma}
 \begin{theorem}
 	Пусть $\sigma$-алгебра $\G$ порождена разбиением $\Omega$ $\{ D_n \}_{n = 1}^{+\infty}$, причем, $\P(D_n) > 0$. Тогда, если $\E \xi < +\infty$, то $\E(\xi | \G ) = \sum\limits_{n=1}^{+\infty} \dfrac{\E ( \xi \cdot I (D_n) )}{\P(D_n)} \cdot I(D_n)$.
 	\begin{proof}
-		Пусть $\eta$ $\G$-измерима. Покажем, что $\eta = \sum\limits_{n=1}^{+\infty} c_n I_{D_n}(\omega)$. Пусть $\eta \not=\const$ на $D_n$, тогда $\exists a \not= b: \{\omega: \eta(\omega) = a \} \cap D_n \not= \varnothing$ и $\{\omega: \eta(\omega) = b \} \cap D_n \not= \varnothing$, следовательно, $\{\omega: \eta(\omega) = a \} \cap D_n = D_n$ и $\{\omega: \eta(\omega) = b \} \cap D_n \not= D_n$, иначе $\{\omega: \eta(\omega) = a \} \not\in \G$, то есть $\eta$ не $\G$-измерима. Получили противоречие.
+		Пусть $\eta$ $\G$-измерима. Покажем, что $\eta = \sum\limits_{n=1}^{+\infty} c_n I_{D_n}(\omega)$. Пусть $\eta \not=\const$ на $D_n$, тогда $\exists a \not= b: \{\omega: \eta(\omega) = a \} \cap D_n \not= \varnothing$ и $\{\omega: \eta(\omega) = b \} \cap D_n \not= \varnothing$, следовательно, $\{\omega: \eta(\omega) = a \} \cap D_n = D_n$ и $\{\omega: \eta(\omega) = b \} \cap D_n = D_n$, иначе $\{\omega: \eta(\omega) = a \} \not\in \G$, то есть $\eta$ не $\G$-измерима. Получили противоречие.
 		
 		Найдем $c_n: \E( \xi | \G) = \sum\limits_{n=1}^{+\infty} c_n I_{D_n}$, так как $\E(\xi | \G)$ $\G$-измерима по определению. 
 		\begin{equation*}
@@ -17,7 +17,14 @@
 		Следовательно, $c_n = \dfrac{\E(\xi \cdot I_{D_n} )}{\P(D_n)}$.
 	\end{proof}
 \end{theorem}
+
+\begin{statement}
+$\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
+\end{statement}
+
 \subsection{Свойства УМО}
+Все матожидания ниже существуют, то есть $\E|\xi| <+\infty, \E|\eta| <+\infty$.
+
 \setcounter{property}{0}
 \noindent {\bfseries Свойство МО :} если $\forall A \in \F: \E(\xi \cdot I_A) = \E(\eta \cdot I_A)$, то $\xi = \eta$ почти наверное на $(\Omega, \F, \P)$.
 \begin{property}
@@ -40,26 +47,31 @@
 			\forall A \in G: \int\limits_A \big( \alpha \E( \xi | \G) + \beta \E( \eta | \G) \big) \, d \P = \alpha \int\limits_A \E( \xi | \G) \, d \P + \beta \int\limits_A \E( \eta | \G ) \, d \P = \\ 
 			= \alpha \int\limits_A \xi \, d \P + \beta \int\limits_A \eta \, d \P = \int\limits_A (\alpha \xi + \beta \eta ) \, d\P = \int\limits_A \E( \alpha\xi + \beta\eta|\G) \, d \P
 		\end{multline*}
+		Объяснение последнего равенства: для случайной величины $\alpha\E(\xi|\G) + \beta\E(\xi|\G)$ выполняются два свойства УМО, значит поскольку УМО существует и единственно, то нашли образец который подходит: $\alpha\E(\xi|\G) + \beta\E(\xi|\G)$, то есть он является УМО: $\E(\alpha\xi + \beta\eta|\G) = \alpha\E(\xi|\G) + \beta\E(\xi|\G)$.
 	\end{proof}
 \end{property}
+
 \begin{property}
 	Пусть $\xi$ не зависит от $\G$, то есть $\F_\xi \indep \G$. Тогда $\E ( \xi | \G) = \E \xi$ почти наверное.
 	\begin{proof}
 		Пусть $\xi \indep \G$, что равносильно $\forall A \in \G: \xi \indep I_A$. $\E \xi$~--- константа, следовательно, она измерима относительно $\G$, так как $\F_{\E \xi} = \{ \Omega, \varnothing \}$. Интегральное свойство УМО: $\E ( \xi \cdot I_A) = \boxed{\E \big( \E( \xi | \G) \cdot I_A \big)} = \E \xi \cdot \P(A) = \boxed{\E(\E(\xi) \cdot I_A \big)}$, следовательно, $\E \xi = \E( \xi | \G)$.
 	\end{proof}
 \end{property}
-\begin{property}
+
+\begin{property} (Свойство монотонности.)
 	Пусть $\xi \leqslant \eta$ почти наверное, тогда $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
 	\begin{proof}
 		$\xi \leqslant \eta$ почти наверное, следовательно, $\forall A \in \G :  \int\limits_A \xi \, d \P \leqslant \int\limits_A \eta \, d\P$, что равносильно $\int\limits_A \E (\xi | \G ) \, d\P \leqslant \int\limits_A \E( \eta | \G) \, d \P$, а из свойств математического ожидания вытекает, что $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
 	\end{proof}
 \end{property}
+
 \begin{property}
-	$\big|\E ( \xi | \G) \big| \leqslant \E \big( |\xi| \big| \G \big)$.
+	$\big|\E ( \xi | \G) \big| \leqslant \E \big( |\xi| \big| \G \big)$ п.н.
 	\begin{proof}
-		$-|\xi| \leqslant \xi \leqslant |\xi|$.
+		$-|\xi| \leqslant \xi \leqslant |\xi|$ из свойства монотонности.
 	\end{proof}
 \end{property}
+
 \begin{property}[телескопическое свойство]
 	Пусть $\G_1 \subset \G_2 \subset \F$, тогда
 	\begin{enumerate}
@@ -79,9 +91,11 @@
 		
 	\end{proof}
 \end{property}
+
 \begin{property}[][б/д]
 	Пусть $\forall n > 1: | \xi_n | \leqslant \eta$, $\E \eta < +\infty$ и $\xi_n \xrightarrow{\text{п.н.}} \xi$. Тогда $ \forall \G \subset \F: \E(\xi_n | \G) \xrightarrow{\text{п.н.}} \E(\xi | \G)$.
 \end{property}
+
 \begin{property}
 	Пусть $\eta$ $\G$-измерима, $\E |\xi \eta | < +\infty$, $\E |\xi | < +\infty$. Тогда $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
 	\begin{proof}
@@ -95,8 +109,9 @@
 		Так как доказали для индикаторов, то доказали и для любой простой функции. Теперь пусть $\eta$~--- произвольная случайная величина. Возьмем последовательно простых $\F_\eta$-измеримых случайных величин $\eta_n : | \eta_n | \leqslant |\eta |$ и $\eta_n \xrightarrow{\text{п.н.}} \eta$. По свойству 8 $\cancelto{\text{п.н.}~\E(\xi\eta | \G)}{\E( \xi \eta | \G)} = \cancelto{\eta \E(\xi | \G)}{\eta_n \E(\xi | \G)}$, то есть $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
 	\end{proof} 
 \end{property}
+
 \begin{theorem}[о наилучшем квадратичном прогнозе]
-	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. Обозначим $\mathcal{A}_\G = \{ \eta | \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. Тогда $\inf\limits_{\eta \in \mathcal{A}_\G} \E( \xi - \eta)^2 = \E\big( \xi - \E(\xi | \G) \big)^2$.
+	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. Обозначим $\mathcal{A}_\G = \{ \eta \text{- сл. вел.}| \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. Тогда $\inf\limits_{\eta \in \mathcal{A}_\G} \E( \xi - \eta)^2 = \E\big( \xi - \E(\xi | \G) \big)^2$.
 	\begin{proof}
 		Пусть $\eta \in \mathcal{A}_\G$, тогда
 		\begin{multline*}
@@ -110,6 +125,6 @@
 		а по свойству 9, это можно переписать, как 
 		$\E ( \psi \E( \varkappa | \G ) \big)$. 
 		Но $\E (\varkappa | \G) = \E \big( (\xi - \E ( \xi | \G) ) \big| \G \big) = 0$, следовательно, $\E ( \varkappa \psi) = 0$. Значит $\E ( \xi - \eta )^2 =\\=
-			 \E \big( \xi - \E(\xi | \G) \big)^2 + \E \big( \E(\xi | \G) - \eta \big)^2  \geqslant \E \big( \xi - \E ( \xi | \G) \big)^2$.
+			 \E \big( \xi - \E(\xi | \G) \big)^2 + \E \big( \E(\xi | \G) - \eta \big)^2  \geqslant \E \big( \xi - \E ( \xi | \G) \big)^2$. Равенство достигается, если $\E(\E(\xi|\G) - \eta)^2 = 0 \Rightarrow \E(\xi|\G) = \eta$ п.н.
 	\end{proof}
 \end{theorem}

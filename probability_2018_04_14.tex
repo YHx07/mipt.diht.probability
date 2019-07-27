@@ -3,13 +3,13 @@
 	Пусть $\{\xi_n \}_{n \geqslant 1}$~--- последовательность независимых случайных величин такая, что $\E \xi_n = 0 $ и $\E \xi^2 < +\infty$. Тогда, если $\sum\limits_{n = 1}^{\infty} \E \xi_n^2 < +\infty$, то $ \sum\limits_{n = 1}^{\infty} \xi_n$ сходится почти наверное.
 	\begin{proof}
 		Обозначим $S_n = \sum\limits_{k=1}^n \xi_k$. По критерию Коши $\left\{ \sum\limits_{n = 1}^{\infty}\xi_n~\text{сходится п.н.} \right\}$ равносильно тому, что $\{ S_n~\text{фундаментально п.н.}\}$, а это в свою по критерию фундаментальности равносильно тому, что 
-		$$\forall \varepsilon > 0: \P \left( \sup\limits_{k \geqslant n} | S_k - S_n | \geqslant \varepsilon \right) \limn 0.$$
-		 Очевидно,
-		 $$\P \left( \sup\limits_{k \geqslant n} | S_k - S_n | \geqslant \varepsilon \right) = \P \left( \bigcup\limits_{k \geqslant n} \big\{| S_k - S_n | \geqslant \varepsilon \big\} \right),$$
+		$$\forall \varepsilon > 0: \P \left( \sup\limits_{k \geqslant n} | S_k - S_n | \geqslant \varepsilon \right) \limn 0.$$ Докажем это.
+		 Очевидно, что
+		 $$\P \left( \sup\limits_{k \geqslant n} | S_k - S_n | \geqslant \varepsilon \right) = \P \left( \bigcup\limits_{k \geqslant n} \big\{| S_k - S_n | \geqslant \varepsilon \big\} \right) =$$
 		 а из непрерывности вероятностной меры следует, что 
-		 $$\lim\limits_{N \rightarrow +\infty} \P \left( \bigcup\limits_{k = n}^{N} \big\{| S_k - S_n | \geqslant \varepsilon \big\} \right) = \lim\limits_{N \rightarrow +\infty} \P \left( \max\limits_{n \leqslant k \leqslant N} | S_k - S_n | \geqslant \varepsilon \right).$$
-		 По неравенство Колмогорова это меньше или равно, чем
-		 $$\lim\limits_{N \rightarrow + \infty} \dfrac{\E ( S_N - S_n)^2}{\varepsilon^2} = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \sum\limits_{k = n + 1}^N \E \xi_k^2 = \dfrac{1}{\varepsilon^2} \sum\limits_{k > n} \E \xi_k^2 \limn 0.$$
+		 $$= \lim\limits_{N \rightarrow +\infty} \P \left( \bigcup\limits_{k = n}^{N} \big\{| S_k - S_n | \geqslant \varepsilon \big\} \right) = \lim\limits_{N \rightarrow +\infty} \P \left( \max\limits_{n \leqslant k \leqslant N} | S_k - S_n | \geqslant \varepsilon \right) \leqslant$$
+		 А по неравенству Колмогорова:
+		 $$\leqslant \lim\limits_{N \rightarrow + \infty} \dfrac{\E ( S_N - S_n)^2}{\varepsilon^2} = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \E \sum\limits_{k = n + 1}^N \xi_k^2 = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \sum\limits_{k = n + 1}^N \E \xi_k^2 = \dfrac{1}{\varepsilon^2} \sum\limits_{k > n} \E \xi_k^2 \limn 0.$$
 	\end{proof}
 \end{theorem}
 \begin{lemma}[Тёплица]
@@ -24,7 +24,7 @@
 \begin{lemma}[Кронекера]
 	Пусть ряд $\sum\limits_{n = 1}^{\infty} x_n$ сходится, $\{a_n\}_{n \geqslant 1}$ такова, что $a_n \geqslant 0$, $b_n = \sum\limits_{k=1}^n a_k \uparrow + \infty$. Тогда $\dfrac{1}{b_n} \sum\limits_{k = 1}^n b_k x_k \limn 0$.
 	\begin{proof}
-		Пусть $S_n = \sum\limits_{k = 1}^n x_k$, тогда $S_n \limn S = \sum\limits_{k = 1}^\infty x_k$. Заметим,
+		Пусть $S_n = \sum\limits_{k = 1}^n x_k$, тогда $S_n \limn S = \sum\limits_{k = 1}^\infty x_k$. Воспользуемся методом суммирования Абеля:
 		\begin{multline*}
 			\sum\limits_{j = 1}^n b_j x_j = \sum\limits_{j = 1}^n b_j (S_j - S_{j - 1}) = b_n S_n - \sum\limits_{j = 1}^n S_{j-1}(b_j - b_{j-1}) = b_n S_n - \sum\limits_{j = 1}^n S_{j-1} a_j.
 		\end{multline*}
@@ -42,7 +42,7 @@
 		Следовательно, по теореме Колмогорова-Хинчина о сходимости ряда $\sum\limits_{i=1}^n \eta_i$ сходится почти наверное. По лемме Кронекера последовательность 
 		$$\dfrac{1}{b_n} \sum\limits_{i =1}^n b_i \cdot \dfrac{\xi_i - \E \xi_i}{b_i}$$ 
 		сходится к нулю для всех $\omega$, для которых сходится ряд 
-		$$\sum\limits_{i = 1}^\infty \dfrac{\xi_i - \E \xi_i}{b_i} = \sum\limits_{i = 1}^\infty \eta_i. $$ 
+		$$\sum\limits_{i = 1}^\infty \dfrac{\xi_i - \E \xi_i}{b_i} = \sum\limits_{i = 1}^\infty \eta_i \text{ ---		сходится п.н.}$$
 		Следовательно, 
 		$$ \dfrac{1}{b_n} \sum\limits_{i =1}^n b_i \cdot \dfrac{\xi_i - \E \xi_i}{b_i} = \frac{S_n - \E S_n}{b_n} \xrightarrow[n \rightarrow \infty]{\text{п.н}} 0.$$
 	\end{proof}
