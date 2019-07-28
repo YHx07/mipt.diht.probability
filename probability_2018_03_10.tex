@@ -5,18 +5,21 @@
 		Пусть $A = \{ \xi \neq \eta \}$, тогда $I_A = 0$ почти наверное, следовательно $\xi \cdot I_A = 0$ почти наверное и $\eta \cdot I_A = 0$ почти наверное. Так как $\xi = \xi \cdot I_A + \xi \cdot I_{\overline A}$, то $\xi = \xi \cdot I_A + \eta \cdot I_{\overline A}$, потому что на $\overline A$ выполняется $\xi = \eta$. Из свойства 6 имеем $\E \xi = \E ( \xi \cdot I_A ) + \E (\eta \cdot I_{\overline A} ) = \E ( \eta \cdot I_A) + E ( \eta \cdot I_{\overline A} ) = \E \eta$. 
 	\end{proof}
 \end{property}
+
 \begin{property}
 	Пусть $\xi \geqslant 0$ и $\E \xi = 0$, тогда $\xi = 0$ почти наверное.
 	\begin{proof}
 		Рассмотрим события $A = \{ \xi > 0 \}$ и $A_n = \left\{ \xi > \frac{1}{n} \right\} $, следовательно, $A_n \uparrow A$. Имеем $\P (A_n) = \E I_{A_n}$, так как $n\xi > 1$ на $A_n$, то  $\E I_{A_n} \leqslant \E (n\xi \cdot I_A) \leqslant n \E \xi = 0$, значит, $\P(A) = \lim\limits_{n \rightarrow +\infty} \P (A_n) = 0$.
 	\end{proof}
 \end{property}
+
 \begin{property}
 	Пусть $\E \xi$ и $\E \eta$ конечны, $\forall A \in \F: \E (\xi \cdot I_A) \leqslant \E ( \eta \cdot I_A)$. Тогда  $\xi \leqslant \eta$ почти наверное.
 	\begin{proof}
 		Рассмотрим событие $B = \{ \xi > \eta \}$. Из условия и построения $B$ получаем, что $\E (\eta \cdot I_B) \leqslant \E (\xi \cdot I_B) \leqslant \E (\eta \cdot I_B)$, следовательно, $\E( \xi \cdot I_B) = \E(\eta \cdot I_B)$, значит $\E \big( (\xi - \eta) \cdot I_B \big) = 0$. Так как $(\xi - \eta) \cdot I_B \geqslant 0$, то по свойству 8 $(\xi - \eta) \cdot I_B = 0$ почти наверное, следовательно $I_B = 0$ почти наверное, потому что $\xi- \eta > 0$ на $B$.
 	\end{proof}
 \end{property}
+
 \begin{theorem}[о математическом ожидании произведения случайных величин]
 	Пусть $\xi \indep \eta$, причем $\E \xi$ и $\E \eta$ конечны, тогда $\E \xi \eta$ конечно и $\E \xi \eta = \E \xi \cdot \E \eta$.
 	\begin{proof}
@@ -49,7 +52,7 @@
 \begin{definition}
 	Пусть $(\Omega_1, \F_1, \P_1)$ и $(\Omega_2, \F_2, \P_2)$~--- два вероятностных пространства. Тогда $(\Omega, \F, \P)$~--- их прямое произведение, если 
 	\begin{enumerate}
-		\item $\Omega = \Omega_1 \times \Omega_2$;
+		\item $\Omega = \Omega_1 \times \Omega_2$, то есть $\omega = (\omega_1, \omega_2)$;
 		\item $\F = \F_1 \otimes \F_2$, то есть $\F = \sigma\big\{ \{ B_1 \times B_2 \} | B_1 \in \F_1, B_2 \in \F_2 \big\}$;
 		\item $\P = \P_1 \otimes \P_2$, то есть  $\P$~--- продолжение вероятностной меры $\P_1 \times \P_2$, заданное на прямоугольнике $B_1 \times B_2, B_1 \in \F_1, B_2 \in \F_2$ по правилу $\P(B_1 \times B_2) = \P_1 (B_1) \cdot \P_2 (B_2)$. Так как $\{B_1 \times B_2 \}$~--- полукольцо, то $\P$ существует и единственна по теореме Каратеодори.
 	\end{enumerate}
@@ -59,6 +62,7 @@
 	$$\int\limits_\Omega \xi (\omega_1, \omega_2) \, d \P = \int\limits_{\Omega_2} \int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \P_2 (d \omega_2) = \int\limits_{\Omega_1} \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2) \P_1 (d \omega_1).$$
 	 Из всего этого следует, что двойной интеграл равен повторному.
 \end{theorem}
+
 \begin{statement}
  	Пусть $\xi \indep \eta$~--- случайные величины, тогда $(\R^2, \B(\R^2), \P_{(\xi, \eta)}) = (\R, \B(\R), \P_\xi) \otimes (\R, \B(\R), \P_\eta)$.
  	\begin{proof} Достаточно проверить свойство прямого произведения:
@@ -69,13 +73,16 @@
  		\end{enumerate}
  	\end{proof}
 \end{statement}
+
 \begin{lemma}[о свертке]
 	Пусть случайные величины $\xi$ и $\eta$ независимы c функциями распределения $F_\xi$ и $F_\eta$. Тогда
-	$$ F_{\xi + \eta} (z) = \int\limits_\R F_\xi (z - x) \, dF_\eta (x) = \int\limits_\R F_\eta(z - x) \, d F_\xi(x).$$
-	Если $\xi$ и $\eta$ имеют плотности распределения $f_\xi$ и $f_\eta$ соответственно, то $\xi + \eta$ имеет плотность распределения 
-	$$f_{\xi + \eta} (z) = \int\limits_\R f_\xi (z - x) f_\eta (x) \, dx = \int\limits_\R f_\eta (z - x) f_\xi(x) \, dx$$.
+	\begin{enumerate}
+	    \item Выполняется равенство: $$ F_{\xi + \eta} (z) = \int\limits_\R F_\xi (z - x) \, dF_\eta (x) = \int\limits_\R F_\eta(z - x) \, d F_\xi(x).$$
+	    \item Если $\xi$ и $\eta$ имеют плотности распределения $f_\xi$ и $f_\eta$ соответственно, то $\xi + \eta$ имеет плотность распределения $$f_{\xi + \eta} (z) = \int\limits_\R f_\xi (z - x) f_\eta (x) \, dx = \int\limits_\R f_\eta (z - x) f_\xi(x) \, dx$$.
+	\end{enumerate} 
+	
 	\begin{proof}
-		Заметим, $F_{\xi + \eta} (z) = \P ( \xi + \eta \leqslant z)$, а по теореме о замене переменных в интеграле Лебега это равно $\int\limits_{\R^2} I(x + y \leqslant z) \P_\xi(dx) \P_\eta(dy)$, полученный двойной интеграл по Фубини можно записать как повторный:
+		Заметим, $F_{\xi + \eta} (z) = \P ( \xi + \eta \leqslant z) = \E I(\xi + \eta \leqslant z)$, а по теореме о замене переменных в интеграле Лебега это равно $\int\limits_{\R^2} I(x + y \leqslant z) \P_\xi(dx) \P_\eta(dy)$, полученный двойной интеграл по Фубини можно записать как повторный:
 		$$ \int\limits_\R \left( \int\limits_\R I(x + y \leqslant z) \P_\xi(dx) \right) \P_\eta(dy) = \int\limits_\R \left( \int\limits_{-\infty}^{z-y} \P_\xi(dx) \right) \P_\eta(dy) = \int\limits_\R F_\xi(z - y) \, dF_\eta(y).$$
 		Перейдем ко второму пункту доказательства:
 		\begin{multline*}

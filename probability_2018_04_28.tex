@@ -3,14 +3,18 @@
 	\begin{property}
 		Пусть $\varphi(t)$~---характеристическая функция случайной величины $\xi$, а $\eta = a\xi + b$, где $a, b \in \mathbb{R}$, тогда $\varphi_\eta(t) = e^{itb}\cdot \varphi_\xi(at).$
 		\begin{proof}
-			$\varphi_\eta(t) = \E e^{it\eta} = \E e^{it(a\xi + b)} = e^{itb} \E e^{ita\xi} = e^{itb}\cdot \varphi_\xi(at).$
+			$\varphi_\eta(t) = \E e^{it\eta} = \E e^{it(a\xi + b)} = e^{itb} \E e^{ita\xi} = e^{itb}\cdot \varphi_\xi(at)$ ($e^{itb} = const$, значит можем вытащить за матожидание).
 		\end{proof}
 	\end{property}
 
 	\begin{property}
 		Пусть $\xi_1, \ldots, \xi_n$~---независимые случайные величины, $S_n = \sum\limits_{i = 1}^{n}\xi_i \Rightarrow \varphi_{S_n}(t) = \prod\limits_{i = 1}^n\varphi_{\xi_k}(t).$  
 		\begin{proof}
-			$\varphi_{S_n}(t) = \E e^{it \sum\limits_{k = 1}^{n}\xi_k} = \E\prod\limits_{k = 1}^n e^{it\xi_k} = \prod\limits_{k = 1}^{n}\E e^{it\xi_k} = \prod\limits_{k = 1}^{n}\varphi_{\xi_k}(t).$
+			$\varphi_{S_n}(t) = \E e^{it \sum\limits_{k = 1}^{n}\xi_k} = \E\prod\limits_{k = 1}^n e^{it\xi_k} =$ 
+			
+			/$e^{it\xi_k}$ - борелевская функция от независимой случайной величины. / 
+			
+			$= \prod\limits_{k = 1}^{n}\E e^{it\xi_k} = \prod\limits_{k = 1}^{n}\varphi_{\xi_k}(t).$
 		\end{proof}
 	\end{property}
 	\begin{property}
@@ -34,7 +38,7 @@
 		\begin{proof}
 			$~(\Leftarrow)$ Пусть распределение $\xi$~---симметрично, тогда $E(\sin(t\xi)) = E(\sin(t(-\xi))) = -E(\sin(t\xi)) = 0.$ Значит $\varphi_\xi(t) = E\cos t\xi + iE\sin t\xi = E\cos t\xi \in \mathbb{R}.$
 
-			$(\Rightarrow)$ Пусть $\varphi_\xi(t) \in \mathbb{R} ~\forall t.$ Тогда по свойствам $2$ и $3$ $\varphi_\xi(t) = \overline{\varphi_\xi(-t)} = \varphi_\xi(-t) = \varphi_{-\xi}(t) ~\Rightarrow $~$\xi$ и $-\xi$ имеют одиаковую характеристическую функцию $~\Rightarrow$~ $\xi \overset{d}{=} -\xi$ по теореме единственности.
+			$(\Rightarrow)$ Пусть $\varphi_\xi(t) \in \mathbb{R} ~\forall t.$ Тогда по свойствам $2$ и $4$ $\varphi_\xi(t) = \overline{\varphi_\xi(-t)} = \varphi_\xi(-t) = \varphi_{-\xi}(t) ~\Rightarrow $~$\xi$ и $-\xi$ имеют одинаковую характеристическую функцию $~\Rightarrow$~ $\xi \overset{d}{=} -\xi$ по теореме единственности.
 		\end{proof}
 	\end{property}
 
@@ -73,7 +77,8 @@
 		\end{proof}
 	\end{theorem}
 
-	\begin{example}
+	\begin{example} (Харфункция нормального распределения)
+	
 		Пусть $\xi \sim N(0;1) \Rightarrow \varphi_\xi(t) = e^{- \frac{t^2}{2}}.$ Мы знаем, что $E\xi^m = \left\{
 			\begin{array}{l}
 			(m-1)!!, ~m \vdots 2\\
@@ -83,12 +88,13 @@
 		$E|\xi|^m = \left\{
 			\begin{array}{l}
 			(m - 1)!!, ~m \vdots 2\\
-			(m - 1)!!\sqrt{\frac{2}{n}}, m \not \vdots 2
+			(m - 1)!!\sqrt{\frac{2}{\pi}}, m \not \vdots 2
 			\end{array}
-		\right. \Rightarrow$ по предыдущей теореме, 
-		$\varphi_\xi(t) = \sum\limits_{n = 0}^{\infty} \frac{(it)^{2n}}{(2n)!}(2n - 1)!! = \sum\limits_{n = 0}^{+\infty} \frac{(it)^{2n}}{(2n)!!} = \sum\limits_{n = 0}^{+\infty} \left(- \frac{t^2}{2}\right)^n \frac{1}{n!} = e^{-\frac{t^2}{2}}.$
+		\right. \Rightarrow$ по предыдущей теореме:
+		
+		$\varphi_\xi(t) = \E e^{it\xi} = \sum\limits_{n = 0}^{\infty} \frac{(it)^{2n}}{(2n)!}(2n - 1)!! = \sum\limits_{n = 0}^{+\infty} \frac{(-t)^{2n}}{(2n)!!} = \sum\limits_{n = 0}^{+\infty} \dfrac{(- t^2)^n}{(2n)!!} = \sum\limits_{n = 0}^{+\infty} \left(- \frac{t^2}{2}\right)^n \frac{1}{n!} = e^{-\frac{t^2}{2}}.$
 
-		\underline{\text{Условие теоремы}}: $\left(\frac{E|\xi|^m}{m!}\right)^{\frac{1}{m}} \leqslant \left(\frac{(m - 1)!!}{m!}\right)^{\frac{1}{m}} = \left(\frac{1}{m!!}\right)^{\frac{1}{m}} \approx \frac{1}{\sqrt{2}}\left(\left(\frac{m}{2e}\right)^{\frac{m}{2}}\right)^{\frac{1}{m}} \sim \frac{C}{\sqrt{m}} \to 0 \Rightarrow T = + \infty.$
+		\underline{\text{Условие теоремы}}: $\left(\frac{E|\xi|^m}{m!}\right)^{\frac{1}{m}} \leqslant \left(\frac{(m - 1)!!}{m!}\right)^{\frac{1}{m}} = \left(\frac{1}{m!!}\right)^{\frac{1}{m}} \approx \frac{1}{\sqrt{2}}\left(\left(\frac{m}{2e}\right)^{\frac{m}{2}}\right)^{\frac{1}{m}} \sim \frac{C}{\sqrt{m}} \to 0 \Rightarrow T = + \infty.$ (В приближении воспользовались формулой Стирлинга.)
 	\end{example}
 
 	\begin{theorem}[формула обращения (б/д)]

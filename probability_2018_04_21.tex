@@ -17,13 +17,15 @@
 		(1) Обозначим $\psi_n = \inf\limits_{k \geqslant n} \xi_k$. Очевидно, $\psi_n \uparrow \varliminf\limits_{n \rightarrow \infty} \xi_n$. кроме того $\psi_n \geqslant \eta$, следовательно, по теореме о монотонносй сходимости $ \lim\limits_{n \rightarrow \infty} \E \psi_n = \E \varliminf\limits_{n \rightarrow \infty} \xi_n$. Рассмотрим 
 		$$\E \varliminf\limits_{n \rightarrow \infty} \xi_n = \lim\limits_{n \rightarrow \infty} \E \psi_n = \varliminf\limits_{n \rightarrow \infty} \E \psi_n \overset{\text{т.к.}~\psi_n \leqslant \xi_n}{\leqslant} \varliminf\limits_{n \rightarrow \infty} \E \xi_n.$$
 		
+		Второе равенство -- в силу существования предела существует и нижний предел.
+		
 		(2) Следует из пункта (1) заменой $\xi'_n = - \xi_n$.
 		
 		(3) Следует из (1) и (2).
 	\end{proof}
 \end{lemma}
 \begin{theorem}[Лебега о мажорируемой сходимости]
-	Пусть $\xi_n \xrightarrow{\text{п.н.}} \xi, |\xi| \leqslant \eta, \E \eta < + \infty$. Тогда $\E \xi_n \limn \E\xi$ и $\E | \xi_n - \xi| \limn 0$.
+	Пусть $\xi_n \xrightarrow{\text{п.н.}} \xi, |\xi| \leqslant \eta, \E \eta < + \infty$. Тогда $\E \xi_n \limn \E\xi$ и $\E | \xi_n - \xi| \limn 0$ (не требуем независимости!).
 	\begin{proof}
 		Заметим, что $\xi \overset{\text{п.н.}}{=} \lim\limits_{n \rightarrow \infty} \xi_n = \varliminf\limits_{n \rightarrow \infty} \xi_n = \varlimsup\limits_{n \rightarrow \infty} \xi_n$. По пункту (3) леммы Фату
 		\begin{multline*}
@@ -69,19 +71,22 @@
 \subsection{Случайные блуждания и закон повторного логарифма}
 Пусть $\{ \xi_i\}_{i \geqslant 1}$~--- последовательность независимых одинаково распределенных случайных величин таких, что $\E \xi_n = 0, \E \xi_n^2 = \sigma^2$.
 \begin{definition}
-	Случайная величина $S_n = \sum\limits_{i = 1}^n \xi_i$ называется случайным блужданием.
+Случайная величина $S_n = \sum\limits_{i = 1}^n \xi_i$ называется случайным блужданием.
 \end{definition}
-Известно (из Ц.П.Т.), что $ \varlimsup\limits_{n \rightarrow \infty} \dfrac{S_n}{\sqrt{n}} = + \infty$, а $ \varliminf\limits_{n \rightarrow \infty} \dfrac{S_n}{\sqrt{n}} = - \infty$. С другой стороны,
+Известно (из Ц.П.Т.), что $ \varlimsup\limits_{n \rightarrow \infty} \dfrac{S_n}{\sqrt{n}} = + \infty$, а $ \varliminf\limits_{n \rightarrow \infty} \dfrac{S_n}{\sqrt{n}} = - \infty$ (Можно получить с помощью теоремы Муавра-Лапласа). С другой стороны,
 $$ \sum\limits_{n = 1}^\infty \dfrac{\E \xi_n^2}{n \ln^2 n} = \sum\limits_{n = 1}^\infty  \frac{\sigma^2}{n \ln^2 n} < + \infty.$$
 Следовательно, по теореме Колмогорова-Хинчина о сходимости ряда почти наверное $\sum\limits_{n = 1}^\infty \dfrac{\xi_n}{\sqrt{n} \ln n}$ сходится почти наверное, значит, по лемме Кронекера, 
-$$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{ \sqrt{k} \ln k} = \dfrac{S_n}{\sqrt{n} \ln n} \xrightarrow[n \rightarrow \infty]{\text{п.н.}} 0.$$
+$$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{ \sqrt{k} \ln k} = \dfrac{S_n}{\sqrt{n} \ln n} \xrightarrow[n \rightarrow \infty]{\text{п.н.}} 0.$$ Значит $S_n$ не выходит за $\varepsilon \sqrt{n}$ начиная с некоторого момента п.н.
+\begin{theorem} (Теорема Муавра-Лапласа)
+    $$\sup_{-\infty \leqslant a < b \geqslant +\infty} \Bigg| \P\bigg( a \leqslant \dfrac{S_n - np}{\sqrt{npq}} \geqslant b \bigg) - \int\limits_a^b \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}dx \Bigg| \xrightarrow[n \rightarrow \infty] 0.$$
+\end{theorem}
 \begin{definition}
 	Функция $\varphi^* = \varphi^*(n)$, $n > 1$ называется верхней для $S_n$, если $S_n(\omega) < \varphi^*(n)$ почти наверное для всех $n$, начиная с некоторого $n_0(\omega)$.
 \end{definition}
 \begin{definition}
 	Функция $\varphi_* = \varphi_*(n)$, $n > 1$ называется нижней для $S_n$, если $S_n(\omega) > \varphi_*(n)$ почти наверное для бесконечно многих $n$ (бесконечно часто).
 \end{definition}
-То есть $\varphi^* (n) = \varepsilon \sqrt{n} \ln n$~--- верхняя для произвольного случайного блуждания, $\varphi_* (n) = \varepsilon \sqrt{n}$~--- нижняя. Пусть $\varphi(n)$~--- <<точная асимптотика>>, возьмем $\varphi_\varepsilon^* = (1 + \varepsilon) \varphi; \varphi_{*\varepsilon} = (1 - \varepsilon) \varphi$ для $\varepsilon > 0$. Тогда 
+То есть $\forall \varepsilon \ \varphi^* (n) = \varepsilon \sqrt{n} \ln n$~--- верхняя для произвольного случайного блуждания, $\varphi_* (n) = \varepsilon \sqrt{n}$~--- нижняя. Пусть некая функция $\varphi(n)$~--- <<точная асимптотика>>, возьмем $\varphi_\varepsilon^* = (1 + \varepsilon) \varphi; \  \varphi_{*\varepsilon} = (1 - \varepsilon)\varphi$ для $\varepsilon > 0$. Тогда 
 	\begin{multline*}
 		\left\{ \varlimsup\limits_{n \rightarrow \infty} \dfrac{S_n}{\varphi(n)} \leqslant 1 \right\} = 
 		\left\{ \lim\limits_{n \rightarrow \infty} \sup\limits_{m \geqslant n} \dfrac{S_m}{\varphi(m)} \leqslant 1 \right\} = \\ =
@@ -115,14 +120,14 @@ $$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{
 \end{figure}
 \subsection{Характеристические функции}
 \begin{definition}
-	Характеристическое функцией случайной величины $\xi$ называется $\varphi_\xi(t) = \E e^{it\xi}, t \in \R$.
+	Характеристическое функцией случайной величины $\xi$ называется $\varphi_\xi(t) = \E e^{it\xi}, t \in \R$. (Формально это преобразование Фурье случайной величины $\xi$).
 \end{definition}
 \begin{definition}
 	Пусть $F(x)$~--- функция распределения, тогда ее характеристическая функция $\varphi_F (t) = \int\limits_\R e^{i t x} \, d F(x)$.
 \end{definition}
  Если $F_\xi(x)$~--- функция распределения случайной величины $\xi$, то характеристические функции $\xi$ и $F_\xi$ совпадают.\\
  
- По формуле Эйлера $\varphi_\xi(t) = \E e^{i t \xi} = \E \cos (t \xi) + i \E \sin(t \xi)$.
+Чтобы считать интеграл Лебега от комплекснозначной функции, будем пользоваться формулой Эйлера: $\varphi_\xi(t) = \E e^{i t \xi} = \E \cos (t \xi) + i \E \sin(t \xi)$.
  
  \begin{definition}
  	Пусть $\vec \xi = ( \xi_1, \ldots, \xi_n)$~--- случайный вектор. Его характеристической функцией называется $\varphi_{\vec \xi} \left(\vec t \right) = \E e^{i \left( \vec t, \vec \xi \right)}, t \in \R^n$.
@@ -131,11 +136,12 @@ $$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{
  	Пусть $F \left( \vec x \right), \vec x \in \R^n$~--- функция распределения в $\R^n$, тогда его характеристической функцией называется $\varphi_F \left( \vec t \right) = \int\limits_\R e^{i \left( \vec t, \vec x \right)} \, d F \left( \vec x \right), \vec x \in \R^n$.
  \end{definition}
  \subsection{Свойства характеристических функций}
+ Свойство №0. Харфункция существует всегда.
  \setcounter{property}{0}
  \begin{property}
  	Пусть $\varphi(t)$~--- характеристическая функция случайной величины $\xi$, тогда $| \varphi (t) | \leqslant \varphi(0) = 1$.
  	\begin{proof}
- 		$| \varphi(t) | = | \E e^{i t \xi} | \leqslant \E | \underbracket[0.5pt]{e^{i t \xi}}_{\equiv 1} | = 1 = \varphi(0)$.
+ 		$| \varphi(t) | = | \E e^{i t \xi} | \leqslant \E | \underbracket[0.5pt]{e^{i t \xi}}_{\equiv 1} | = 1 = \varphi(0)$. ($\cos t\xi + i \sin t\xi$, модуль этого комплексного числа равен единице).
  	\end{proof}
  \end{property}
  
