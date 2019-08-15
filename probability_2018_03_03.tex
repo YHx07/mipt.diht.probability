@@ -1,11 +1,8 @@
 \section{Лекция от 03.03.2018}
 \setcounter{property}{0}
-\begin{definition}
-	$\F = \big\{ \xi^{-1}(B), B \in \B(\R) \big\}$~--- порожденная $\sigma$-алгебра.
-\end{definition}
 
 \begin{definition}
-	Пусть $\xi, \eta$~--- случайные величины. Тогда величина $\eta$ называется $\F_\xi$-измеримой, если $\F_\eta \subset \F_\xi$.
+	Пусть $\xi, \eta$~--- случайные величины. Тогда $\eta$ является $\F_\xi$-измеримой, если $\F_\eta \subset \F_\xi$.
 \end{definition}
 
 \begin{example}
@@ -15,13 +12,13 @@
 	\end{proof}
 \end{example}
 
-\begin{theorem}[][Пока б/д]
-	Пусть  $\eta$~--- $\F_\xi$-измерима, тогда и только тогда, когда существует борелевская $\varphi$, такая что $\eta = \varphi(\xi)$ почти наверное, то есть $\P\big(\eta = \varphi(\xi)\big) = 1$.
+\begin{theorem}[][б/д]
+	Случайная величина $\eta$~--- $\F_\xi$-измерима, тогда и только тогда, когда существует борелевская $\varphi$, такая что $\forall \omega \in \Omega \hookrightarrow \eta(\omega) = \varphi(\xi(\omega))$ почти наверное, то есть $\P\big(\eta = \varphi(\xi)\big) = 1$.
 \end{theorem}
 
 \subsection{Независимость случайных величин}
 \begin{statement}
-Случайные величины независимы тогда, и только тогда, когда порождаемые ими $\sigma$-алгебры независимы.
+    Случайные величины независимы тогда, и только тогда, когда порождаемые ими $\sigma$-алгебры независимы.
 \end{statement}
 
 \begin{definition}
@@ -37,7 +34,7 @@
 \end{definition}
 
 \begin{theorem}[Критерий независимости в терминах функции распределения]
-	Случайные величины $\{\xi_i\}_{i = 1}^n$ независимы в совокупности тогда, и только тогда, когда $\forall x_1, \ldots, x_n \in \R : \P(\xi_1 \leqslant x_1, \ldots, \xi_n \leqslant x_n) = \prod\limits_{i = 1}^n\P(\xi_i \leqslant x_i)$.
+	Случайные величины $\{\xi_i\}_{i = 1}^n$ независимы в совокупности тогда, и только тогда, когда $\forall x_1, \ldots, x_n \in \R \hookrightarrow \P(\xi_1 \leqslant x_1, \ldots, \xi_n \leqslant x_n) = \prod\limits_{i = 1}^n\P(\xi_i \leqslant x_i)$.
 	\begin{proof}
 		$\Rightarrow$. Возьмем в качестве $B_i = (-\infty, x_i]$.
 		
@@ -58,18 +55,18 @@
     \begin{equation*}
         I_A(\omega) = 
          \begin{cases}
-           1    &   \omega \in A,   \\
-           0    &   \omega \in \overline{A}.
+           1,    &   \omega \in A,   \\
+           0,    &   \omega \in \overline{A}.
          \end{cases}
         \end{equation*}
 \end{definition}
 
 \begin{definition}
-    Случайная величина простая, если $\exists \{A_i\}_{i=1}^n$~--- разбиение $\Omega : \xi(\omega) = \sum\limits_{i=1}^n c_iI_{A_i}(\omega)$.
+    Случайная величина $\xi$ называется простой, если существует разбиение $\Omega = \sum\limits_{i=1}^nA_i$, такое что $ \xi(\omega) = \sum\limits_{i=1}^n c_iI_{A_i}(\omega)$.
 \end{definition}
 
 \begin{definition}
-    Пусть $\xi$~--- случайная величина, тогда $\xi^+ = \max(\xi, 0),\  \xi^- = \max(-\xi, 0)$. $\xi = \xi^+ + \xi^-$.
+    Пусть $\xi$~--- случайная величина, тогда введем обозначения $\xi_+ = \max(\xi, 0),\  \xi_- = \max(-\xi, 0)$. $\xi = \xi_+ + \xi_-$.
 \end{definition}
 
 \begin{lemma}[][б/д]
@@ -81,8 +78,9 @@
 \end{definition}
 
 \begin{definition}
-	Пусть $\xi \geqslant 0$, тогда матожидание $\E \xi = \lim\limits_{n \rightarrow \infty} \E \xi_n$, где $\xi_n \uparrow \xi$, $\xi_n$~--- простые неотрицательные случайные величины или $\E \xi = \sup\limits_{\eta \leqslant \xi}\E\eta$, $\eta$~--- простые неотрицательные. 
+	Пусть $\xi \geqslant 0$, тогда матожидание $\E \xi = \lim\limits_{n \rightarrow \infty} \E \xi_n$, где $\xi_n \uparrow \xi$, $\xi_n$~--- простые неотрицательные случайные величины, также справедливо равенство $\E \xi = \sup\limits_{\eta \leqslant \xi}\E\eta$, где $\eta$~--- простые неотрицательные случайные величины. 
 \end{definition}
+
 \begin{definition}
 	Пусть $\xi$~--- произвольные случайные величины. Пусть $\xi_+ = \max(\xi, 0)$, $\xi_- = \max(-\xi, 0) \Rightarrow \xi = \xi_+ - \xi_-$, тогда матожидание 
 	$$ \E\xi =
@@ -100,15 +98,19 @@
 	\end{proof}
 \end{consequence}
 
-Матожидание случайной величины~--- это интеграл Лебега по мере $\P$, то есть: $$ \E\xi = \int\limits_\Omega \xi dP = \int\limits_\Omega \xi(\omega)P(d\omega). $$
+\begin{statement}
+    Матожидание случайной величины~--- это интеграл Лебега по мере $\P$, то есть: $$ \E\xi = \int\limits_\Omega \xi dP = \int\limits_\Omega \xi(\omega)P(d\omega).$$
 
-$$ \E(\xi\cdot I_A) = \int\limits_A \xi dP. $$
+    Для множества $A$:
+    $$ \E(\xi\cdot I_A) = \int\limits_A \xi dP. $$
+\end{statement}
 
-Случайная величина $\xi \sim \text{Cauchy}(\theta)$. $\E\xi = +\infty$, то есть матожидание не определено.
+\noindent {\bfseries Пример:}
+    Для случайной величины $\xi \sim \text{Cauchy}(\theta)$ матожидание $\E\xi = +\infty$, то есть матожидание не определено.
 
-\subsection{Свойства матожидания}
+\subsection{Свойства матожидания (9 штук)}
 \begin{property}
-	Пусть $\xi$~--- случайная величина, $\E \xi$~--- конечно, тогда $\forall c \in \R : \E(c\xi)$~--- конечно и $\E(c\xi) = c\E\xi$.
+	Пусть $\xi$~--- случайная величина, $\E \xi$~--- конечно, тогда $\forall c \in \R \hookrightarrow \E(c\xi)$~--- конечно и $\E(c\xi) = c\E\xi$.
 	\begin{proof}
 		Для простых случайных величин свойство очевидно --- выносим константу $c$ за сумму. Пусть $\xi \geqslant 0$, $\xi_n \uparrow \xi$~--- последовательность простых неотрицательных случайных величин, $c \geqslant 0$. Тогда $c\xi_n \uparrow c\xi \Rightarrow \E(c\xi) = \lim\limits_{n \rightarrow \infty} \E(c\xi_n) = c \lim\limits_{n \rightarrow \infty} \E(\xi_n) = c\E\xi$. В общем случае $\xi = \xi_+ - \xi_-$, тогда $(c\xi)_+ = c\xi_+,\; (c\xi)_- = c\xi_- \Rightarrow \E(c\xi) = \E(c\xi)_+ - \E(c\xi)_- = c\E\xi$. Если $c < 0$, то $(c\xi)_+ = -c\xi_-$ и $(c\xi)_- = -c\xi_+$.
 	\end{proof}

@@ -35,7 +35,7 @@
 	\end{definition}
 
 	\begin{theorem}[Бохнера-Хинчина]
-		Пусть \(\varphi(t)\) такая, что \(\varphi(0) = 1\) и \(\varphi(t)\) непрерывна в нуле. Тогда \(\varphi(t)\)~---характеристическая функция \(\Leftrightarrow \varphi(t)\) неотрицательно определённая.
+		Пусть \(\varphi(t)\) такая, что \(\varphi(0) = 1\) и \(\varphi(t)\) непрерывна в нуле. Тогда \(\varphi(t)\)~--- характеристическая функция \(\Leftrightarrow \varphi(t)\) неотрицательно определённая.
 	\end{theorem}
 
 	\begin{proof}
@@ -80,9 +80,13 @@
 	\end{definition}
 	\begin{theorem}[непрерывности для х.ф.]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		\noindent1. ~Пусть \(\{F_n\}_{n \geqslant 1}\)~--- последовательность функций распределения на \(\R\) \({\phi_n(t)}_{n \in \mathbb{N}}\) --- их х.ф., тогда \(\forall t \in \mathbb{R}~\varphi_n(t) \to \varphi(t) ~ \forall t \in \R, \) где \(\varphi\)~--- характеристическая функция \(F\).
+		\noindent1. ~Пусть \(\{F_n\}_{n \geqslant 1}\)~--- последовательность функций распределения на \(\R\), \({\varphi_n(t)}_{n \in \mathbb{N}}\) --- их х.ф. 
 		
-		\noindent2.(б/д)~ Пусть \(\forall t \in \R ~ \exists \varphi(t) = \lim\limits_{n \to +\infty} \varphi_n(t), \) причём \(\varphi(t)\) непрерывна в нуле. Тогда \(\exists F\)~--- функция распределения такая, что \(F_n \overset{w}{\longrightarrow}F\) и \(\varphi(t)\)~---характеристическая функция \(F\).
+		Тогда \(\forall t \in \R~\varphi_n(t) \to \varphi(t)\), где \(\varphi\)~--- характеристическая функция \(F\).
+		
+		\noindent2.(б/д)~ Пусть \(\forall t \in \R ~ \exists \varphi(t) = \lim\limits_{n \to +\infty} \varphi_n(t), \) причём \(\varphi(t)\) непрерывна в нуле. 
+		
+		Тогда \(\exists F\)~--- функция распределения такая, что \(F_n \overset{w}{\longrightarrow}F\) и \(\varphi(t)\)~---характеристическая функция \(F\).
 	\end{theorem}
 
 	\begin{proof}
@@ -92,7 +96,9 @@
 	\subsection{Центральная предельная теорема}
 	\begin{theorem}[ЦПТ в форме Леви]
 		Пусть \(\{\xi_n\}_{n\geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(0 < D\xi < +\infty.\)
-		Обозначим \(S_n = \sum\limits_{i = 1}^{n}\xi_i.\) Тогда 
+		Обозначим \(S_n = \sum\limits_{i = 1}^{n}\xi_i.\) 
+		
+		Тогда 
 		\(\frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\underset{n \to +\infty}{\longrightarrow}}N(0, 1).\)
 	\end{theorem}
 

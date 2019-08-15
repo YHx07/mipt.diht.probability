@@ -31,10 +31,11 @@
 		\end{proof}
 	\end{property}
 		\begin{theorem}[единственности (д-во позже)]
-		Пусть $F$ и $G$~--- функции распределения, такие что $\varphi_{F(x)} = \varphi_{G(x)} \Rightarrow F(x) = G(x)~\forall x.$
+		Пусть $F$ и $G$~--- функции распределения, такие что $\varphi_{F(x)} = \varphi_{G(x)} \Rightarrow \forall x\  F(x) = G(x).$
 	\end{theorem}
+	
 	\begin{property}
-		Пусть $\varphi_\xi(t)$~---характеристическая функция случайной величины $\xi$, $\varphi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение.
+		Пусть $\varphi_\xi(t)$~--- характеристическая функция случайной величины $\xi$. $\varphi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение.
 		\begin{proof}
 			$~(\Leftarrow)$ Пусть распределение $\xi$~---симметрично, тогда $E(\sin(t\xi)) = E(\sin(t(-\xi))) = -E(\sin(t\xi)) = 0.$ Значит $\varphi_\xi(t) = E\cos t\xi + iE\sin t\xi = E\cos t\xi \in \mathbb{R}.$
 
@@ -44,11 +45,13 @@
 
 	\begin{property}
 	\begin{theorem}[о производных х.ф.]
-		Пусть $E|\xi|^n < + \infty, ~n \in \mathbb{N}.$ Тогда $\forall k \leqslant n~ \exists \varphi_\xi^{(k)}(t),$ причём
+		Пусть $E|\xi|^n < + \infty, ~n \in \mathbb{N}.$ 
+		
+		Тогда $\forall k \leqslant n~ \exists \varphi_\xi^{(k)}(t),$ причём
 		\begin{enumerate}
 			\item $\varphi_\xi^{(k)}(t) = \int\limits_\mathbb{R}(ix)^ke^{itx}dF(x)$
 			\item $E\xi^k = \frac{\varphi_\xi^{(k)}(0)}{i^k}$
-			\item $\varphi_\xi(t) = \sum\limits_{k = 0}^{n} \frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t)$
+			\item $\varphi_\xi(t) = \sum\limits_{k = 0}^{n} \frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t)$, где
 		\end{enumerate}
 		$|\varepsilon_n(t)| \leqslant 3E|\xi|^n, ~\varepsilon_n(t) \to 0, ~ t \to 0.$
 	\end{theorem}

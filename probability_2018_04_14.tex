@@ -1,6 +1,8 @@
 \section{Лекция от 14.04.2018}
 \begin{theorem}[Колмогорова-Хинчина о сходимости ряда]
-	Пусть $\{\xi_n \}_{n \geqslant 1}$~--- последовательность независимых случайных величин такая, что $\E \xi_n = 0 $ и $\E \xi^2 < +\infty$. Тогда, если $\sum\limits_{n = 1}^{\infty} \E \xi_n^2 < +\infty$, то $ \sum\limits_{n = 1}^{\infty} \xi_n$ сходится почти наверное.
+	Пусть $\{\xi_n \}_{n \geqslant 1}$~--- последовательность независимых случайных величин такая, что $\E \xi_n = 0 $ и $\E \xi^2 < +\infty$. 
+	
+	Тогда, если $\sum\limits_{n = 1}^{\infty} \E \xi_n^2 < +\infty$, то $ \sum\limits_{n = 1}^{\infty} \xi_n$ сходится почти наверное.
 	\begin{proof}
 		Обозначим $S_n = \sum\limits_{k=1}^n \xi_k$. По критерию Коши $\left\{ \sum\limits_{n = 1}^{\infty}\xi_n~\text{сходится п.н.} \right\}$ равносильно тому, что $\{ S_n~\text{фундаментально п.н.}\}$, а это в свою по критерию фундаментальности равносильно тому, что 
 		$$\forall \varepsilon > 0: \P \left( \sup\limits_{k \geqslant n} | S_k - S_n | \geqslant \varepsilon \right) \limn 0.$$ Докажем это.
@@ -12,8 +14,11 @@
 		 $$\leqslant \lim\limits_{N \rightarrow + \infty} \dfrac{\E ( S_N - S_n)^2}{\varepsilon^2} = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \E \sum\limits_{k = n + 1}^N \xi_k^2 = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \sum\limits_{k = n + 1}^N \E \xi_k^2 = \dfrac{1}{\varepsilon^2} \sum\limits_{k > n} \E \xi_k^2 \limn 0.$$
 	\end{proof}
 \end{theorem}
+
 \begin{lemma}[Тёплица]
-	Пусть $x_n \rightarrow x$~--- числовая последовательность, числа $\{a_n\}_{n \geqslant 1}$ таковы, что $ \forall n: a_n \geqslant 0$ и $ b_n = \sum\limits_{k = 1}^n a_k \uparrow +\infty$. Тогда $\dfrac{1}{b_n} \sum\limits_{i = 1}^n a_i x_i \limn x$.
+	Пусть $x_n \rightarrow x$~--- числовая последовательность, числа $\{a_n\}_{n \geqslant 1}$ таковы, что $ \forall n \hookrightarrow a_n \geqslant 0$ и $ b_n = \sum\limits_{k = 1}^n a_k \uparrow +\infty$. 
+	
+	Тогда $\dfrac{1}{b_n} \sum\limits_{i = 1}^n a_i x_i \limn x$.
 	\begin{proof}
 		Пусть $\varepsilon > 0$. Выберем $n_0$ так, что $\forall n > n_0: |x_n - x| \leqslant \dfrac{\varepsilon}{2}$. Выберем $n_1 > n_0$ такое, что $\dfrac{1}{b_{n_1}} \sum\limits_{k=1}^{n_0} a_k | x_k - x| \leqslant \frac{\varepsilon}{2}$, тогда
 		\begin{multline*}
@@ -21,8 +26,11 @@
 		\end{multline*}
 	\end{proof}
 \end{lemma}
+
 \begin{lemma}[Кронекера]
-	Пусть ряд $\sum\limits_{n = 1}^{\infty} x_n$ сходится, $\{a_n\}_{n \geqslant 1}$ такова, что $a_n \geqslant 0$, $b_n = \sum\limits_{k=1}^n a_k \uparrow + \infty$. Тогда $\dfrac{1}{b_n} \sum\limits_{k = 1}^n b_k x_k \limn 0$.
+	Пусть ряд $\sum\limits_{n = 1}^{\infty} x_n$ сходится, $\{a_n\}_{n \geqslant 1}$ такова, что $a_n \geqslant 0$, $b_n = \sum\limits_{k=1}^n a_k \uparrow + \infty$. 
+	
+	Тогда $\dfrac{1}{b_n} \sum\limits_{k = 1}^n b_k x_k \limn 0$.
 	\begin{proof}
 		Пусть $S_n = \sum\limits_{k = 1}^n x_k$, тогда $S_n \limn S = \sum\limits_{k = 1}^\infty x_k$. Воспользуемся методом суммирования Абеля:
 		\begin{multline*}
@@ -32,8 +40,15 @@
 		$$\dfrac{1}{b_n} \sum\limits_{k = 1}^n b_k x_k = S_n - \cancelto{\scriptsize S~\text{по Тёплицу}}{\dfrac{1}{b_n}\sum\limits_{j = 1}^n S_{j-1} a_j} \limn 0.$$
 	\end{proof}
 \end{lemma}
-\begin{theorem}[усиленный закон больших чисел в форме Колмогорова-Хинчина]
-	Пусть $\{\xi_n\}_{n \geqslant 1}$~--- независимые случайные величины, $\forall n: \D \xi_n < +\infty$. Пусть $\{ b_n \}_{n \geqslant 1}$~--- числовая последовательность, $b_1 > 0$ и $b_n \uparrow +\infty$, причем $\sum\limits_{n =1}^\infty \dfrac{\D \xi_n}{b_n^2} < + \infty$. Пусть $ S_n = \sum\limits_{i = 1}^{n} \xi_i$, тогда $\dfrac{S_n - \E S_n}{b_n} \xrightarrow[n \rightarrow + \infty]{\text{п.н.}} 0$.
+
+\begin{theorem}[УЗБЧ в форме Колмогорова-Хинчина]
+	Пусть 
+	\begin{enumerate}
+	    \item случайные величины $\{\xi_n\}_{n \geqslant 1}$ независимы и $\forall n \hookrightarrow \D \xi_n < +\infty$;
+	    \item числа $\{ b_n \}_{n \geqslant 1}$, $b_1 > 0$ и $b_n \uparrow +\infty$, такая что $\sum\limits_{n =1}^\infty \dfrac{\D \xi_n}{b_n^2} < + \infty$;
+	    \item обозначим $S_n = \sum\limits_{i = 1}^{n} \xi_i$.
+	\end{enumerate}  
+	Тогда $\dfrac{S_n - \E S_n}{b_n} \xrightarrow[n \rightarrow + \infty]{\text{п.н.}} 0$.
 	\begin{proof}
 		Преобразуем:
 		$$ \frac{S_n - \E S_n}{b_n} = \frac{1}{b_n} \sum\limits_{i = 1}^{n} b_i \cdot \frac{\xi_i - \E \xi_i}{b_i}.$$
@@ -64,17 +79,22 @@
 		Верхнее неравенство доказывается аналогично.
 	\end{proof}
 \end{lemma}
+
 \begin{definition}
-	Случаные величины $\xi $ и $\eta$ одинаково распределены, если  $\forall x: F_\xi (x) = F_\eta(x)$. Обозначают $\xi \overset{d}{=} \eta$.
+	Случайные величины $\xi $ и $\eta$ одинаково распределены, если  $\forall x \hookrightarrow F_\xi (x) = F_\eta(x)$. Обозначают $\xi \overset{d}{=} \eta$.
 \end{definition}
+
 \begin{statement}
-Если $\xi \overset{d}{=} \eta$, то $\forall g(x): \E g(\xi) = \E g(\eta)$.
+Если $\xi \overset{d}{=} \eta$, то $\forall g(x) \hookrightarrow \E g(\xi) = \E g(\eta)$.
 \begin{proof}
 	$\E g(\xi) = \int g(x) \, d F_\xi(x) = \int g(x) \, d F_\eta(x) = \E g(\eta)$.
 \end{proof}	
 \end{statement}
-\begin{theorem}[Усиленный закон больших чисел в форме Колмогорова]
-	Пусть $\{\xi_n\}_{n \in \N}$~--- независимые одинаково распределенные случайные величины такие, что $\E | \xi_1| < + \infty$. Тогда
+
+\begin{theorem}[УЗБЧ в форме Колмогорова]
+	Пусть $\{\xi_n\}_{n \in \N}$~--- независимые одинаково распределенные случайные величины такие, что $\E | \xi_1| < + \infty$. 
+	
+	Тогда
 	$$ \frac{\xi_1 + \ldots + \xi_n}{n} \xrightarrow[n \rightarrow  \infty]{\text{п.н.}} 0.$$
 	\begin{proof}
 		Поскольку $\E | \xi_1| < +\infty$, то по предыдущей лемме $\sum\limits_{n = 1}^\infty \P \big( |\xi_1| \geqslant n \big) < +\infty$. Так как $\xi_1 \overset{d}{=} \xi_n$, то $\sum\limits_{n = 1}^\infty \P \big( |\xi_n| \geqslant n \big) < + \infty$, следоватально, по лемме Бореля-Кантелли $\P \Big( \big\{ |\xi_n| \geqslant n \big\}~\text{б.ч.} \Big) = 0$. То есть c вероятностью 1 случается конечное число $\big\{ |\xi_n| \geqslant n \big\}$. Обозначим $\tilde \xi_n \equiv \xi_n \cdot I \big\{ | \xi_n | \leqslant n \big\}$. Тогда с вероятность 1 $\xi_n = \tilde \xi_n$ кроме конечного числа $\xi_n$. Пусть $\E \xi_i = 0$, если это не так, то $\eta_i = \xi_i - \E \xi_i$. Получаем, что 
@@ -103,8 +123,11 @@
 		\end{multline*}
 	\end{proof}
 \end{theorem}
+
 \begin{theorem}[Беппо-Леви]
-	Пусть $\{ \xi_n \}_{n \geqslant 1}$~--- случайные величины, $\forall n: \xi_n \geqslant 0 $. Тогда $\E \sum\limits_{n = 1}^\infty \xi_n = \sum\limits_{n = 1}^\infty \E \xi_n$.
+	Пусть $\{ \xi_n \}_{n \geqslant 1}$~--- случайные величины, $\forall n \hookrightarrow \xi_n \geqslant 0$.
+	
+	Тогда $\E \sum\limits_{n = 1}^\infty \xi_n = \sum\limits_{n = 1}^\infty \E \xi_n$.
 	\begin{proof}
 		Пусть $S_n = \sum\limits_{k = 1}^n \xi_k$, тогда $S_n \uparrow S = \sum\limits_{k = 1}^\infty \xi_k$. По теореме о монотонной сходимости $\E \sum\limits_{k = 1}^n \xi_k \limn \E \sum\limits_{k = 1}^\infty \xi_k$, следовательно,
 		$$ \E \sum\limits_{k = 1}^n \xi_k = \sum\limits_{k = 1}^n \E \xi_k \uparrow \E \sum\limits_{k = 1}^\infty \E \xi_k.$$
