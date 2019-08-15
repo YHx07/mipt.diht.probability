@@ -14,7 +14,7 @@
 \end{property}
 
 \begin{property}
-	Пусть $\E \xi$ и $\E \eta$ конечны, $\forall A \in \F: \E (\xi \cdot I_A) \leqslant \E ( \eta \cdot I_A)$. Тогда  $\xi \leqslant \eta$ почти наверное.
+	Пусть $\E \xi$ и $\E \eta$ конечны, $\forall A \in \F \hookrightarrow \E (\xi \cdot I_A) \leqslant \E ( \eta \cdot I_A)$. Тогда  $\xi \leqslant \eta$ почти наверное.
 	\begin{proof}
 		Рассмотрим событие $B = \{ \xi > \eta \}$. Из условия и построения $B$ получаем, что $\E (\eta \cdot I_B) \leqslant \E (\xi \cdot I_B) \leqslant \E (\eta \cdot I_B)$, следовательно, $\E( \xi \cdot I_B) = \E(\eta \cdot I_B)$, значит $\E \big( (\xi - \eta) \cdot I_B \big) = 0$. Так как $(\xi - \eta) \cdot I_B \geqslant 0$, то по свойству 8 $(\xi - \eta) \cdot I_B = 0$ почти наверное, следовательно $I_B = 0$ почти наверное, потому что $\xi- \eta > 0$ на $B$.
 	\end{proof}
@@ -39,13 +39,24 @@
 Пусть $\xi = \sum\limits_{i = 1}^n x_i \cdot I (\xi = x_i)$~--- простая случайная величина. Тогда $\E g(\xi) = \sum\limits_{i=1}^{n} g(x_i) \cdot \P(\xi = x_i) = \sum\limits_{i = 1}^n g(x_i) \Delta F_\xi (x_i)$, где $\Delta F_\xi(x_i) = F_\xi(x_i) - F_\xi (x_i - 0)$.
 
 \begin{theorem}[о замене переменной в интеграле Лебега][б/д]
-	Пусть $(\Omega, \F)$ и $(E, \mathcal{E})$~--- два измеримых пространства и $X = X(\omega)$~--- $\F | \mathcal{E}$-измеримая функция со значениями в $E$, то есть $\forall B \in \mathcal{E}: X^{-1}(B) \in \F$. Пусть $\P$~--- вероятностная мера на $(\Omega, \F)$ и $\P_X$~--- вероятностная мера на $(E, \mathcal{E})$, заданная по правилу $\P_X(A) = \P (\omega: X(\omega) \in A)$ для $A \in \mathcal{E}$. Тогда для любой $\mathcal{E}$-измеримой функции $g(x):E \rightarrow \R$, то есть $\forall B \in \B(\R): g^{-1}(B) \in \mathcal{E}$, верно, 
+	Пусть 
+	\begin{enumerate}
+	    \item $(\Omega, \F)$ и $(E, \mathcal{E})$~--- два измеримых пространства;
+	    \item $X = X(\omega)$~--- $\F | \mathcal{E}$-измеримая функция со значениями в $E$, то есть $\forall B \in \mathcal{E}: X^{-1}(B) \in \F$;
+	    \item $\P$~--- вероятностная мера на $(\Omega, \F)$;
+	    \item $\P_X$~--- вероятностная мера на $(E, \mathcal{E})$, заданная по правилу $\P_X(A) = \P (\omega: X(\omega) \in A)$ для $A \in \mathcal{E}$.
+	\end{enumerate}
+	
+	Тогда для любой $\mathcal{E}$-измеримой функции $g(x):E \rightarrow \R$, то есть $\forall B \in \B(\R): g^{-1}(B) \in \mathcal{E}$, верно, 
 	$$\int\limits_A g(x) \P_X(dx) = \int\limits_{X^{-1}(A)} g\big( X(\omega) \big) \P(d \omega).$$
 \end{theorem}
 
-Пусть $\xi : \Omega \rightarrow \R (\R^n)$, в таком случае вероятностная мера $\P_\xi$ однозначно восстанавливается по $F_\xi$, следовательно, по теореме $\E g(\xi) = \int g(\xi) \, d\P = \int g(x) \P_\xi(dx) = \int g(x) \, d F_\xi (x)$.
-
-Пусть  $\xi$~--- абсолютно непрерывная случайная величина с плотностью $p_\xi(x)$, тогда $d F_\xi (x) = p_\xi (x) \, dx$, следовательно $\E g(x) = \int\limits_{\R} g(x) p_\xi(x) \, d x$.
+\begin{consequence}[1]
+    Пусть $\xi : \Omega \rightarrow \R (\R^n)$, в таком случае вероятностная мера $\P_\xi$ однозначно восстанавливается по $F_\xi$, следовательно, по теореме $\E g(\xi) = \int g(\xi) \, d\P = \int g(x) \P_\xi(dx) = \int g(x) \, d F_\xi (x)$.
+\end{consequence}
+\begin{consequence}[2]
+    Пусть  $\xi$~--- абсолютно непрерывная случайная величина с плотностью $p_\xi(x)$, тогда $d F_\xi (x) = p_\xi (x) \, dx$, следовательно $\E g(x) = \int\limits_{\R} g(x) p_\xi(x) \, d x$.
+\end{consequence}
 
 \subsection{Прямое произведение вероятностных пространств и формула свертки}
 
@@ -58,8 +69,17 @@
 	\end{enumerate}
 \end{definition}
 \begin{theorem}[Фубини][б/д]
-	Пусть $(\Omega, \F, \P)$~--- прямое произведение вероятносных пространств $(\Omega_1, \F_1, \P_1)$ и $(\Omega_2, \F_2, \P_2)$. Пусть $\xi : \Omega \rightarrow \R$ такая, что $\int\limits_\Omega \big| \xi (\omega_1, \omega_2) \big| \, d \P < + \infty$. Тогда интегралы $\int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1)$ и $\int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2)$ определены почти наверное относительно $\P_2$ и $\P_1$ соответственно, являются измеримыми случайными величинами относительно $\F_2$ и $\F_1$, следовательно, 
-	$$\int\limits_\Omega \xi (\omega_1, \omega_2) \, d \P = \int\limits_{\Omega_2} \int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \P_2 (d \omega_2) = \int\limits_{\Omega_1} \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2) \P_1 (d \omega_1).$$
+	Пусть 
+	\begin{enumerate}
+	    \item $(\Omega, \F, \P)$~--- прямое произведение вероятностных пространств $(\Omega_1, \F_1, \P_1)$ и $(\Omega_2, \F_2, \P_2)$.
+	    \item $\xi : \Omega \rightarrow \R$ такая, что $\int\limits_\Omega \big| \xi (\omega_1, \omega_2) \big| \, d \P < + \infty$.
+	\end{enumerate}
+     Тогда интегралы $$\int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \text{ и } \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2)$$
+     \begin{enumerate}
+         \item определены почти наверное относительно $\P_2$ и $\P_1$ соответственно;
+         \item являются измеримыми случайными величинами относительно $\F_2$ и $\F_1$.
+         \item $$\int\limits_\Omega \xi (\omega_1, \omega_2) \, d \P = \int\limits_{\Omega_2} \int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \P_2 (d \omega_2) = \int\limits_{\Omega_1} \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2) \P_1 (d \omega_1).$$
+     \end{enumerate}
 	 Из всего этого следует, что двойной интеграл равен повторному.
 \end{theorem}
 

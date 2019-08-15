@@ -1,12 +1,17 @@
 \section{Лекция от 24.03.2018}
 \begin{lemma}[о существовании УМО]
-	Пусть $\xi$~--- случайная величина с $\E | \xi| < +\infty$. Тогда $\forall \G \subset \F~\text{(под}\sigma\text{-алгебра)}: \E( \xi | \G )$ существует и единственно почти наверное.
+	Пусть $\xi$~--- случайная величина с $\E | \xi| < +\infty$. 
+	
+	Тогда $\forall \G \subset \F~\text{(под}\sigma\text{-алгебра)} \hookrightarrow \E( \xi | \G )$ существует и единственно почти наверное.
 	\begin{proof}
 		Рассмотрим вероятностное пространство $(\Omega, \G, \P)$. Положим, что $\forall A \in \G: Q(A) = \int\limits_A \xi \, d\P  = \E(\xi \cdot I_A)$, следовательно, $Q(A)$~--- заряд на $(\Omega, \G, \P)$, абсолютно непрерывный относительно меры $\P$. Тогда по теореме Радона-Никодима существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \G, \P)$ с $\E \eta < + \infty$ такая, что $Q(A) = \int\limits_A \eta  \, d\P$. Значит, $\eta$~--- УМО. Действительно, $\eta$ $\G$-измерима и $\forall A \in \G: \int\limits_A \eta  \, d\P = \int\limits_A \xi  \, d\P \Rightarrow \eta = \E(\xi|\G)$.
 	\end{proof}
 \end{lemma}
+
 \begin{theorem}
-	Пусть $\sigma$-алгебра $\G$ порождена разбиением $\Omega$ $\{ D_n \}_{n = 1}^{+\infty}$, причем, $\P(D_n) > 0$. Тогда, если $\E \xi < +\infty$, то $\E(\xi | \G ) = \sum\limits_{n=1}^{+\infty} \dfrac{\E ( \xi \cdot I (D_n) )}{\P(D_n)} \cdot I(D_n)$.
+	Пусть $\sigma$-алгебра $\G$ порождена разбиением $\Omega$ на $\{ D_n \}_{n = 1}^{+\infty}$, причем, $\P(D_n) > 0$, $\E \xi < +\infty$.
+	
+	Тогда $\E(\xi | \G ) = \sum\limits_{n=1}^{+\infty} \dfrac{\E ( \xi \cdot I (D_n) )}{\P(D_n)} \cdot I(D_n)$.
 	\begin{proof}
 		Пусть $\eta$ $\G$-измерима. Покажем, что $\eta = \sum\limits_{n=1}^{+\infty} c_n I_{D_n}(\omega)$. Пусть $\eta \not=\const$ на $D_n$, тогда $\exists a \not= b: \{\omega: \eta(\omega) = a \} \cap D_n \not= \varnothing$ и $\{\omega: \eta(\omega) = b \} \cap D_n \not= \varnothing$, следовательно, $\{\omega: \eta(\omega) = a \} \cap D_n = D_n$ и $\{\omega: \eta(\omega) = b \} \cap D_n = D_n$, иначе $\{\omega: \eta(\omega) = a \} \not\in \G$, то есть $\eta$ не $\G$-измерима. Получили противоречие.
 		
@@ -22,23 +27,26 @@
 $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 \end{statement}
 
-\subsection{Свойства УМО}
+\subsection{Свойства УМО (9 штук)}
 Все матожидания ниже существуют, то есть $\E|\xi| <+\infty, \E|\eta| <+\infty$.
 
 \setcounter{property}{0}
-\noindent {\bfseries Свойство МО :} если $\forall A \in \F: \E(\xi \cdot I_A) = \E(\eta \cdot I_A)$, то $\xi = \eta$ почти наверное на $(\Omega, \F, \P)$.
+\noindent {\bfseries Свойство МО :} если $\forall A \in \F \hookrightarrow \E(\xi \cdot I_A) = \E(\eta \cdot I_A)$, то $\xi = \eta$ почти наверное на $(\Omega, \F, \P)$
+
 \begin{property}
-	Если $\xi$ $\G$-измерима, то $\E(\xi | \G) = \xi$ почти наверное. 
+	Если $\xi$~--- $\G$-измерима, то $\E(\xi | \G) = \xi$ почти наверное. 
 	\begin{proof}
 		$\xi$ удовлетворяет свойствам УМО: первому по условиям, а второму, поскольку $\int\limits_A \E(\xi|\G) \, d\P = \int\limits_A \xi \, d\P$. Следовательно, $\E(\xi | \G) = \xi$ почти наверное.  
 	\end{proof}
 \end{property}
+
 \begin{property}[формула полной вероятности]
 	 $\E \big( \E( \xi | \G) \big) = \E\xi$.
 	 \begin{proof}
 	 	Так как $\Omega \in \G$, то по интегральному свойству $\E \big( \E(\xi | \G) \big) = \E \big( \E(\xi | \G ) \cdot I_\Omega \big) = \E( \xi \cdot I_\Omega) = \E\xi$.
 	 \end{proof}
 \end{property}
+
 \begin{property}[линейность]
 	$\E (\alpha \xi + \beta \eta | \G ) = \alpha \E( \xi | \G) + \beta \E(\eta |\G)$.
 	\begin{proof}
@@ -93,11 +101,15 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 \end{property}
 
 \begin{property}[][б/д]
-	Пусть $\forall n > 1: | \xi_n | \leqslant \eta$, $\E \eta < +\infty$ и $\xi_n \xrightarrow{\text{п.н.}} \xi$. Тогда $ \forall \G \subset \F: \E(\xi_n | \G) \xrightarrow{\text{п.н.}} \E(\xi | \G)$.
+	Пусть $\forall n > 1 \hookrightarrow | \xi_n | \leqslant \eta$, $\E \eta < +\infty$ и $\xi_n \xrightarrow{\text{п.н.}} \xi$. 
+	
+	Тогда $ \forall \G \subset \F: \E(\xi_n | \G) \xrightarrow{\text{п.н.}} \E(\xi | \G)$.
 \end{property}
 
 \begin{property}
-	Пусть $\eta$ $\G$-измерима, $\E |\xi \eta | < +\infty$, $\E |\xi | < +\infty$. Тогда $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
+	Пусть $\eta$~--- $\G$-измерима, $\E |\xi \eta | < +\infty$, $\E |\xi | < +\infty$. 
+	
+	Тогда $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
 	\begin{proof}
 		Пусть $\eta = I_B$, где $B \in \G$. Тогда 
 		\begin{multline*}
@@ -111,7 +123,9 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 \end{property}
 
 \begin{theorem}[о наилучшем квадратичном прогнозе]
-	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. Обозначим $\mathcal{A}_\G = \{ \eta \text{- сл. вел.}| \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. Тогда $\inf\limits_{\eta \in \mathcal{A}_\G} \E( \xi - \eta)^2 = \E\big( \xi - \E(\xi | \G) \big)^2$.
+	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. Обозначим $\mathcal{A}_\G = \{ \eta \text{- сл. вел.}| \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. 
+	
+	Тогда $\inf\limits_{\eta \in \mathcal{A}_\G} \E( \xi - \eta)^2 = \E\big( \xi - \E(\xi | \G) \big)^2$.
 	\begin{proof}
 		Пусть $\eta \in \mathcal{A}_\G$, тогда
 		\begin{multline*}

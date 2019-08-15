@@ -1,13 +1,15 @@
 \section{Лекция от 17.02.2018}
 \subsection{Вероятностная мера в $\big( \R^n, \B(\R^n) \big)$}
 \begin{definition}
-	Пусть $\P$~--- вероятностная мера в $\big( \R^n, \B(\R^n) \big)$, где $\B(\R^n) = \sigma\{B_1 \times B_2 \times \dots \times B_n,\ B_i \in \B(\R),\ i \leqslant n \}$ тогда функция $F(\vec x) = \P\big((-\infty; x_1] \times \ldots \times (-\infty, x_n]\big)$ называется функцией распределения вероятностной меры $\P$ в $\R^n$.
+	Пусть $\P$~--- вероятностная мера в $\big( \R^n, \B(\R^n) \big)$, где $\B(\R^n) = \sigma\{B_1 \times B_2 \times \dots \times B_n,\ B_i \in \B(\R),\ i \leqslant n \}$, тогда функция $F(\vec x) = \P\big((-\infty; x_1] \times \ldots \times (-\infty, x_n]\big)$ называется функцией распределения вероятностной меры $\P$ в $\R^n$.
 \end{definition}
 \begin{note}
 	Пусть $\vec x^{(k)} = \left(x_1^{(k)}, \ldots, x_n^{(k)}\right) \in \R^n$. Будем писать $\vec x^{(k)} \downarrow \vec x$, если $\forall i, k : x_i^{(k)} \geqslant x_i^{(k + 1)}$ и $x_i^{(k)} \underset{k \rightarrow +\infty}{\longrightarrow} x_i$.
 \end{note}
 \begin{lemma}[Свойства многомерной функции распределения]
-	Пусть $F(\vec x)$~--- функция распределения вероятностной меры в $\R^n$, тогда
+	Пусть $F(\vec x)$~--- функция распределения вероятностной меры в $\R^n$.
+	
+	Тогда для нее верно:
 	\begin{enumerate}
 		\item Если $\vec x^{(k)} \downarrow \vec x$, то $F\big(\vec x^{(k)}\big) \rightarrow F\big(\vec x\big), k \rightarrow +\infty$;
 		\item $\lim\limits_{\forall i : x_i \rightarrow +\infty} F(\vec x) = 1;\; \lim\limits_{\exists i : x_i \rightarrow -\infty} F(\vec x) = 0$;
@@ -49,21 +51,23 @@
 \subsection{Многомерная плотность вероятности}
 \begin{definition}
 	Если 
-	$$ F(x_1, \ldots, x_n) = \int\limits_{-\infty}^{x_1}\ldots\int\limits_{-\infty}^{x_n} p(y_1, \ldots, y_n)dy_1\ldots dy_n,\; p(x_1, \ldots, x_n) \geqslant 0, $$
-	$$ \idotsint\limits_{\R^n} p(t_1, \dots, t_n) \,dt_1 \dots dt_n$$
-	то $p(x_1, \ldots, x_n)$ называется $n$-мерной плотностью вероятности. Тогда
+	$$ F(x_1, \ldots, x_n) = \int\limits_{-\infty}^{x_1}\dots\int\limits_{-\infty}^{x_n} p(y_1, \ldots, y_n)dy_1\ldots dy_n,\; p(x_1, \ldots, x_n) \geqslant 0, $$
+	$$ \idotsint\limits_{\R^n} p(t_1, \dots, t_n) \,dt_1 \dots dt_n = 1,$$
+	то $p(x_1, \ldots, x_n)$ называется $n$-мерной плотностью вероятности.
+	
+	Если дифференцируема $F(x_1, \dots, x_n)$, то
 	$$ p(x_1, \ldots, x_n) = \frac{\partial^n}{\partial x_1\ldots\partial x_n}F(x_1, \ldots, x_n). $$
 \end{definition}
+
 \subsection{Случайные величины}
 \begin{definition}
-	Пусть $\big(\Omega, \F \big)$ и $\big( E, \mathcal{E} \big)$~--- два измеримых пространства. Отображение $X: \Omega \rightarrow E$~--- случайный элемент, если $\forall B \in \mathcal{E}: X^{-1} \in \F$ $\F$-измеримо или $\F|\mathcal{E}$-измеримо. \\
+	Пусть $\big(\Omega, \F \big)$ и $\big( E, \mathcal{E} \big)$~--- два измеримых пространства. Отображение $X: \Omega \rightarrow E$, такое что $\forall B \in \mathcal{E} \hookrightarrow X^{-1} \in \F$  называется случайным элементом, так же его называются $\F$-измеримым или $\F|\mathcal{E}$-измеримым. \\
 	Если $(E, \mathcal{E}) = \big(\R, \B(\R)\big)$, то это случайная величина. \\
 	Если $(E, \mathcal{E}) = \big(\R^n, \B(\R^n)\big)$, то это случайный вектор.
 \end{definition}
 
-\subsection{Действия над случайными величинами и векторами}
 \begin{definition}
-	Функция $\varphi: \R^n \rightarrow \R^m$~--- борелевская, если $\forall B \in \B(\R^m): \varphi^{-1}(B) \in \B(\R^n)$. 
+	Функция $\varphi: \R^n \rightarrow \R^m$~--- борелевская, если $\forall B \in \B(\R^m) \hookrightarrow \varphi^{-1}(B) \in \B(\R^n)$. 
 \end{definition}
 
 \begin{statement}
@@ -71,7 +75,7 @@
 \end{statement}
 
 \begin{theorem}[критерий измеримости][б/д]
-	Пусть $\big(\Omega, \F\big), \big(E, \mathcal{E}\big)$~--- два измеримых пространства, $X: \Omega \rightarrow E$~--- случайный элемент тогда, и только тогда, когда существует система событий $\M \subseteq \mathcal{E}$, такая что $\sigma(\M) = \mathcal{E}$ и $\forall B \in \M: X^{-1}(B) \in \F$.
+	Пусть $\big(\Omega, \F\big), \big(E, \mathcal{E}\big)$~--- два измеримых пространства, $X: \Omega \rightarrow E$~--- случайный элемент тогда, и только тогда, когда существует система событий $\M \subseteq \mathcal{E}$, такая что $\sigma(\M) = \mathcal{E}$ и $\forall B \in \M \hookrightarrow X^{-1}(B) \in \F$.
 \end{theorem}
 
 \begin{lemma}
@@ -89,13 +93,15 @@
 		\emph{Достаточность.} $\B(\R^n) = \sigma\big(B_1 \times \ldots \times B_n, B_i \in \B(\R)\big)$, поэтому $\vec\xi^{-1}(B_1 \times \ldots \times B_n) = \big\{\omega : \vec\xi(\omega) \in B_1 \times \ldots \times B_n\big\} = \big\{\omega : \xi_1(\omega) \in B_1, \ldots, \xi_n(\omega) \in B_n\big\} = \bigcap\limits_{i = 1}^n\big\{\omega: \xi(\omega) \in B_i \big\} = \bigcap\limits_{i = 1}^n \xi_i^{-1}(B_i) \in \F$, значит, по критерию измеримости, $\vec \xi$~--- случайный вектор.
 	\end{proof}
 \end{lemma}
+
 \begin{consequence}
-	Пусть $\xi$, $\eta$~--- случайные величины, $c \in \R$,тогда $\xi + \eta$, $\xi - \eta$, $c\xi$, $\xi \cdot \eta$ и $\xi / \eta$, если $\forall \omega \in \Omega : \eta \neq 0$ тоже случайные величины.
+	Пусть $\xi$, $\eta$~--- случайные величины, $c \in \R$,тогда $\xi + \eta$, $\xi - \eta$, $c\xi$, $\xi \cdot \eta$ и $\xi / \eta$, если $\forall \omega \in \Omega : \eta \neq 0$, тоже случайные величины.
 \end{consequence}
+
 \begin{lemma}[О пределах случайной величины]
 	Пусть $\{ \xi_n \}_{n \in \N}$ последовательность случайных величин, тогда, если пределы $\overline{\lim}~\xi_n$, $\underline{\lim}~\xi_n$, $\inf\xi_n$, $\sup\xi_n$ существуют, они являются случайными величинами.
 	\begin{proof}
-		$\big\{\omega : \sup \xi_n \leqslant x \big\} = \bigcap\limits_{n = 1}^{+\infty}\big\{\omega : \xi_n(\omega) \leqslant x \big\} \in \F$. По критерию измеримости, так как $\sigma\big(x : (-\infty, x]\big) = \B(\R)$, мы доказали, что $\sup\xi_n$~--- случайная величина. Аналогично, $\big\{\omega : \inf \xi_n > x \big\} = \bigcup\limits_{k = 1}^{+\infty}\big\{\omega : \xi_n(\omega) \geqslant x \big\} \in \F$, так как $\sigma\big((x, +\infty)\big) = \B(\R)$, по критерию измеримости $\inf\xi_n$~--- случайная величина. Отсюда $\overline{\lim}~\xi_n = \inf\limits_n\sup\limits_{m \geqslant n}~\xi_m$ и $\underline{\lim}~\xi_n = \sup\limits_n\inf\limits_{m \geqslant n}~\xi_m$ тоже случайные величины.
+		$\big\{\omega : \sup \xi_n \leqslant x \big\} = \bigcap\limits_{n = 1}^{+\infty}\big\{\omega : \xi_n(\omega) \leqslant x \big\} \in \F$. По критерию измеримости, так как $\sigma\big(x : (-\infty, x]\big) = \B(\R)$, мы доказали, что $\sup\xi_n$~--- случайная величина. Аналогично, $\big\{\omega : \inf \xi_n \geqslant x \big\} = \bigcup\limits_{k = 1}^{+\infty}\big\{\omega : \xi_n(\omega) \geqslant x \big\} \in \F$, так как $\sigma\big((x, +\infty)\big) = \B(\R)$, по критерию измеримости $\inf\xi_n$~--- случайная величина. Отсюда $\overline{\lim}~\xi_n = \inf\limits_n\sup\limits_{m \geqslant n}~\xi_m$ и $\underline{\lim}~\xi_n = \sup\limits_n\inf\limits_{m \geqslant n}~\xi_m$ тоже случайные величины.
 	\end{proof}
 \end{lemma}
 
@@ -132,5 +138,5 @@
 
 \subsubsection*{\ovalbox{4} Сигма-алгебра, порожденная случайной величиной}
 \begin{definition}
-	Пусть $\xi$~--- случайная величина (вектор) на $\big(\Omega, \F, \P\big)$, тогда $\sigma$-алгеброй $\F_\xi$, порожденной случайной величиной $\xi$ называется $\F_\xi = \big\{\{\xi \in B\}, B \in \B(\R)\; (\in \B(\R^n)) \big\}$.
+	Пусть $\xi = \xi(\omega)$~--- случайная величина (вектор) на $\big(\Omega, \F, \P\big)$, тогда $\sigma$-алгеброй $\F_\xi$, порожденной случайной величиной $\xi$, называется $\F_\xi = \big\{\omega: \xi(B), B \in \B(\R)\ (\B(\R^n)) \big\}$.
 \end{definition}

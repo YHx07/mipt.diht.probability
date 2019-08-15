@@ -1,21 +1,27 @@
 
 	\section{Лекция от 12.05.2018}
 	\begin{theorem}[Линдберга][б/д]
-		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые случайные величины, \(E\xi_k^2 < +\infty ~ \forall k,\) обозначим \(m_k = E\xi_k, ~\sigma^2_k = D\xi_k > 0: S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ D_n^2 = \sum\limits_{k = 1}^{n}\sigma^2_k\) и \(F_k(x)\)~--- функция распределения \(\xi_k\). Пусть выполнено условие Линдберга, то есть:
-		\[
-			\forall \varepsilon > 0 ~ \frac{1}{D^2_n} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x - m_k| > \varepsilon D_n\}}(x-m_k)^2 dF_k(x) \underset{n \to \infty}{\longrightarrow} 0.
-		\]
-		Тогда \( \frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1), n\to \infty\).
+		Пусть 
+		\begin{enumerate}
+		    \item случайные величины \(\{\xi_k\}_{k \geqslant 1}\) независимы, и \(\forall k~ E\xi_k^2 < +\infty\).
+		    \item Обозначим \(m_k = E\xi_k; ~\sigma^2_k = D\xi_k; ~S_n = \sum\limits_{i = 1}^{n}\xi_i; ~D_n^2 = \sum\limits_{k = 1}^{n}\sigma^2_k\) и \(F_k(x)\)~--- функция распределения \(\xi_k\).
+		    \item Пусть выполнено условие Линдберга:
+    		\[
+    			\forall \varepsilon > 0 ~ \frac{1}{D^2_n} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x - m_k| > \varepsilon D_n\}}(x-m_k)^2 dF_k(x) \underset{n \to \infty}{\longrightarrow} 0.
+    		\]
+		\end{enumerate} 
+		
+		Тогда \( \dfrac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1), n\to \infty\).
 	\end{theorem}
 
 	\subsection{Когда выполнены условия Линдберга?}
 
 	\begin{enumerate}
-		\item Пусть выполнено условие Ляпунова, то есть 
+		\item Пусть для некоторого \( \delta > 0\) выполнено условие Ляпунова: 
 		\[
 			\frac{1}{D_n^{2 + \delta}} \sum\limits_{i = 1}^{n} E|\xi_k - m_k|^{2 + \delta} \underset{n \to \infty}{\longrightarrow} 0
 		\]
-		для некоторого \( \delta > 0, \) тогда выполнено условие Линдберга.
+		тогда выполнено условие Линдберга.
 		\begin{proof}
 		    Пусть фиксировано \( \varepsilon > 0. \)
 			\begin{gather*}
@@ -34,7 +40,7 @@
 				\int\limits_\R |x-a|^2 dF_1(x) < +\infty.
 			\end{gather*}
 		\end{proof}
-		\item Пусть \(\{\xi_k\}_{k \geqslant 1}\)~---независимые случайные величины, \(|\xi_k| \leqslant K; ~D_n \to +\infty\). Тогда 
+		\item Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые случайные величины, \(|\xi_k| \leqslant K; ~D_n \to +\infty\). Тогда 
 		\begin{gather*}
 			\int\limits_{|x-m_k| > \varepsilon D_n}(x - m_k)^2 dF_k(x) = \\
 			= E((\xi_k - m_k)^2\cdot T(|\xi_k - m_k| > \varepsilon D_n)) \leqslant (2k)^2 EI(|\xi_k - m_k| > \varepsilon D_n) =\\
@@ -50,11 +56,11 @@
 		\]
 	\end{note}
 	\begin{theorem}[Берри-Эссена(б/д)]
-		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(E|\xi_i|^3 < +\infty, ~ E\xi_i = a, ~ D\xi_i = \sigma^2, ~S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ T_n = \frac{S_n - ES_n}{\sqrt{DS_n}}.\) Тогда 
+		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(E|\xi_i|^3 < +\infty, ~ E\xi_i = a, ~ D\xi_i = \sigma^2, ~S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ T_n = \dfrac{S_n - ES_n}{\sqrt{DS_n}}.\) Тогда 
 		\[
 			\sup\limits_{x\in \R}|F_{T_n}(x) - \Phi(x)| \leqslant C\cdot \frac{E|\xi_Ta|^3}{\sigma^3\sqrt{n}}, \text{ где } \frac{1}{\sqrt{2\pi}} < C < 0,48,
 		\]
-		где \(\Phi(x) = \int\limits_{-\infty}^{x} \frac{1}{\sqrt{2\pi}}e^{- \frac{x^2}{2}}dx.\)
+		где \(\Phi(x) = \int\limits_{-\infty}^{x} \dfrac{1}{\sqrt{2\pi}}e^{- \frac{x^2}{2}}dx.\)
 	\end{theorem}
 	\subsection{Гауссовские случайные векторы}
 	\begin{definition}
@@ -66,10 +72,10 @@
 	\end{definition}
 
 	\begin{definition}
-		Случайный вектор \(\vec{\xi}\)~--- гауссовский, если \(\forall \lambda \in \R^n\) случайная величина \((\vec{\lambda}, \vec{\xi}\) имеет нормальное распределение.
+		Случайный вектор \(\vec{\xi}\)~--- гауссовский, если \(\forall \lambda \in \R^n\) случайная величина \((\vec{\lambda}, \vec{\xi})\) имеет нормальное распределение.
 	\end{definition}
 
-	\begin{theorem}[об эквивалентности определений гауссовских векторов]
+	\begin{theorem}
 		Предыдущие определения эквивалентны.
 	\end{theorem}
 	\begin{proof}
