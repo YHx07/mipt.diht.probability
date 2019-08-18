@@ -3,9 +3,11 @@
 \begin{definition}
 	Пусть $\P$~--- вероятностная мера в $\big( \R^n, \B(\R^n) \big)$, где $\B(\R^n) = \sigma\{B_1 \times B_2 \times \dots \times B_n,\ B_i \in \B(\R),\ i \leqslant n \}$, тогда функция $F(\vec x) = \P\big((-\infty; x_1] \times \ldots \times (-\infty, x_n]\big)$ называется функцией распределения вероятностной меры $\P$ в $\R^n$.
 \end{definition}
+
 \begin{note}
 	Пусть $\vec x^{(k)} = \left(x_1^{(k)}, \ldots, x_n^{(k)}\right) \in \R^n$. Будем писать $\vec x^{(k)} \downarrow \vec x$, если $\forall i, k : x_i^{(k)} \geqslant x_i^{(k + 1)}$ и $x_i^{(k)} \underset{k \rightarrow +\infty}{\longrightarrow} x_i$.
 \end{note}
+
 \begin{lemma}[Свойства многомерной функции распределения]
 	Пусть $F(\vec x)$~--- функция распределения вероятностной меры в $\R^n$.
 	
@@ -138,5 +140,5 @@
 
 \subsubsection*{\ovalbox{4} Сигма-алгебра, порожденная случайной величиной}
 \begin{definition}
-	Пусть $\xi = \xi(\omega)$~--- случайная величина (вектор) на $\big(\Omega, \F, \P\big)$, тогда $\sigma$-алгеброй $\F_\xi$, порожденной случайной величиной $\xi$, называется $\F_\xi = \big\{\omega: \xi(B), B \in \B(\R)\ (\B(\R^n)) \big\}$.
+	Пусть $\xi = \xi(\omega)$~--- случайная величина (вектор) на $\big(\Omega, \F, \P\big)$, тогда $\sigma$-алгеброй $\F_\xi$, порожденной случайной величиной $\xi$, называется $\F_\xi = \big\{\xi^{-1}(B), B \in \B(\R)\ (\B(\R^n)) \big\}$.
 \end{definition}

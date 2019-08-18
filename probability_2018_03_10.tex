@@ -42,12 +42,12 @@
 	Пусть 
 	\begin{enumerate}
 	    \item $(\Omega, \F)$ и $(E, \mathcal{E})$~--- два измеримых пространства;
-	    \item $X = X(\omega)$~--- $\F | \mathcal{E}$-измеримая функция со значениями в $E$, то есть $\forall B \in \mathcal{E}: X^{-1}(B) \in \F$;
+	    \item $X = X(\omega)$~--- $\F | \mathcal{E}$-измеримая функция со значениями в $E$, то есть $\forall B \in \mathcal{E} \hookrightarrow X^{-1}(B) \in \F$;
 	    \item $\P$~--- вероятностная мера на $(\Omega, \F)$;
 	    \item $\P_X$~--- вероятностная мера на $(E, \mathcal{E})$, заданная по правилу $\P_X(A) = \P (\omega: X(\omega) \in A)$ для $A \in \mathcal{E}$.
 	\end{enumerate}
 	
-	Тогда для любой $\mathcal{E}$-измеримой функции $g(x):E \rightarrow \R$, то есть $\forall B \in \B(\R): g^{-1}(B) \in \mathcal{E}$, верно, 
+	Тогда для любой $\mathcal{E}$-измеримой функции $g(x):E \rightarrow \R$, то есть $\forall B \in \B(\R) \hookrightarrow g^{-1}(B) \in \mathcal{E}$, верно, 
 	$$\int\limits_A g(x) \P_X(dx) = \int\limits_{X^{-1}(A)} g\big( X(\omega) \big) \P(d \omega).$$
 \end{theorem}
 
