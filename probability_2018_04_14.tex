@@ -45,7 +45,7 @@
 	Пусть 
 	\begin{enumerate}
 	    \item случайные величины $\{\xi_n\}_{n \geqslant 1}$ независимы и $\forall n \hookrightarrow \D \xi_n < +\infty$;
-	    \item числа $\{ b_n \}_{n \geqslant 1}$, $b_1 > 0$ и $b_n \uparrow +\infty$, такая что $\sum\limits_{n =1}^\infty \dfrac{\D \xi_n}{b_n^2} < + \infty$;
+	    \item числа $\{ b_n \}_{n \geqslant 1}$, $b_1 > 0$ и $b_n \uparrow +\infty$, такие что $\sum\limits_{n =1}^\infty \dfrac{\D \xi_n}{b_n^2} < + \infty$;
 	    \item обозначим $S_n = \sum\limits_{i = 1}^{n} \xi_i$.
 	\end{enumerate}  
 	Тогда $\dfrac{S_n - \E S_n}{b_n} \xrightarrow[n \rightarrow + \infty]{\text{п.н.}} 0$.
@@ -95,7 +95,7 @@
 	Пусть $\{\xi_n\}_{n \in \N}$~--- независимые одинаково распределенные случайные величины такие, что $\E | \xi_1| < + \infty$. 
 	
 	Тогда
-	$$ \frac{\xi_1 + \ldots + \xi_n}{n} \xrightarrow[n \rightarrow  \infty]{\text{п.н.}} 0.$$
+	$$ \frac{\xi_1 + \ldots + \xi_n}{n} \xrightarrow[n \rightarrow  \infty]{\text{п.н.}} \dfrac{\sum\limits_{i=1}^n\E\xi_i}{n}.$$
 	\begin{proof}
 		Поскольку $\E | \xi_1| < +\infty$, то по предыдущей лемме $\sum\limits_{n = 1}^\infty \P \big( |\xi_1| \geqslant n \big) < +\infty$. Так как $\xi_1 \overset{d}{=} \xi_n$, то $\sum\limits_{n = 1}^\infty \P \big( |\xi_n| \geqslant n \big) < + \infty$, следоватально, по лемме Бореля-Кантелли $\P \Big( \big\{ |\xi_n| \geqslant n \big\}~\text{б.ч.} \Big) = 0$. То есть c вероятностью 1 случается конечное число $\big\{ |\xi_n| \geqslant n \big\}$. Обозначим $\tilde \xi_n \equiv \xi_n \cdot I \big\{ | \xi_n | \leqslant n \big\}$. Тогда с вероятность 1 $\xi_n = \tilde \xi_n$ кроме конечного числа $\xi_n$. Пусть $\E \xi_i = 0$, если это не так, то $\eta_i = \xi_i - \E \xi_i$. Получаем, что 
 		$$ \P \left( \frac{\xi_n + \ldots + \xi_n}{n} \rightarrow 0 \right) = \P \left( \frac{\tilde \xi_1 + \ldots + \tilde \xi_n}{n} \rightarrow 0 \right).$$
