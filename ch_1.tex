@@ -1,4 +1,4 @@
-\section{Лекция от 10.02.2018}
+\section{Глава 1.}
 \begin{definition}
     Под $(\Omega, \F, \P)$ будем понимать вероятностное пространство, где:
     \begin{enumerate}
@@ -69,7 +69,9 @@
 \begin{property}
 	Функция распределения имеет предел слева $\forall x \in \R$, при этом число точек разрыва не более, чем счетно.
 	\begin{proof}
-		Пусть $x_n \rightarrow x - 0$~--- возрастающая последовательность, тогда $F(x_n) = \P \big( (-\infty, x_n] \big) \underset{n \rightarrow +\infty}{\longrightarrow} \P \big( (-\infty, x) \big) = F(x - 0)$. Каждая точка разрыва~--- скачок функции распределения, каждому скачку сопоставим $[F(x-0), F(x)]$, а этому отрезку в свою очередь сопоставим некую рациональную точку, которая лежит в $(F(x-0), F(x))$. Следовательно каждому скачку мы сопоставили точку из $\mathbb{Q}$, а так как $\mathbb{Q}$ счетно, то число разрывов не более, чем счетно.
+		Пусть $x_n \rightarrow x - 0$~--- возрастающая последовательность, тогда $F(x_n) = \P \big( (-\infty, x_n] \big) \underset{n \rightarrow +\infty}{\longrightarrow} \P \big( (-\infty, x) \big) = F(x - 0)$. 
+		
+		Каждая точка разрыва~--- скачок функции распределения, каждому скачку сопоставим $[F(x-0), F(x)]$, а этому отрезку в свою очередь сопоставим некую рациональную точку, которая лежит в $(F(x-0), F(x))$. Следовательно каждому скачку мы сопоставили точку из $\mathbb{Q}$, а так как $\mathbb{Q}$ счетно, то число разрывов не более, чем счетно.
 	\end{proof}
 \end{property}
 \begin{definition}
@@ -99,11 +101,12 @@
 \subsubsection*{\ovalbox{2}~~Абсолютно непрерывное распределение}
 \begin{definition}
 	Пусть $F(x)$~--- функция распределения вероятностной меры $\P$ на $\R$, причем $\forall x \in \R \hookrightarrow F(x) = \int\limits_{-\infty}^{x} p(t) \, d t$, где  $p(t) \geqslant 0$, а $\int\limits_{-\infty}^{+\infty} p(t) \, d t = 1$. 
+	
 	Тогда $\P$ абсолютно непрерывна, $F(x)$ также называется абсолютно непрерывной, а $p(t)$~--- плотность функции распределения $F(x)$. Причем $p(t)$ определена однозначно, кроме множества меры нуль.
 	
 	Из формулы Ньютона-Лейбница: если $F(x)$~--- дифференцируема, то $p(x) = F'(x)$.
 	
-	Если $p(x)$~--- плотность функции распределения $F$, то $\forall B \in \B(\R) \hookrightarrow \P(B) = \int\limits_{B} p(x)dx$.
+	Если $p(x)$~--- плотность функции распределения $F(x)$, то $\forall B \in \B(\R) \hookrightarrow \P(B) = \int\limits_{B} p(x)dx$.
 \end{definition}
 
 \noindent {\bfseries Примеры:}
@@ -146,3 +149,65 @@
 	
 	Тогда существуют единственные $\alpha_1, \alpha_2$ и $\alpha_3$, $\alpha_i \geqslant 0, \alpha_1 + \alpha_2 + \alpha_3 = 1$ и функции распределения $F_1(x), F_2(x)$ и $F_3(x)$ такие, что $F(x) = \alpha_1 F_1(x) + \alpha_2 F_2(x) + \alpha_3 F_3(x)$, где $F_1(x)$~--- дискретная функция распределения, $F_2(x)$~--- абсолютно непрерывная, а $F_3(x)$~--- сингулярная. 
 \end{theorem}
+
+\subsection{Вероятностная мера в $\big( \R^n, \B(\R^n) \big)$}
+\begin{definition}
+	Пусть $\P$~--- вероятностная мера в $\big( \R^n, \B(\R^n) \big)$, где $\B(\R^n) = \sigma\{B_1 \times B_2 \times \dots \times B_n,\ B_i \in \B(\R),\ i \leqslant n \}$, тогда функция $F(\vec x) = \P\big((-\infty; x_1] \times \ldots \times (-\infty, x_n]\big)$ называется функцией распределения вероятностной меры $\P$ в $\R^n$.
+\end{definition}
+
+\begin{note}
+	Пусть $\vec x^{(k)} = \left(x_1^{(k)}, \ldots, x_n^{(k)}\right) \in \R^n$. Будем писать $\vec x^{(k)} \downarrow \vec x$, если $\forall i, k \hookrightarrow x_i^{(k)} \geqslant x_i^{(k + 1)}$ и $x_i^{(k)} \underset{k \rightarrow +\infty}{\longrightarrow} x_i$.
+\end{note}
+
+\begin{lemma}[Свойства многомерной функции распределения]
+	Пусть $F(\vec x)$~--- функция распределения вероятностной меры в $\R^n$.
+	
+	Тогда для нее верно:
+	\begin{enumerate}
+		\item Если $\vec x^{(k)} \downarrow \vec x$, то $F\big(\vec x^{(k)}\big) \rightarrow F\big(\vec x\big), k \rightarrow +\infty$;
+		\item $\lim\limits_{\forall i : x_i \rightarrow +\infty} F(\vec x) = 1;\; \lim\limits_{\exists i : x_i \rightarrow -\infty} F(\vec x) = 0$;
+		\item $\forall a_1 < b_1, a_2 < b_2, \ldots,\;\; \Delta_{a_1b_1}^1 \ldots \Delta_{a_nb_n}^nF(x) > 0 :$, где \\
+		$\Delta_{a_ib_i}^i F(\vec x) = F(x_1, \ldots, x_{i - 1}, b_i, x_{i + 1}, \ldots x_n) - F(x_1, \ldots, x_{i - 1}, a_i, x_{i + 1}, \ldots, x_n)$.
+	\end{enumerate}
+	\begin{proof}
+		Первое свойство следует из непрерывности вероятностной меры, так как $$\bigtimes\limits_{i = 1}^n\big(-\infty, x_i^{(k)}\big] \downarrow \bigtimes\limits_{i = 1}^n \big(-\infty, x_i\big].$$
+		Для доказательства второго пункта рассмотрим
+		$$B_m = \bigtimes\limits_{i = 1}^n\big(-\infty, \inf\limits_{k \geqslant m} x_i^{(k)}\big].$$
+		Если $\forall i : x_i^k \rightarrow +\infty$, то $B_m \rightarrow \R^n$, $\P(B_m) \rightarrow \P(\R^n) = 1$. А если $\exists i : x_i^{(k)} \rightarrow - \infty$, то $B_m \rightarrow \varnothing, \P(B_n) \rightarrow 0$.
+		
+		Не трудно понять, что 
+		$$\Delta_{a_1b_1}^1 \ldots \Delta_{a_nb_n}^nF(x) = \P\big((a_1, b_1] \times \ldots \times (a_n, b_n]\big),$$
+		откуда следует утверждение третьего пункта леммы. Так, например,
+		$$\Delta_{a_1b_1}^1\Delta_{a_2,b_2}^2F(x) = F(b_1,b_2) - F(a_1,b_2) - (F(b_1,a_2) - F(a_1,a_2)).$$
+	\end{proof}
+\end{lemma}
+
+\begin{theorem}[О взаимооднозначном соответствии вероятностной меры и функции распределения в $\R^n$][б/д]
+	Если функция $F(\vec x),\; \vec x \in \R^n$ удовлетворяет свойствам из леммы, то существует единственная $\P$ на $\big(\R^n, \B(\R^n) \big)$, для которой $F(\vec x)$ является функцией распределения.
+\end{theorem}
+
+\begin{note}
+	Почему нельзя заменить свойство 3) на монотонность на любом компакте? 
+	\begin{proof}
+		Пусть $F(x_1, x_2) = \max(x_1, x_2)$ на $[0, 1]^2$, но тогда $-1 = \Delta_{0; 1}^1 \Delta_{0; 1}^2 F(x_1, x_2) \neq \P([0, 1]^2) = 1$. Следовательно, $F(x)$ не функция распределения.
+	\end{proof}
+\end{note}
+
+\begin{definition}
+	Функция $F(\vec x)$, удовлетворяющая условиями из леммы называется функцией распределения в $\R^n$.
+\end{definition}
+
+\begin{definition}
+    Маргинальной функцией распределения $i$-й компоненты функции распределения $F(\vec x)$ называется $F_i (x_i) = F(+\infty, \dots, +\infty, x_i, +\infty, \dots, +\infty)$.
+\end{definition}
+
+\subsection{Многомерная плотность вероятности}
+\begin{definition}
+	Если 
+	$$ F(x_1, \ldots, x_n) = \int\limits_{-\infty}^{x_1}\dots\int\limits_{-\infty}^{x_n} p(y_1, \ldots, y_n)dy_1\ldots dy_n,\; p(x_1, \ldots, x_n) \geqslant 0, $$
+	$$ \idotsint\limits_{\R^n} p(t_1, \dots, t_n) \,dt_1 \dots dt_n = 1,$$
+	то $p(x_1, \ldots, x_n)$ называется $n$-мерной плотностью вероятности.
+	
+	Если дифференцируема $F(x_1, \dots, x_n)$, то
+	$$ p(x_1, \ldots, x_n) = \frac{\partial^n}{\partial x_1\ldots\partial x_n}F(x_1, \ldots, x_n). $$
+\end{definition}

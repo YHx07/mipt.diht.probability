@@ -1,0 +1,282 @@
+\section{Глава 4.}
+\subsection{Условные математические ожидания (УМО)}
+Пусть $(\Omega, \F, \P)$~--- вероятностное пространство; $\xi: \Omega \rightarrow \R$~--- случайная величина; $\F_\xi = \{ \xi^{-1}(B), B \in \B(\R) \}$~--- $\sigma$-алгебра, порожденная $\xi$. 
+
+\begin{definition}
+    $\xi$ называется $\G$-измеримой, если:
+    \begin{enumerate}
+        \item $\G$~--- под$\sigma$-алгебра $\sigma$-алгебры $\F$;
+        \item $\F_\xi \subset \G$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Пусть $\xi$~--- случайная величина на $(\Omega, \F, \P)$, $\G$~--- под$\sigma$-алгебра $\F$. 
+	
+	Условным математическим ожиданием случайной величины $\xi$ относительно $\G$ называется случайная величина $\E (\xi | \G)$, обладающая следующими свойствами:
+	\begin{enumerate}
+		\item $\E(\xi | \G )$ является $\G$-измеримой случайной величиной;
+		\item $\forall A \in \G \hookrightarrow \E ( \xi \cdot I_A) = \E \big( \E (\xi | \G )\cdot I_A \big)$ или, что тоже самое, $\int\limits_A \xi \, d \P = \int\limits_A \E (\xi | \G )\,d \P$.
+	\end{enumerate}
+	Обозначаем $\E (\xi | \eta ) \equiv \E (\xi | \F_\eta )$, если такая $\eta$ существует.
+\end{definition}
+\begin{definition}
+	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство. Функция множеств $\nu: \F \rightarrow \R$~--- заряд (мера со знаком), если $\nu$~--- $\sigma$-аддитивна на $\F$, то есть $\nu \left( \bigsqcup\limits_{i=1}^{+\infty} A_i \right) = \sum\limits_{i=1}^{+\infty} \nu (A_i)$ для $\{ A_i \}_{i=1}^{+\infty} \in \F$, ряд в правой части сходится абсолютно и  $\sup\limits_{A \in \F} | \nu(A) | < + \infty$.
+	
+	Любой заряд можно разложить в разность двух мер.
+\end{definition}
+
+\begin{definition}
+	Заряд $\nu$ называется абсолютно непрерывным относительно меры $\P$ (не обязательно вероятностной), если $\forall A \in \F \hookrightarrow \big(\P (A) = 0~\Rightarrow~\nu (A) = 0\big)$.
+\end{definition}
+
+\begin{theorem}[Радона-Никодима][б/д]
+	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство, $\nu$~--- заряд на $\F$, абсолютно непрерывный относительно меры $\P$. 
+	
+	Тогда существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \F, \P)$ такая, что $\E \eta < +\infty$ и $\nu(A) = \int\limits_A \eta \, d \P = \E \eta \cdot I_A$.
+\end{theorem}
+
+\begin{statement}
+    Вероятностная мера $\P(A) = \int\limits_A p(x)dx$, то есть плотность~--- это производная Радона-Никодима $\P_{\xi}$ по мере Лебега на $\R$.
+\end{statement}
+
+\begin{lemma}[о существовании УМО]
+	Пусть $\xi$~--- случайная величина с $\E | \xi| < +\infty$. 
+	
+	Тогда $\forall \G \subset \F~\text{(под}\sigma\text{-алгебра)} \hookrightarrow \E( \xi | \G )$ существует и единственно почти наверное.
+	\begin{proof}
+		Рассмотрим вероятностное пространство $(\Omega, \G, \P)$. Положим, что $\forall A \in \G \hookrightarrow Q(A) = \int\limits_A \xi \, d\P  = \E(\xi \cdot I_A)$, следовательно, $Q(A)$~--- заряд на $(\Omega, \G, \P)$, абсолютно непрерывный относительно меры $\P$. Тогда по теореме Радона-Никодима существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \G, \P)$ с $\E \eta < + \infty$ такая, что $Q(A) = \int\limits_A \eta  \, d\P$. Значит, $\eta$~--- УМО. Действительно, $\eta$ $\G$-измерима и $\forall A \in \G \hookrightarrow \int\limits_A \eta  \, d\P = \int\limits_A \xi  \, d\P \Rightarrow \eta = \E(\xi|\G)$.
+	\end{proof}
+\end{lemma}
+
+\begin{theorem}
+	Пусть $\sigma$-алгебра $\G$ порождена разбиением $\Omega$ на $\{ D_n \}_{n = 1}^{+\infty}$, причем, $\P(D_n) > 0$, $\E \xi < +\infty$.
+	
+	Тогда $\E(\xi | \G ) = \sum\limits_{n=1}^{+\infty} \dfrac{\E ( \xi \cdot I(\omega \in D_n) )}{\P(D_n)} \cdot I(\omega \in D_n) $.
+	\begin{proof}
+		Пусть $\eta$ $\G$-измерима. Покажем, что $\eta = \sum\limits_{n=1}^{+\infty} c_n I_{D_n}(\omega)$. Пусть $\eta \not=\const$ на $D_n$, тогда $\exists a \not= b: \{\omega: \eta(\omega) = a \} \cap D_n \not= \varnothing$ и $\{\omega: \eta(\omega) = b \} \cap D_n \not= \varnothing$, следовательно, $\{\omega: \eta(\omega) = a \} \cap D_n = D_n$ и $\{\omega: \eta(\omega) = b \} \cap D_n = D_n$, иначе $\{\omega: \eta(\omega) = a \} \not\in \G$, то есть $\eta$ не $\G$-измерима. Получили противоречие.
+		
+		Найдем $c_n: \E( \xi | \G) = \sum\limits_{n=1}^{+\infty} c_n I_{D_n}$, так как $\E(\xi | \G)$ $\G$-измерима по определению. 
+		\begin{equation*}
+			\E (\xi \cdot I_{D_n} ) = \E \big( \E( \xi | \G ) \cdot I_{D_n} \big) = \E \left( \sum\limits_{m=1}^{+\infty} c_m I_{D_m} I_{D_n} \right) = \E( c_n I_{D_n} ) = c_n \P(D_n).
+		\end{equation*}
+		Следовательно, $c_n = \dfrac{\E(\xi \cdot I_{D_n} )}{\P(D_n)}$.
+	\end{proof}
+\end{theorem}
+
+\begin{statement}
+$\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
+\end{statement}
+
+\subsection{Свойства УМО (9 штук)}
+Все матожидания ниже существуют, то есть $\E|\xi| <+\infty, \E|\eta| <+\infty$.
+
+\setcounter{property}{0}
+\noindent {\bfseries Свойство МО :} если $\forall A \in \F \hookrightarrow \E(\xi \cdot I_A) = \E(\eta \cdot I_A)$, то $\xi = \eta$ почти наверное на $(\Omega, \F, \P)$
+
+\begin{property}
+	Если $\xi$~--- $\G$-измерима, то $\E(\xi | \G) = \xi$ почти наверное. 
+	\begin{proof}
+		$\xi$ удовлетворяет свойствам УМО: первому по условиям, а второму, поскольку $\int\limits_A \E(\xi|\G) \, d\P = \int\limits_A \xi \, d\P$. Следовательно, $\E(\xi | \G) = \xi$ почти наверное.  
+	\end{proof}
+\end{property}
+
+\begin{property}[формула полной вероятности]
+	 $\E \big( \E( \xi | \G) \big) = \E\xi$.
+	 \begin{proof}
+	 	Так как $\Omega \in \G$, то по интегральному свойству $\E \big( \E(\xi | \G) \big) = \E \big( \E(\xi | \G ) \cdot I_\Omega \big) = \E( \xi \cdot I_\Omega) = \E\xi$.
+	 \end{proof}
+\end{property}
+
+\begin{property}[линейность]
+	$\E (\alpha \xi + \beta \eta | \G ) = \alpha \E( \xi | \G) + \beta \E(\eta |\G)$.
+	\begin{proof}
+		$\alpha \E(\xi | \G) + \beta \E(\eta | \G)$ $\G$-измерима. Осталось проверить интегральное свойство:
+		\begin{multline*}
+			\forall A \in G \hookrightarrow \int\limits_A \big( \alpha \E( \xi | \G) + \beta \E( \eta | \G) \big) \, d \P = \alpha \int\limits_A \E( \xi | \G) \, d \P + \beta \int\limits_A \E( \eta | \G ) \, d \P = \\ 
+			= \alpha \int\limits_A \xi \, d \P + \beta \int\limits_A \eta \, d \P = \int\limits_A (\alpha \xi + \beta \eta ) \, d\P = \int\limits_A \E( \alpha\xi + \beta\eta|\G) \, d \P
+		\end{multline*}
+		Объяснение последнего равенства: для случайной величины $\alpha\E(\xi|\G) + \beta\E(\xi|\G)$ выполняются два свойства УМО, значит поскольку УМО существует и единственно, то нашли образец который подходит: $\alpha\E(\xi|\G) + \beta\E(\xi|\G)$, то есть он является УМО: $\E(\alpha\xi + \beta\eta|\G) = \alpha\E(\xi|\G) + \beta\E(\xi|\G)$.
+	\end{proof}
+\end{property}
+
+\begin{property}
+	Пусть $\xi$ не зависит от $\G$, то есть $\F_\xi \indep \G$. Тогда $\E ( \xi | \G) = \E \xi$ почти наверное.
+	\begin{proof}
+		Пусть $\xi \indep \G$, что равносильно $\forall A \in \G \hookrightarrow \xi \indep I_A$. $\E \xi$~--- константа, следовательно, она измерима относительно $\G$, так как $\F_{\E \xi} = \{ \Omega, \varnothing \}$. Интегральное свойство УМО: $\E ( \xi \cdot I_A) = \boxed{\E \big( \E( \xi | \G) \cdot I_A \big)} = \E \xi \cdot \P(A) = \boxed{\E(\E(\xi) \cdot I_A \big)}$, следовательно, $\E \xi = \E( \xi | \G)$.
+	\end{proof}
+\end{property}
+
+\begin{property} (Свойство монотонности.)
+	Пусть $\xi \leqslant \eta$ почти наверное, тогда $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
+	\begin{proof}
+		$\xi \leqslant \eta$ почти наверное, следовательно, $\forall A \in \G \hookrightarrow  \int\limits_A \xi \, d \P \leqslant \int\limits_A \eta \, d\P$, что равносильно $\int\limits_A \E (\xi | \G ) \, d\P \leqslant \int\limits_A \E( \eta | \G) \, d \P$, а из свойств математического ожидания вытекает, что $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
+	\end{proof}
+\end{property}
+
+\begin{property}
+	$\big|\E ( \xi | \G) \big| \leqslant \E \big( |\xi| \big| \G \big)$ п.н.
+	\begin{proof}
+		$-|\xi| \leqslant \xi \leqslant |\xi|$ из свойства монотонности.
+	\end{proof}
+\end{property}
+
+\begin{property}[телескопическое свойство]
+	Пусть $\G_1 \subset \G_2 \subset \F$, тогда
+	\begin{enumerate}
+		\item $\E \big( \E( \xi | \G_1) \big| \G_2 \big) = \E( \xi | \G_1 )$ почти наверное,
+		\item $\E \big( \E( \xi | \G_2) \big| \G_1 \big) = \E( \xi | \G_1 )$ почти наверное.
+	\end{enumerate}
+	\begin{proof}
+		$\E ( \xi | \G_1)$ $\G_2$-измерима, следовательно, по первому свойству 
+		$$\E \big( \E( \xi | \G_1) \big| \G_2 \big) = \E( \xi | \G_1).$$
+		
+		Пусть $A \in \G_1$, следовательно, $A \in \G_2$.
+		\begin{equation*}
+			\E \big( \E( \xi | \G_1) \cdot I_A) = \E( \xi \cdot I_A) = \E \big( \E (\xi | \G_2) \cdot I_A \big) = \E \Big( \E \big( \E(\xi | \G_2) \big| \G_1 \big) \cdot I_A \Big).
+		\end{equation*}
+		По свойству математического ожидания $\E (\xi | \G_1 ) = \E \big( \E(\xi | \G_2)  \big| \G_1 \big)$.
+		
+		
+	\end{proof}
+\end{property}
+
+\begin{property}[][б/д]
+	Пусть $\forall n > 1 \hookrightarrow | \xi_n | \leqslant \eta$, $\E \eta < +\infty$ и $\xi_n \xrightarrow{\text{п.н.}} \xi$. 
+	
+	Тогда $ \forall \G \subset \F \hookrightarrow \E(\xi_n | \G) \xrightarrow{\text{п.н.}} \E(\xi | \G)$.
+\end{property}
+
+\begin{property}
+	Пусть $\eta$~--- $\G$-измерима, $\E |\xi \eta | < +\infty$, $\E |\xi | < +\infty$. 
+	
+	Тогда $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
+	\begin{proof}
+		Пусть $\eta = I_B$, где $B \in \G$. Тогда 
+		\begin{multline*}
+			\forall A \in \G \hookrightarrow \E \big( \E( \xi \eta | \G) \cdot I_A \big) = \E( \xi \eta \cdot I_A ) = \E( \xi I_B I_A ) =\\= 
+			\E( \xi I_{A \cap B}) = \E \big( \E( \xi | \G) \cdot I_{A \cap B} \big) = \E \big( \eta \E(\xi | \G) \cdot I_A \big). 
+		\end{multline*}
+		Следовательно, $\E(\xi\eta | \G) = \eta \E(\xi |\G)$ почти наверное по свойству математического ожидания.
+		
+		Так как доказали для индикаторов, то доказали и для любой простой функции. Теперь пусть $\eta$~--- произвольная случайная величина. Возьмем последовательно простых $\F_\eta$-измеримых случайных величин $\eta_n : | \eta_n | \leqslant |\eta |$ и $\eta_n \xrightarrow{\text{п.н.}} \eta$. По свойству 8 $\cancelto{\text{п.н.}~\E(\xi\eta | \G)}{\E( \xi \eta | \G)} = \cancelto{\eta \E(\xi | \G)}{\eta_n \E(\xi | \G)}$, то есть $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
+	\end{proof} 
+\end{property}
+
+\begin{theorem}[о наилучшем квадратичном прогнозе]
+	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. Обозначим $\mathcal{A}_\G = \{ \eta \text{ - сл. вел.}| \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. 
+	
+	Тогда $\inf\limits_{\eta \in \mathcal{A}_\G} \E( \xi - \eta)^2 = \E\big( \xi - \E(\xi | \G) \big)^2$.
+	\begin{proof}
+		Пусть $\eta \in \mathcal{A}_\G$, тогда
+		\begin{multline*}
+			\E ( \xi - \eta )^2 = 
+			\E \big( \xi - \E(\xi | \G) + \E( \xi | \G) - \eta \big)^2 = \\ =
+			 \E\big( \xi - \E(\xi | \G) \big)^2 + \E \big( \E(\xi | \G) - \eta \big)^2 
+			+ 2 \E \Big( \big( \xi - \E( \xi | \G) \big) \big( \E(\xi | \G ) - \eta \big) \Big).
+		\end{multline*}
+		Пусть $\varkappa \equiv \xi - \E( \xi | \G )$, $\psi \equiv \E(\xi | \G ) - \eta$. Рассмотрим $\E( \varkappa \psi )$, по свойству 2 это равно 
+		$ \E \big( \E ( \varkappa \psi | \G ) \big)$, 
+		а по свойству 9, это можно переписать, как 
+		$\E ( \psi \E( \varkappa | \G ) \big)$. 
+		Но $\E (\varkappa | \G) = \E \big( (\xi - \E ( \xi | \G) ) \big| \G \big) = 0$, следовательно, $\E ( \varkappa \psi) = 0$. Значит $\E ( \xi - \eta )^2 =\\=
+			 \E \big( \xi - \E(\xi | \G) \big)^2 + \E \big( \E(\xi | \G) - \eta \big)^2  \geqslant \E \big( \xi - \E ( \xi | \G) \big)^2$. Равенство достигается, если $\E(\E(\xi|\G) - \eta)^2 = 0 \Rightarrow \E(\xi|\G) = \eta$ п.н.
+	\end{proof}
+\end{theorem}
+
+\subsection{Условные распределения}
+ \begin{definition}
+ 	Пусть $A \in \F$, тогда по определению $\P(A | \G) = \E( I_A | \G)$, $\G \subset \F$. Если $\xi, \eta$~--- случайные величины на $(\Omega, \F, \P)$, то $\E(\xi | \eta) = \E(\xi | \F_\eta)$.
+ \end{definition}
+ 
+ \begin{definition}
+ 	Величиной $\E (\xi | \eta = y)$ называется такая борелевская функция $\varphi(y)$, что $\forall B \in \B(\R) \hookrightarrow \E(\xi \cdot I(\eta \in B)) = \int\limits_B \varphi(y) \P_\eta (d y)$.
+ \end{definition}
+ 
+ \begin{lemma}
+ 	Если $\E \xi < +\infty$, то $\E( \xi | \eta = y)$ существует и единственно почти наверное относительно $\P_\eta$.
+ 	\begin{proof}
+ 		Рассмотрим $\psi(B) = \E \big( \xi \cdot I (\eta \in B) \big)$~--- заряд на $\big( \R, \B(\R), \P_\eta \big)$, потому что $\psi(B)$ $\sigma$-аддитивна по свойству интеграла Лебега и конечна, так как $\E(\xi) < +\infty$. $\psi$ абсолютно непрерывна относительно $\P_\eta$, так как если $\P_\eta(B) = 0$, то $I(\eta \in B) = 0$ почти наверное, следовательно, $\E \big( \xi \cdot I (\eta \in B) \big) = 0$, а, значит, выполнены условия теоремы Радона-Никодима, то есть существует и единственна почти наверное случайная величина $\varphi$ на $\big( \R, \B(\R), P_\eta \big)$ (борелевская функция) такая, что $\psi(B) = \int\limits_B \varphi(y) \P_\eta(dy)$.
+ 	\end{proof}
+ \end{lemma}
+ 
+ \begin{lemma}
+ 	$\E ( \xi | \eta = y) = \varphi(y)$ тогда и только тогда, когда $\E(\xi | \eta) = \varphi(\eta)$ почти наверное.
+ 	\begin{proof}
+ 		Пусть $B \in \B(\R)$, тогда $\E \big( \E(\xi | \eta) \cdot I (\eta \in B) \big) = \E \big( \xi \cdot I(\eta \in B) \big) = \int\limits_B \varphi(y) \P_\eta(d y)$. По теореме о замене переменных в интеграле Лебега это можно переписать, как $\int\limits_{\{\eta \in B \}} \varphi(\eta) \, d \P = \E \big( \varphi(\eta) \cdot I (\eta \in B) \big)$, что равносильно условию $\E(\xi | \eta) = \varphi(\eta)$ почти наверное по Свойству. Обратно аналогично, по тем же равенствам.
+ 	\end{proof}
+ \end{lemma}
+ 
+ \begin{consequence}
+ 	Пусть $\xi$~--- $\F_\eta$-измеримая случайная величина, тогда существует борелевская функция $\psi(x)$ такая, что $\xi = \psi(\eta)$ почти наверное. 
+ 	\begin{proof}
+ 		Так как $\xi$~--- $\F_\eta$-измеримая, то по свойству 1 $\xi = \E(\xi | \eta)$ почти наверное. С другой стороны, так как существует единственная $\psi(x) : \psi(x) = \E(\xi | \eta = x)$, то $\xi = \E(\xi | \eta) = \psi(\eta)$.
+ 	\end{proof}	
+ \end{consequence}
+ 
+ \begin{definition}
+ 	Условным распределением случайной величины $\xi$ при условии $\eta = y$ называется вероятностная мера $\P (\xi \in B | \eta = y) = \E  \big( I(\xi \in B) | \eta = y)$. 
+ 	 Является мерой на $\B(R)$.
+ \end{definition}
+ 
+ \begin{definition}
+ 	Условной плотностью случайной величины $\xi$ относительно $\eta$ называется плотность условного распределения $\P(\xi \in B | \eta = y)$, то есть борелевская функция $f_{\xi | \eta} (x | y)$ такая, что $\P (\xi \in B | \eta = y) = \int\limits_B f_{\xi | \eta} (x | y) \, dx$.
+ \end{definition}
+ 
+ \begin{theorem}[о свойстве условной плотности]
+ 	Пусть существует условная плотность случайной величины $\xi$ относительно случайной величины $\eta$~--- $f_{\xi|\eta} (x|y)$.
+ 	
+ 	Тогда  для любой борелевской функции $g(x)$ такой, что $\E \big| g(\xi) \big|$ существует, выполнено $\E\big( g( \xi) | \eta = y \big) = \int\limits_\R g(x) f_{\xi|\eta} (x|y) \, dx$ относительно $\P_\eta$ почти наверное.
+ 	\begin{proof}
+ 		Пусть также $g(x) = I_A(x), A\in\B(\R)$. Тогда 
+ 		\begin{multline*}
+ 			\int\limits_\R g(x) \cdot f_{\xi | \eta} (x | y) \, dx = 
+ 			\int\limits_\R I_A(x) \cdot f_{\xi | \eta} (x | y) \, dx = 
+ 			\int\limits_A f_{\xi | \eta} (x | y) \, dx = \\ 
+ 			=\P( \xi \in A | \eta = y) = \E \big( I(\xi \in A) | \eta = y) = 
+ 			\E \big( g(\xi) | \eta = y) \big).
+ 		\end{multline*}
+ 		Так как доказали для индикаторов, то доказали и для всех простых функций $g(x)$. Далее с помощью теоремы Лебега для условных математических ожиданий доказываем для всех $g(x)$. ($\E(\xi_n | \eta) \xrightarrow{\text{п.н.}} \E( \xi | \eta)$, где $\xi_n \xrightarrow{\text{п.н.}} \xi$, $\xi_n$~--- простые).
+ 	\end{proof}
+ \end{theorem}
+ 
+ \begin{theorem}[Достаточное условие существования условной плотности.]
+ 	Пусть $\xi$ и $\eta$~--- случайные величины такие, что существует их совместная плотность $f_{(\xi, \eta)} (x, y)$. Пусть $f_\eta (y)$~--- плотность случайной величины $\eta$.
+ 	
+ 	Тогда функция $$\varphi(x, y) = \dfrac{f_{(\xi, \eta)} (x, y)}{f_\eta (y)} \cdot I \big(f_\eta(y) > 0 \big)$$ есть условная плотность $f_{\xi |\eta} (x | y)$.
+ 	\begin{proof}
+ 		Для любых $A \in \B(\R), B \in \B(\R)$ выполнено
+ 		\begin{multline*}
+ 			\P(\xi \in B, \eta \in A) = 
+ 			\int\limits_{B \rtimes A} f_{(\xi, \eta)} (x, y) \, dx \, dy = 
+ 			\int\limits_A \left( \int\limits_B \dfrac{f_{(\xi, \eta)} 
+ 			(x, y)}{f_\eta(y)} \, dx \right) f_\eta(y) \, dy,
+ 		\end{multline*}
+ 		с другой стороны
+ 		\begin{equation*}
+ 			\P( \xi \in B, \eta \in A) = \E \big( I (\xi \in B, \eta \in A) \big) = 
+ 			\int\limits_{\{\eta \in A \}} I(\xi \in B) \, d\P.
+ 		\end{equation*}
+ 		Далее по интегральному свойству получаем, что
+ 		\begin{equation*}
+ 			\P( \xi \in B, \eta \in A) = 
+ 			\int\limits_{\{\eta \in A \}} \E  \big( I(\xi \in B) | \eta \big) \, d\P,
+ 		\end{equation*}
+ 		заменяя переменные, окончательно имеем следующее:
+ 		\begin{multline*}
+ 			\P( \xi \in B, \eta \in A) = 
+ 			\int\limits_A \E \big( I (\xi \in B | \eta = y) \big) \P_\eta(d y) =\\ 
+ 			= \int\limits_A \P(\xi \in B | \eta = y) \P_\eta(dy) = 
+ 			\int\limits_A \P( \xi \in B | \eta = y) f_\eta (y) \, dy.
+ 		\end{multline*}
+ 	\end{proof}
+ \end{theorem}
+ 
+ \subsection{Алгоритм подсчета УМО}
+ \begin{enumerate}
+ 	\item {Найти совместную плотность $f_{(\xi, \eta)} (x, y)$, затем 
+ 		$f_\eta (y) = \int\limits_\R f_{(\xi, \eta)} (x, y) \, dx$, тогда условная плотность $f_{ \xi | \eta } (x | y) = \dfrac{f_{(\xi, \eta)} (x, y)}{f_\eta (y)}$.}
+ 	\item {Вычислить $\varphi(y) = \E \big( g(\xi) | \eta = y \big) = \int\limits_\R g(x) f_{ \xi | \eta } (x | y) \, dx $.}
+ 	\item {Тогда $\E  \big( g(x) | \eta) = \varphi(\eta)$.}
+ \end{enumerate}
+ 
