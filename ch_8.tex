@@ -1,0 +1,125 @@
+\section{Глава 8.}
+\subsection{Гауссовские случайные векторы}
+	\begin{definition}[1]
+		Случайный вектор $\vec{\xi} \sim N(\vec{m}, \Sigma)$~--- гауссовский, если его характеристическая функция $\varphi_{\vec{\xi}}(\vec{t}) = \E e^{i(\vec{t},\vec{\xi})} = \exp\left(i(\vec{m}, \vec{t}) - \frac{1}{2}(\Sigma \vec{t}, \vec{t})\right), ~ \vec{m} \in \R^n, ~\Sigma \in \operatorname{Mat}_{n \times m}$~--- симметричная неотрицательно определённая матрица.
+	\end{definition}
+
+	\begin{definition}[2]
+		Случайный вектор $\vec{\xi}  = (\vec{\xi_1}, \dots, \vec{\xi_n})^T$~--- гауссовский, если он представляется в следующем виде: $\vec{\xi} = A\vec{\eta} + \vec{B}$, где $\vec{B} \in \R^n, ~A\in \operatorname{Mat}_{n\times m}$ и $\vec{\eta} = (\eta_1, \ldots, \eta_m)^T$~--- независимые и $\sim N(0, 1)$.
+	\end{definition}
+
+	\begin{definition}[3]
+		Случайный вектор $\vec{\xi}$~--- гауссовский, если \(\forall \lambda \in \R^n\) случайная величина \((\vec{\lambda}, \vec{\xi})\) имеет нормальное распределение.
+	\end{definition}
+
+	\begin{theorem}
+		Предыдущие 3 определения эквивалентны.
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}
+			\item Опр 1 $\Rightarrow$ Опр 2. Пусть $\varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t},\vec{\xi})} = e^{i(\vec{t}, \vec{m} - (R\vec{t}, \vec{t}))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
+            \begin{array}{ccccc}
+                 d_1                              \\
+                           &\ddots &  & \text{\huge0}\\
+              &               & d_k               \\
+              & \text{\huge0} &   & 0            \\
+              &               &   &   & 0
+            \end{array}
+            \right), d_i > 0.$
+        
+            Определим $\tilde{D} = \left(
+            \begin{array}{ccccc}
+                 \frac{1}{\sqrt{d_1}}                               \\
+                           &\ddots &  & \text{\huge0}               \\
+              &               & \frac{1}{\sqrt{d_k}}                \\
+              & \text{\huge0} &   & 1                               \\
+              &               &   &   & 1
+            \end{array}
+            \right),$ в таком случае 
+        
+            $\tilde{D}^TS^TRS\tilde{D} = \left(
+            \begin{array}{ccccc}
+                 1                              \\
+                           &\ddots &  & \text{\huge0}\\
+              &               & 1               \\
+              & \text{\huge0} &   & 0            \\
+              &               &   &   & 0
+            \end{array}
+            \right)$. 
+    
+            Рассмотрим вектор $(S\tilde{D})^T\vec{\xi}$ и его характеристическую функцию. Докажем что он доходит с точностью до линейного преобразования. Действительно, рассмотрим характеристическую функцию этого вектора:
+            $\varphi_{(S\tilde{D})^T\vec{\xi}}(\vec{t}) = \varphi_{\vec{\xi}}((S\tilde{D})\vec{t}),$ так как
+            \[
+            	\varphi_{(S\tilde{D})^T\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t}, (S\tilde{D})^T\vec{\xi})} = \exp(i((S\tilde{D})\vec{t}, \vec{m}) - \frac{1}{2}(R(S\tilde{D})\vec{t}, (S\tilde{D})\vec{t})) = 
+            \]
+            \[
+            	=\exp[i(\vec{t}, (S\tilde{D})^T\vec{m}) - \frac{1}{2}\underbracket{(\tilde{D}^TS^TRS\tilde{D}\vec{t}, \vec{t})}_{=\sum\limits_{i = 1}^{k}t_i^2}] = 
+            \]
+            \[
+            	= \exp[i(\vec{t}, (S\tilde{D})^T\vec{m})\prod\limits_{i = 1}^k \varphi_{\eta_i}(t_i)], 
+            \]
+            $\eta_i \sim N(0;1)\) и независимы по теореме единственности и теореме независимости в терминах характеристической функции \(\Rightarrow\) вектор \(\vec{\eta} = (S\tilde{D})^T(\vec{\xi} - \vec{m})\)~--- искомый, так как \(\vec{\xi} = ((S\tilde{D})^T)^{-1}\vec{\eta}+\vec{m}.$
+
+            \item Опр 2 $\Rightarrow$ Опр 3. Если $\vec{\xi} = A\vec{\eta} + \vec{b},$ то $(\vec{\lambda}, \vec{\xi}) = (\vec{\lambda}, A \vec{\eta}) + (\vec{\lambda}, \vec{b}) = \underbrace{\lambda^T A_\eta}_{\text{сл. вел.}} + \underbrace{\lambda^T b}_{\text{число}}$~--- линейная комбинация независимых нормально распределённых случайных величин. $\Rightarrow$ то есть имеем нормальное распределение.
+            
+            \item Опр 3 $\Rightarrow$ Опр 1. Пусть $(\xi; \lambda)$~--- нормально распределённая случайная величина, тогда её характеристическая функция $Ee^{i(\xi, \lambda)t} = e^{iE(\xi, \lambda)t - \frac{D(\xi, \lambda)t^2}{2}}.\) Подставим \(t = 1 ~ \Rightarrow Ee^{i(\xi, \lambda)} = e^{i \sum\limits_{k = 1}^{n}\lambda_k E\xi_k - \frac{1}{2}\sum\limits_{k, l = 1}^{n}\lambda_k\lambda_l\operatorname{cov}(\xi_k, \xi_l)} = \exp(i(\vec{\lambda}, E\vec{\xi}) - \frac{1}{2}(R\vec{t}, \vec{t})), ~ R = \operatorname{Var}\vec{\xi}.$
+		\end{enumerate}
+	\end{proof}
+
+	\subsection{Свойства гауссовских векторов}
+	\setcounter{property}{0}
+	\begin{property}
+		Если \(\xi \sim N(a, \Sigma),\) то \(\vec{a} = \left(
+		\begin{matrix}
+		E\xi_1 \\ \vdots \\ E\xi_n
+		\end{matrix}
+		\right)\)~--- вектор средних, \(\Sigma\)~--- матрица ковариаций.
+		\begin{proof}
+			Аналогично пункту \(3\) предыдущей теоремы.
+		\end{proof}
+	\end{property}
+
+	\begin{property}
+		Пусть \(\vec{\xi}\sim N(a, \Sigma), \)тогда \(\xi_i\) независимы \(\Leftrightarrow~\Sigma\) ~--- диагональна.
+		\begin{proof}
+			Заметим, что характеристическая функция \(\xi_j\) равна \(\varphi_{\xi_j}(t_j) = e^{et_ja_j - \frac{1}{2}\sigma^2_{jj}t_j^2},\) нужно подставить \(\vec{t} = (0\ldots0, t, 0\ldots0).\) Тогда \((\xi_1, \ldots, \xi_n)\) независимы в совокупности \(\Leftrightarrow ~ \varphi_{\vec{\xi}}(\vec{t}) = \prod\limits_{i =1 }^n \varphi_{\xi_j}(t_j) = e^{i(\vec{a}, \vec{t}) - \frac{1}{2}\sum\limits_{j = 1}^{n}\sigma_{jj}^2t_j^2} \Leftrightarrow \Sigma\) ~--- диагональна.
+		\end{proof}
+	\end{property}
+
+	\begin{property}[Коши]
+		Гауссовские вектора --- нормальные случайные величины.
+		\begin{proof}
+			Следует из определения \(3\) для \(\lambda_j = (0, \ldots, 0, 1, 0, \ldots, 0)\) (спроецируем гауссовский вектор на одну из компонент).
+		\end{proof}
+	\end{property}
+
+	\begin{property}
+		\(\vec{\xi}\)~--- гауссовский \(\Rightarrow\) любое его линейное преобразование --- гауссовский вектор.
+		\begin{proof}
+			Пусть \(\vec{\chi} = B\vec{\xi} + \vec{c}.\) По второму определению гауссовского вектора, \(\vec{\chi} = B(A\vec{\eta} + \vec{b}) + \vec{c} = BA\vec{\eta} + B\vec{b} + \vec{c},\) отсюда \(\vec{\chi}\)~--- гауссовский по определению \(2.\)
+		\end{proof}
+	\end{property}
+	
+	\begin{property}
+		Пусть \(\vec{\xi}\)~--- гауссовский. Тогда его компоненты независимые \(\Leftrightarrow\) они некоррелированы.
+		\begin{proof}
+			\((\xi_1, \ldots, \xi_n)\)~--- попарно некоррелированы \(\Leftrightarrow \operatorname{cov}(\xi_i, \xi_j) = 0, \forall i \neq j \Leftrightarrow \Sigma\)~--- диагонально \(\Leftrightarrow\) по свойству \(2\) компоненты \(\vec{\xi}\) независимы в совокупности.
+		\end{proof}
+	\end{property}
+	
+    \begin{property}[Явный вид плотности многомерного нормального распределения, б/д]
+    	Если $\vec \xi \sim N(\vec{m}, \Sigma)$ и $\rg(\Sigma) = n$, то $\vec{\xi}$ имеет плотность в $\R^n$.
+    	
+    	$f(\vec{x}) = \frac{1}{(2\pi)^{n / 2}|\Sigma|^{1/2}} \exp\left(-\frac{1}{2}(\Sigma^{-1}(\vec{x} - \vec{m}), (\vec{x} - \vec{m}))\right), x \in \R^n$.
+    \end{property}
+
+\subsection{Многомерная ЦПТ}
+    \begin{theorem}[Многомерная ЦПТ]
+    	Пусть $|\vec x_i|_{i \geqslant 1}$ --- независимые одинаково распределенные случайные вектора, $\E\vec x_i = \vec{a}$, $\var \vec{x_i} = \Sigma$.
+    	
+    	Тогда $\sqrt{n} \left(\frac{\vec{x_1} + \ldots + \vec{x_n}}{n} - \vec{a} \right) \xrightarrow{d} N(\vec{0}, \Sigma), n \rightarrow +\infty$.
+    \end{theorem}
+    
+\begin{note}
+	Сходимость векторов по распределению вводится аналогично обычной сходимости случайной величины по распределению, то есть $\forall f: \R^n \rightarrow \R$ непрерывно ограниченных $\E f(\vec{x_n}) \rightarrow \E f(\vec{x})$.
+\end{note}
