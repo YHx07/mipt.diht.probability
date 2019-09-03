@@ -51,7 +51,13 @@
 \begin{property}
 	$| \rho (\xi , \eta ) | \leqslant 1$, причем $\rho ( \xi , \eta ) = \pm 1 ~\Leftrightarrow~ \xi = a \eta + b$ почти наверное.
 	\begin{proof}
-		Рассмотрим случайные величины $\xi_1 = \xi - \E \xi$ и $\eta_1 = \eta - \E \eta$, следовательно $\rho ( \xi_1 , \eta_1 ) = \dfrac{\E \xi_1 \eta_1}{\sqrt{\E \xi_1^2 \cdot \E \eta_1^2}} \leqslant 1$ по неравенству Коши-Буняковского. Пусть $| \rho (\xi_1, \eta_1)| = 1$, тогда дискриминант $D = 0$, следовательно, $\exists !\lambda_0: f(\lambda_0) = 0$,  то есть $\E ( \xi_1 + \lambda_0 \eta_1 )^2 = 0$, отсюда $(\xi_1 + \lambda_0 \eta )^2 = 0$ почти наверное, а, значит, и $\xi_1 + \lambda_0 \eta  = 0$ почти наверное. Теперь можно заключить, что $\xi = \E \xi - \lambda_0 (\eta - \E \eta )$.
+	    \begin{enumerate}
+    		\item Рассмотрим случайные величины $\xi_1 = \xi - \E \xi$ и $\eta_1 = \eta - \E \eta$, следовательно $\rho ( \xi_1 , \eta_1 ) = \dfrac{\E \xi_1 \eta_1}{\sqrt{\E \xi_1^2 \cdot \E \eta_1^2}} \leqslant 1$ по неравенству Коши-Буняковского. 
+    		
+    		\item Пусть $\rho (\xi_1, \eta_1) = 1$. Из $\dfrac{\E \xi_1 \eta_1}{\sqrt{\E \xi_1^2 \cdot \E \eta_1^2}} = 1$ получим: $(\E \xi_1 \eta_1)^2 = \E \xi_1^2 \cdot \E \eta_1^2$.
+    		
+    		Рассмотрим для $\lambda \in \R$ функцию $f( \lambda ) = \E (\xi_1 - \lambda \eta_1)^2 = \E \xi^2 + 2 \lambda \E \xi \eta + \lambda^2 \E \eta^2 \geqslant 0$, учитывая полученное ранее: $\dfrac{D}{4} = (\E\xi_1\eta_1)^2 - \E\xi_1^2\E\eta_1^2 = 0$, следовательно, $\exists !\lambda_0: f(\lambda_0) = 0$,  то есть $\E ( \xi_1 + \lambda_0 \eta_1 )^2 = 0$, отсюда $(\xi_1 + \lambda_0 \eta )^2 = 0$ почти наверное, а, значит, и $\xi_1 + \lambda_0 \eta  = 0$ почти наверное. Теперь можно заключить, что $\xi = \E \xi - \lambda_0 (\eta - \E \eta )$.
+		\end{enumerate}
 	\end{proof}
 \end{property}
 
@@ -124,7 +130,7 @@
 \begin{theorem}[ЗБЧ в форме Чебышёва]
 	Пусть 
 	\begin{enumerate}
-	    \item $\{\xi_i\}_{i=1}^{+\infty}$~---  попарно некоррелированные случайные величины, причем $\forall n \in \N \hookrightarrow \D \xi_n \leqslant C$.
+	    \item $\{\xi_i\}_{i=1}^{+\infty}$~---  попарно некоррелированные случайные величины, причем $\forall n \hookrightarrow \D \xi_n \leqslant C$.
 	    \item Обозначим $S_n = \sum\limits_{i=1}^n \xi_i$.
 	\end{enumerate} 
 	Тогда $\forall \varepsilon > 0 \hookrightarrow \P \left(\left| \dfrac{S_n - \E S_n}{n} \right| > \varepsilon\right) \rightarrow 0$ при $n \rightarrow +\infty$.
