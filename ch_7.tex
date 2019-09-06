@@ -100,7 +100,7 @@
 	\begin{theorem}[о разложении х.ф. в ряд]
 		Пусть $\xi$ случайная величина, такая что $E|\xi|^n < +\infty~ \forall n.$ 
 		
-		Если для некоторого $T > 0 \hookrightarrow \overline{\lim\limits_{n}}\left(E \frac{|\xi|^n}{n!}\right) < \frac{1}{T},$ то $\forall t: |t| < T$ выполнено $\varphi_\xi(t) = \sum\limits_{n = 0}^{+\infty} \frac{(it)^n}{n!}E\xi^n.$
+		Если для некоторого $T > 0 \hookrightarrow \overline{\lim\limits_{n}}\left(E \frac{|\xi|^n}{n!}\right)^\frac{1}{n} < \frac{1}{T},$ то $\forall t: |t| < T$ выполнено $\varphi_\xi(t) = \sum\limits_{n = 0}^{+\infty} \frac{(it)^n}{n!}E\xi^n.$
 		\begin{proof}
 			Пусть $t_0$ такое, что $|t_0| < T, $ тогда $\overline{\lim\limits_{n \to +\infty}}E\left(\frac{|\xi|^n \cdot |t_0|^n}{n!}\right)^{\frac{1}{n}} = \frac{|t_0|}{T} < 1, $ следовательно, по признаку Коши-Адамара сходимости рядов, ряд $\sum\limits_{n = 0}^{+\infty} \frac{E|\xi|^n\cdot|t_0|^n}{n!}$ сходится.
 			Рассмотрим $|t| \leqslant |t_0|: \varphi_\xi(t) = \sum\limits_{k = 0}^{n} \frac{(it)^k}{k!}E\xi^k + \underbrace{\frac{(it)^n}{n!}\varepsilon_n(t)}_{R_n(t)}~~~(*).$ 
