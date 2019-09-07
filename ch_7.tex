@@ -53,7 +53,7 @@
 	\begin{property}
 		Пусть $\varphi(t)$~--- характеристическая функция случайной величины $\xi$, тогда $\varphi(t)$ равномерно непрерывна на $\mathbb{R}.$
 		\begin{proof}
-			Рассмотрим $|\varphi(t + h) - \varphi(t)| = |\E e^{i(t+h)\xi} - \E e^{it\xi}| = |\E e^{it\xi}(e^{ih\xi} - 1)| \leqslant \E |e^{it\xi}|\cdot |e^{ih\xi} - 1| = \E |e^{ih\xi} - 1|.$
+			Рассмотрим $|\varphi(t + h) - \varphi(t)| = |\E e^{i(t+h)\xi} - \E e^{it\xi}| = |\E e^{it\xi}(e^{ih\xi} - 1)| \leqslant \E (|e^{it\xi}|\cdot |e^{ih\xi} - 1|) = \E |e^{ih\xi} - 1|.$
 			При $h \to 0$ выполнено $e^{ih\xi} - 1 \overset{\text{п.н.}} \longrightarrow 0 $ по теореме о наследовании сходимости. $\forall h: |e^{ih\xi} - 1| \leqslant |e^{ih\xi}| + 1 = 2, ~ \E 2 < +\infty$. Следовательно, по теореме Лебега о мажорируемой сходимости, $\E |e^{ih\xi} - 1| \to \E 0 = 0$. Значит, $\varphi(t)$ равномерно непрерывна.
 		\end{proof}
 	\end{property}
@@ -62,7 +62,7 @@
 	\end{theorem}
 	
 	\begin{property}
-		Пусть $\varphi_\xi(t)$~--- характеристическая функция случайной величины $\xi$. $\varphi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение.
+		Пусть $\varphi_\xi(t)$~--- характеристическая функция случайной величины $\xi$. $\varphi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение $(\xi \overset{d}{=} -\xi)$.
 		\begin{proof}
 			$~(\Leftarrow)$ Пусть распределение $\xi$~---симметрично, тогда $E(\sin(t\xi)) = E(\sin(t(-\xi))) = -E(\sin(t\xi)) = 0.$ Значит $\varphi_\xi(t) = E\cos t\xi + iE\sin t\xi = E\cos t\xi \in \mathbb{R}.$
 
@@ -86,7 +86,7 @@
 		\begin{enumerate}
 			\item Рассмотрим $\frac{\varphi_\xi(t + h) - \varphi_\xi(t)}{h} = \frac{Ee^{i(t + h)\xi} - Ee^{it\xi}}{h} = \frac{Ee^{it\xi}(e^{ih\xi} - 1)}{h}.$ при $h \to 0$ $\frac{e^{ih\xi} - 1}{h} \overset{\text{п.н.}}{\longrightarrow}i\xi,$ кроме того, $\left|\frac{e^{ih\xi} - 1}{h}\right| \leqslant |\xi|$ почти наверное, так как хорда меньше дуги. По теореме о мажорируемой сходимости
 			$\lim\limits_{h \to 0}E \frac{e^{ih\xi} - 1}{h}e^{it\xi} = \varphi'_\xi(t) = E(i\xi\cdot e^{it\xi}) = \int\limits_\mathbb{R} ixe^{itx}dF_\xi(x).$ Доказательство формулы для $\varphi^{(k)}$ аналогично.
-			\item Из пункта 1, $E\xi^n = \int\limits_\mathbb{R}x^k dF_\xi(x) = \frac{1}{i^k} \int\limits_\mathbb{R}(ix)^ke^{i0x}dF(x) = \frac{\varphi^{(k)}(0)}{i^k}.$
+			\item Из пункта 1, $\frac{\varphi^{(k)}(0)}{i^k} = \frac{1}{i^k} \int\limits_\mathbb{R}(ix)^ke^{i0x}dF(x) = \int\limits_\mathbb{R}x^k dF_\xi(x) = E\xi^k.$
 			\item Ряд Тейлора $e^{i\eta} = \sum\limits_{k = 0}^{n - 1} \frac{(i\eta)^k}{k!} + \frac{(i\eta)^n}{n!}(\cos\theta_1y + i\sin\theta_2 y), ~|\theta_1| \leqslant 1, ~ |\theta_2| \leqslant 1,$ тогда
 			$\varphi_\xi(t) = Ee^{it\xi} = E\left[\sum\limits_{k = 0}^{n - 1} \frac{(it\xi)^k}{k!} + \frac{(it\xi)^n}{n!}(\cos\theta_1 t\xi + i\sin \theta_2 t\xi)\right] = \sum\limits_{k = 0}^{n}\frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t), $ где $\varepsilon_n(t) = E(\xi^n\cdot [\cos\theta_1t\xi + i\sin(\theta_2 t\xi) - 1]) \Rightarrow \varepsilon_n(t) \leqslant 3E|\xi|^n;$
 
@@ -139,10 +139,10 @@
 	\end{theorem}
 	
 	\begin{theorem}[единственности]
-		Пусть \(F\) и \(G\)~--- функции распределения, такие что \(\varphi_{F(x)} = \varphi_{G(x)} \Rightarrow \forall x~F(x) = G(x.\)
+		Пусть \(F\) и \(G\)~--- функции распределения, такие что \(\varphi_{F(x)} = \varphi_{G(x)} \Rightarrow \forall x~F(x) = G(x).\)
 	\end{theorem}
 	\begin{proof}
-		Пусть \(a < b \in \mathbb{R}\). Рассмотрим \(f_\varepsilon(x)\)(шапочка). Докажем, что \(\forall \varepsilon > 0 \int\limits_{\mathbb{R}} F_\varepsilon(x) df(x) = \int\limits_\mathbb{R}f_\varepsilon(x)dG(x).\) Рассмотрим отрезок \([-n, n]\) такой, что \([a, b + \varepsilon] \subset [-n, n].\) По теореме Вейерштрасса-Стоуна (приближение любой функции тригонометрическими полиномами), \(f_\varepsilon(x)\) сколь угодно точно приближается тригонометрическими многочленами от \(\frac{\pi x}{n}\), так как \(f_\varepsilon(x)\) непрерывна и периодична на \([-n, n]\) с периодом \(2n\) на \(\mathbb{R}\).
+		Пусть \(a < b \in \mathbb{R}\). Рассмотрим \(f_\varepsilon(x)\)(шапочка). Докажем, что \(\forall \varepsilon > 0 \int\limits_{\mathbb{R}} f_\varepsilon(x) dF(x) = \int\limits_\mathbb{R}f_\varepsilon(x)dG(x).\) Рассмотрим отрезок \([-n, n]\) такой, что \([a, b + \varepsilon] \subset [-n, n].\) По теореме Вейерштрасса-Стоуна (приближение любой функции тригонометрическими полиномами), \(f_\varepsilon(x)\) сколь угодно точно приближается тригонометрическими многочленами от \(\frac{\pi x}{n}\), так как \(f_\varepsilon(x)\) непрерывна и периодична на \([-n, n]\) с периодом \(2n\) на \(\mathbb{R}\).
 
 		\noindent \(\Rightarrow \forall n ~ \exists f_\varepsilon^n(x) = \sum\limits_{k \in K} a_k\cdot e^{\frac{ik\pi x}{n}}, ~a_k \in \mathbb{R},\) \(K\)~--- конечное подмножество \(\mathbb{Z},\) такое, что \(\forall x \in [-n, n]: |f_\varepsilon^n(x) - f_\varepsilon(x)| < \frac{1}{n}.\) \(f_\varepsilon^n\)~---периодическая с периодом \(2n\) на \(\mathrm{R}\). Поскольку \(|f_\varepsilon(x)| < 2\) и \(\forall x \in [-n, n]: |f_\varepsilon^n(x) - f_\varepsilon(x)| < \frac{1}{n}\), то \(|f_\varepsilon^n(x)| \leqslant 2 ~ \forall x.\) По условию, \(\forall t~\int\limits_\mathbb{R} e^{itx}dF(x) = \int\limits_\mathbb{R} e^{itx}dG(x) \Rightarrow \int\limits_\mathbb{R} f_\varepsilon^n(x)dF(x) = \int\limits_\mathbb{R} f_\varepsilon^n(x)dG(x).\)
 		\begin{gather*}
@@ -161,7 +161,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		\((\Rightarrow) ~ \varphi_{\vec{\xi}(\vec{t})} = Ee^{i(\vec{t}, \vec{\xi}}) = Eei^{\sum\limits_{k = 1}^{n}t_k\xi_k} \overset{\text{нез-сть}}{=} \prod\limits_{k = 1}^n Ee^{it_k\xi_k} = \prod\limits_{k = 1}^n \varphi_{\xi_x}(t_k).\)
+		\((\Rightarrow) ~ \varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t}, \vec{\xi}}) = Eei^{\sum\limits_{k = 1}^{n}t_k\xi_k} \overset{\text{нез-сть}}{=} \prod\limits_{k = 1}^n Ee^{it_k\xi_k} = \prod\limits_{k = 1}^n \varphi_{\xi_x}(t_k).\)
 
 		\((\Leftarrow)\) Пусть \(F_k(x)\)~--- функция распределения случайной величины \(\xi_k.\) Пусть \(G(x_1, \ldots, x_n) = F_1(x)\cdot\ldots\cdot F_n(x)\)~--- это функция распределения. Посчитаем её характеристическую функцию:
 		\(\varphi_G(t) = \int\limits_{\R^n}e^{i(\vec{t}, \vec{x})}dG(\vec{x}) = \int\limits_\R e^{i(\vec{t}, \vec{x})}dF_1(x_1)\cdot\ldots\cdot dF_n(x_n) = \)(по теореме Фубини) \(\prod\limits_{k = 1}^n \int\limits_\R e^{it_kx_k} dF_k(x_k) = \prod\limits_{k = 1}^n\varphi_{\xi_k}(t_k) \overset{\text{по усл}}{=}\varphi_{\vec{\xi}}(\vec{t}) \Rightarrow\) характеристическая функция \(G\) и \(\vec{\xi}\) совпадают \(\Rightarrow\) по теореме единственности \(F_\xi = G \Rightarrow F_{\vec{\xi}}(\vec{x}) = \prod\limits_{k = 1}^n F_{\xi_k}(x_k) \Rightarrow \xi_1, \ldots, \xi_n\) независимы в совокупности по критерию независимости в терминах функции распределения.
@@ -236,7 +236,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		\(F_n \overset{w}{\longrightarrow} F \), значит \(\forall f\)~--- непрерывной ограниченной функции : \(\int\limits_\R f(x)dF_n(x) \to \int\limits_\R f(x)dF(x).\) Но функции \(\sin tx \) и \(\cos tx\) непрерывны и ограничены \(\Rightarrow\) \(\varphi_n(t) = \int\limits_\R (\cos tx + i\sin tx)dF_n(x) \underset{n \to +\infty}{\longrightarrow} \int\limits_\R (\cos tx + i\sin tx)dF(x) = \varphi(t).\)
+		\(F_n \overset{w}{\longrightarrow} F \), значит \(\forall f\)~--- непрерывной ограниченной функции \(\hookrightarrow \int\limits_\R f(x)dF_n(x) \to \int\limits_\R f(x)dF(x).\) Но функции \(\sin tx \) и \(\cos tx\) непрерывны и ограничены \(\Rightarrow\) \(\varphi_n(t) = \int\limits_\R (\cos tx + i\sin tx)dF_n(x) \underset{n \to +\infty}{\longrightarrow} \int\limits_\R (\cos tx + i\sin tx)dF(x) = \varphi(t).\)
 	\end{proof}
 
 	\subsection{Центральная предельная теорема}
@@ -253,7 +253,7 @@
 		Рассмотрим случайные величины \(\eta_i = \frac{\xi_i - a}{\sigma} \Rightarrow 
 		E\eta_i = 0; ~ D\eta_i = 1.\)
 		Тогда \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} = \frac{S_n - na}{\sqrt{n\sigma^2}} = \frac{\eta_1 + \ldots + \eta_n}{\sqrt{n}}.\)
-		Рассмотрим характеристическую функцию \(\eta_i\): по свойствам характеристической функции о разложении в ряд \(\varphi(t) \equiv \varphi_{\eta_i}(t) = 1 + it\underbracket{E\eta_j}_{0} + \frac{1}{2}\underbracket{E\eta_j^2}_1\cdot(it)^2 + o(t^2 = 1 - \frac{t^2}{2} + o(t^2), ~ t \to 0.\) Отсюда, \(\varphi_{T_n}(t) = \varphi_{\sum\limits_{j = 1}^{n}\eta_j}(t) \overset{\text{св-ва х.ф. о независимости}}{=} \left(\varphi\left(\frac{t}{\sqrt{n}}\right)\right)^n = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right)\right)^n \underset{n \to \infty}{=} e^{- \frac{t^2}{2}} \forall t. \)Но \(e^{-\frac{t^2}{2}}\)~--- характеристическая функция \(N(0,1) \Rightarrow\) (по т. непрерывности) \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1).\)
+		Рассмотрим характеристическую функцию \(\eta_i\): по свойствам характеристической функции о разложении в ряд \(\varphi(t) \equiv \varphi_{\eta_i}(t) = 1 + it\underbracket{E\eta_j}_{0} + \frac{1}{2}\underbracket{E\eta_j^2}_1\cdot(it)^2 + o(t^2) = 1 - \frac{t^2}{2} + o(t^2), ~ t \to 0.\) Отсюда, \(\varphi_{T_n}(t) = \varphi_{\sum\limits_{j = 1}^{n}\eta_j}(t) \overset{\text{св-ва х.ф. о независимости}}{=} \left(\varphi\left(\frac{t}{\sqrt{n}}\right)\right)^n = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right)\right)^n \limn e^{- \frac{t^2}{2}} \ \forall t. \)Но \(e^{-\frac{t^2}{2}}\)~--- характеристическая функция \(N(0,1) \Rightarrow\) (по т. непрерывности) \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1).\)
 	\end{proof}
 	
 	\begin{theorem}[Линдберга][б/д]

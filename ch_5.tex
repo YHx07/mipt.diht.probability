@@ -30,14 +30,14 @@
  		\bigcup\limits_{m=1}^{+\infty} A^{\frac{1}{m}} = 
  		\big\{\omega: \exists m~ \forall n~ \exists k \geqslant n: | \xi_k(\omega) - \xi(\omega) | > \frac{1}{m} \big\}$. Следовательно, по непрерывности вермеры: 
  		\begin{multline*}
- 			\P \big( \omega: \xi_n(\omega) \not\rightarrow \xi(\omega) \big) = 0 \Leftrightarrow \P \left( \bigcup\limits_{m = 1}^{+\infty} A^{\frac{1}{m}} \right) = 0 \Leftrightarrow \\ \Leftrightarrow \forall m \in \N : \P \left( A^{\frac{1}{m}} \right) = 0  \Leftrightarrow \forall \varepsilon > 0 : \P  \left( A^\varepsilon \right) = 0,
+ 			\P \big( \omega: \xi_n(\omega) \not\rightarrow \xi(\omega) \big) = 0 \Leftrightarrow \P \left( \bigcup\limits_{m = 1}^{+\infty} A^{\frac{1}{m}} \right) = 0 \Leftrightarrow \\ \Leftrightarrow \forall m \in \N \hookrightarrow \P \left( A^{\frac{1}{m}} \right) = 0  \Leftrightarrow \forall \varepsilon > 0 \hookrightarrow \P  \left( A^\varepsilon \right) = 0,
  		\end{multline*}
  		так как всегда существует $m$, что $\frac{1}{m} \geqslant \varepsilon \geqslant \frac{1}{m+1}$, то есть $A^{\frac{1}{m+1}} \supseteq A^\varepsilon \supseteq A^{\frac{1}{m}}$. Но $\bigcup\limits_{k \geqslant n} A^\varepsilon_k \downarrow A^\varepsilon$, следовательно, 
  		\begin{multline*}
  			0 = \P \left( A^\varepsilon \right) = 
  			\lim\limits_{n \rightarrow + \infty} \P \left( \bigcup_{k \geqslant n} A^\varepsilon_k \right) \Leftrightarrow
- 			\forall \varepsilon > 0 : \P \left( \bigcup\limits_{k \geqslant n} A^\varepsilon_k \right) \limn 0 \Leftrightarrow \\ 
- 			\Leftrightarrow  \forall \varepsilon > 0:  \P \big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi(\omega) | \geqslant \varepsilon \big) \limn 0.
+ 			\forall \varepsilon > 0 \hookrightarrow \P \left( \bigcup\limits_{k \geqslant n} A^\varepsilon_k \right) \limn 0 \Leftrightarrow \\ 
+ 			\Leftrightarrow  \forall \varepsilon > 0 \hookrightarrow  \P \big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi(\omega) | \geqslant \varepsilon \big) \limn 0.
  		\end{multline*}
  	\end{proof}
  \end{lemma}
@@ -58,10 +58,10 @@
 		$$\big\{\omega: |\xi_n(\omega) - \xi(\omega)| > \varepsilon \big\} \subset \big\{ \omega: \sup\limits_{k \geqslant n} |\xi_n(\omega) - \xi(\omega)| \geqslant \varepsilon \big\},$$
 		 следовательно, $\P \big( | \xi_n - \xi | \geqslant \varepsilon \big) \leqslant \P \big(\sup\limits_{k \geqslant n}|\xi_k - \xi| \geqslant \varepsilon \big) \rightarrow 0$.\\
 		
-		($L_p \Rightarrow \P$)\qquad $\P \big( | \xi_n -\xi | \geqslant \varepsilon \big) = \P\big(\omega: | \xi_n(\omega) - \xi(\omega) |^p \geqslant \varepsilon^p \big)$, а по неравенству Маркова это меньше или равно $\dfrac{\E |\xi_n(\omega) - \xi (\omega)|^p}{\varepsilon^p} \limn 0$.\\
+		($L_p \Rightarrow \P$)\qquad $\P \big( | \xi_n -\xi | \geqslant \varepsilon \big) = \P\big(\omega: | \xi_n(\omega) - \xi(\omega) |^p \geqslant \varepsilon^p \big) \leqslant \dfrac{\E |\xi_n(\omega) - \xi (\omega)|^p}{\varepsilon^p} \limn 0$ (неравенство Маркова).\\\
 		
-		($\P \Rightarrow d$)\qquad Пусть $f(x)$~--- ограниченная непрерывная функция, тогда $\exists C \in \R~\forall x \in \R \hookrightarrow |f(x)| \leqslant C$. Зафиксируем $\varepsilon > 0$, возьмем $N \in \R : \P \big( |\xi | > N \big) \leqslant \dfrac{\varepsilon}{4C}$. На отрезке $[-\N, \N]$ функция $f(x)$ равномерно непрерывна, следовательно, 
-		$$\exists \delta > 0~~\forall x, y \in [-\N, \N] \hookrightarrow \left( |x-y| < \delta \Rightarrow |f(x) - f(y) | < \dfrac{\varepsilon}{2} \right).$$
+		($\P \Rightarrow d$)\qquad Пусть $f(x)$~--- ограниченная непрерывная функция, тогда $\exists C \in \R~\forall x \in \R \hookrightarrow |f(x)| \leqslant C$. Зафиксируем $\varepsilon > 0$, возьмем $N \in \R : \P \big( |\xi | > N \big) \leqslant \dfrac{\varepsilon}{4C}$. На отрезке $[-N, N]$ функция $f(x)$ равномерно непрерывна, следовательно, 
+		$$\exists \delta > 0~~\forall x, y \in [-N, N] \hookrightarrow \left( |x-y| < \delta \Rightarrow |f(x) - f(y) | < \dfrac{\varepsilon}{2} \right).$$
 		Рассмотрим разбиение $\Omega$: 
 		\begin{align*}
 			A_1 &= \big\{\omega: |\xi(\omega)| < N,~ |\xi_n(\omega) - \xi(\omega)| \leqslant \delta \big\},\\
@@ -69,7 +69,7 @@
 			A_3 &= \big\{\omega:  |\xi_n(\omega) - \xi(\omega)| > \delta \big\}.
 		\end{align*}
 		Оценим 
-		$$\big| \E f(\xi_n) - \E f(\xi) \big| \leqslant \E \big| f(\xi_n) - f(\xi) \big| = \E \big[ | f(\xi) - f(\xi_n)| \cdot ( I_{A_1} + I_{A_2} + I_{A_3} ) \big] \boxed{\leqslant}.$$ 
+		$$\big| \E f(\xi_n) - \E f(\xi) \big| \leqslant \E \big| f(\xi_n) - f(\xi) \big| = \E \big[ | f(\xi_n) - f(\xi)| \cdot ( I_{A_1} + I_{A_2} + I_{A_3} ) \big] \boxed{\leqslant}.$$ 
 		Пусть $\omega \in A_1$, тогда, так как $|\xi_n - \xi| \leqslant \delta$, то $|x - y| \leqslant \delta$, а значит $\big| f(\xi_n) - f(\xi) \big| \leqslant \dfrac{\varepsilon}{2}$, следовательно, $\E \big[ |f(\xi_n) - f(\xi) | \cdot I_{A_1} \big] \leqslant \dfrac{\varepsilon}{2} \cdot \E I_{A_1} = \dfrac{\varepsilon}{2} \cdot \P(A_1) \leqslant \dfrac{\varepsilon}{2}$. Если же $\omega \in A_2, A_3$, то   $|f(\xi_n) - f(\xi)| \leqslant 2C$ так как $f$ ограничена.
 		
 		Значит, $\boxed{\leqslant} \dfrac{\varepsilon}{2} + 2C \cdot \P(A_2) + 2C \cdot \P(A_3) \leqslant \dfrac{\varepsilon}{2} + 2C \cdot \P \big( |\xi| > N \big) + \cancelto{0,~ \text{т.\,к.}~\xi_n \xrightarrow{\P} \xi}{2C \cdot \P \big( |\xi_n - \xi| > \delta \big)} \leqslant~C_1 \varepsilon$, где $\P \big( |\xi| > N \big) \leqslant \dfrac{\varepsilon}{4C}$. Следовательно, в силу произвольности $\varepsilon$, $\E f(\xi_n) \rightarrow \E f(\xi)$, то есть $\xi_n \xrightarrow{d} \xi$. 
@@ -110,10 +110,10 @@
 \end{theorem}
 
 \begin{definition}
-	Пусть $ \{A_n \}_{n \in \N}$~--- последовательность событий, тогда событием $\{ A_n~\text{бесконечно часто (б.ч.)} \}$ называется событие $\{ \omega: \forall n \exists k \geqslant n: \omega \in A_k \}$, то есть все такие $\omega$, что $\omega$ принадлежит бесконечному числу элементов из $\{ A_n \}_{n \in \N}$. $\{ A_n~\text{б.ч.} \} = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}^{\infty} A_k$.
+	Пусть $ \{A_n \}_{n \in \N}$~--- последовательность событий, тогда событием $\{ A_n~\text{бесконечно часто (б.ч.)} \}$ называется событие $\{ \omega: \forall n \ \exists k \geqslant n: \omega \in A_k \}$, то есть все такие $\omega$, что $\omega$ принадлежит бесконечному числу элементов из $\{ A_n \}_{n \in \N}$. $\{ A_n~\text{б.ч.} \} = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}^{\infty} A_k$.
 \end{definition}
-\begin{lemma}[Бореля-Кантелли]
 
+\begin{lemma}[Бореля-Кантелли]
 	\begin{enumerate}
 		\item {Если $\sum\limits_{k = 1}^{\infty} \P(A_k) < +\infty$, то $\P ( A_n~\text{б.ч.}) = 0$.}
 		\item {Если $\sum\limits_{k = 1}^{\infty} \P(A_k) = +\infty$ и $\{A_k\}$ независимы в совокупности, то $\P ( A_n~\text{б.ч.}) = 1$.}
@@ -125,7 +125,7 @@
 		    \item Заметим, что $\P ( A_n ~\text{б.ч.}) = \P \big( \bigcap\limits_{n=1}^\infty \bigcup\limits_{k \geqslant n} A_k \big) = / \text{по непрерывности вермеры} /= \lim\limits_{ n \rightarrow \infty} \P \left( \bigcup\limits_{k \geqslant n} A_k \right) = 	/ \text{по законам да Моргана} / = \lim\limits_{ n \rightarrow \infty} \left( 1 - \P \left( \bigcap\limits_{k \geqslant n} \overline{A_k} \right) \right)$, (надо доказать, что $\P$ в скобках стремится к нулю). Покажем это:
 		    \begin{multline*}
 		    	\P \left( \bigcap\limits_{k \geqslant n} \overline{A} \right) =  / \text{непрерывность вермеры}/ = \lim\limits_{N \rightarrow \infty} \P \left( \bigcap\limits_{k = n}^{N} \overline{A_k} \right) = \lim\limits_{N \rightarrow \infty} \prod\limits_{k = n}^{N} \P \left( \overline{A_k} \right) = \\
-		        = \lim\limits_{N \rightarrow \infty} \prod\limits_{k = n}^{N} \left[ 1 - \P (A_k) \right] \leqslant / 1- x \leqslant e^{-x} / \geqslant \lim\limits_{N \rightarrow \infty} \prod\limits_{k = n}^{N} \exp\left(-\P \left( \overline{A_k} \right)\right) = \\
+		        = \lim\limits_{N \rightarrow \infty} \prod\limits_{k = n}^{N} \left[ 1 - \P (A_k) \right] \leqslant / 1- x \leqslant e^{-x} / \geqslant \lim\limits_{N \rightarrow \infty} \prod\limits_{k = n}^{N} \exp\left(-\P \left( A_k \right)\right) = \\
 		        = \lim\limits_{N \rightarrow \infty} \exp \left( - \sum\limits_{k =n}^{N} \P \left( A_k \right) \right)= \exp \left( - \sum\limits_{k = n}^{\infty}  \P \left( A_k \right) \right) = 0.
 		    \end{multline*} 
 		   
