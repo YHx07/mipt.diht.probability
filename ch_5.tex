@@ -55,7 +55,7 @@
 		\end{tikzpicture}
 	\begin{proof}
 		($\text{п.н.} \Rightarrow \P$)\qquad $\xi_n \xrightarrow{\text{п.н.}} \xi  \Leftrightarrow \forall \varepsilon > 0 : \P \big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi(\omega) | > \varepsilon \big) \rightarrow 0$,~но 
-		$$\big\{\omega: |\xi_n(\omega) - \xi(\omega)| > \varepsilon \big\} \subset \big\{ \omega: \sup\limits_{k \geqslant n} |\xi_n(\omega) - \xi(\omega)| \geqslant \varepsilon \big\},$$
+		$$\big\{\omega: |\xi_n(\omega) - \xi(\omega)| > \varepsilon \big\} \subset \big\{ \omega: \sup\limits_{k \geqslant n} |\xi_k(\omega) - \xi(\omega)| \geqslant \varepsilon \big\},$$
 		 следовательно, $\P \big( | \xi_n - \xi | \geqslant \varepsilon \big) \leqslant \P \big(\sup\limits_{k \geqslant n}|\xi_k - \xi| \geqslant \varepsilon \big) \rightarrow 0$.\\
 		
 		($L_p \Rightarrow \P$)\qquad $\P \big( | \xi_n -\xi | \geqslant \varepsilon \big) = \P\big(\omega: | \xi_n(\omega) - \xi(\omega) |^p \geqslant \varepsilon^p \big) \leqslant \dfrac{\E |\xi_n(\omega) - \xi (\omega)|^p}{\varepsilon^p} \limn 0$ (неравенство Маркова).\\\
@@ -89,7 +89,7 @@
 \end{example}
 
 \begin{example}[$ d \not\Rightarrow \P$] 
-	Пусть $\Omega = \{ \omega_1, \omega_2 \}$, $\P(\omega_i) = \dfrac{1}{2}$, $\forall n \in \Z_+ \hookrightarrow \xi_n(\omega_1) = 0, \xi_n(\omega_2) = 1$. Тогда $\xi_n \sim \text{Bern} \left( \frac{1}{2} \right)$. $\xi(\omega_1) = 1, \xi(\omega_2) = 0$, значит, $\xi \sim \text{Bern} \left( \frac{1}{2} \right)$, следовательно, по теореме Александрова $\xi_n \xrightarrow{d} \xi$, но $\P \big( | \xi_n - \xi| > 0.5 \big) = 1$, значит, $\xi_n \not\xrightarrow{\P} \xi$. 
+	Пусть $\Omega = \{ \omega_1, \omega_2 \}$, $\P(\omega_i) = \dfrac{1}{2}$, $\forall n \hookrightarrow \xi_n(\omega_1) = 0, \xi_n(\omega_2) = 1$. Тогда $\xi_n \sim \text{Bern} \left( \frac{1}{2} \right)$. $\xi(\omega_1) = 0, \xi(\omega_2) = 1$, значит, $\xi \sim \text{Bern} \left( \frac{1}{2} \right)$, следовательно, по теореме Александрова $\xi_n \xrightarrow{d} \xi$, но $\P \big( | \xi_n - \xi| > 0.5 \big) = 1$, значит, $\xi_n \not\xrightarrow{\P} \xi$. 
 \end{example}
 
 \begin{definition}
@@ -200,7 +200,9 @@
 		 а из непрерывности вероятностной меры следует, что 
 		 $$= \lim\limits_{N \rightarrow +\infty} \P \left( \bigcup\limits_{k = n}^{N} \big\{| S_k - S_n | \geqslant \varepsilon \big\} \right) = \lim\limits_{N \rightarrow +\infty} \P \left( \max\limits_{n \leqslant k \leqslant N} | S_k - S_n | \geqslant \varepsilon \right) \leqslant$$
 		 А по неравенству Колмогорова:
-		 $$\leqslant \lim\limits_{N \rightarrow + \infty} \dfrac{\E ( S_N - S_n)^2}{\varepsilon^2} = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \E \sum\limits_{k = n + 1}^N \xi_k^2 = $$.
+		 $$\leqslant \lim\limits_{N \rightarrow + \infty} \dfrac{\E ( S_N - S_n)^2}{\varepsilon^2} = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \E \left(\sum\limits_{k = n + 1}^N \xi_k\right)^2 = \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \E \sum\limits_{k = n + 1}^N \xi_k^2 = $$
+		 Второе равенство, поскольку случайные величины независимы и с нулевым матожиданием.
+		 
 		 Так как $\xi_k$ независимы, то
 		 $$= \lim\limits_{N \rightarrow + \infty} \dfrac{1}{\varepsilon^2} \sum\limits_{k = n + 1}^N \E \xi_k^2 = \dfrac{1}{\varepsilon^2} \sum\limits_{k > n} \E \xi_k^2 \limn 0.$$
 	\end{proof}
@@ -245,7 +247,7 @@
 		$$ \frac{S_n - \E S_n}{b_n} = \frac{1}{b_n} \sum\limits_{i = 1}^{n} b_i \cdot \frac{\xi_i - \E \xi_i}{b_i}.$$
 		Обозначим $\eta_i = \dfrac{\xi_i - \E \xi_i}{b_i}$. Случайные величины $\eta_i$ независимы и  $\E \eta_i = 0$. Значит,  
 		$$ \sum\limits_{i =1}^\infty \E \eta_i^2 = \sum\limits_{i = 1}^\infty \dfrac{\E( \xi_i - \E \xi_i)^2}{b_i^2} = \sum\limits_{i = 1}^\infty \dfrac{\D \xi_i}{b_i^2} < +\infty.$$
-		Следовательно, по теореме Колмогорова-Хинчина о сходимости ряда $\sum\limits_{i=1}^n \eta_i$ сходится почти наверное. По лемме Кронекера последовательность 
+		Следовательно, по теореме Колмогорова-Хинчина о сходимости ряда $\sum\limits_{i=1}^\infty \eta_i$ сходится почти наверное. По лемме Кронекера последовательность 
 		$$\dfrac{1}{b_n} \sum\limits_{i =1}^n b_i \cdot \dfrac{\xi_i - \E \xi_i}{b_i}$$ 
 		сходится к нулю для всех $\omega$, для которых сходится ряд 
 		$$\sum\limits_{i = 1}^\infty \dfrac{\xi_i - \E \xi_i}{b_i} = \sum\limits_{i = 1}^\infty \eta_i \text{ ---		сходится п.н.}$$

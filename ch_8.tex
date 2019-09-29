@@ -1,7 +1,7 @@
 \section{Глава 8.}
 \subsection{Гауссовские случайные векторы}
 	\begin{definition}[1]
-		Случайный вектор $\vec{\xi} \sim N(\vec{m}, \Sigma)$~--- гауссовский, если его характеристическая функция $\varphi_{\vec{\xi}}(\vec{t}) = \E e^{i(\vec{t},\vec{\xi})} = \exp\left(i(\vec{m}, \vec{t}) - \frac{1}{2}(\Sigma \vec{t}, \vec{t})\right), ~ \vec{m} \in \R^n, ~\Sigma \in \operatorname{Mat}_{n \times m}$~--- симметричная неотрицательно определённая матрица.
+		Случайный вектор $\vec{\xi} \sim N(\vec{m}, \Sigma)$~--- гауссовский, если его характеристическая функция $\varphi_{\vec{\xi}}(\vec{t}) = \E e^{i(\vec{t},\vec{\xi})} = \exp\left(i(\vec{m}, \vec{t}) - \frac{1}{2}(\Sigma \vec{t}, \vec{t})\right), ~ \vec{m} \in \R^n, ~\Sigma \in \operatorname{Mat}_{n \times n}$~--- симметричная неотрицательно определённая матрица.
 	\end{definition}
 
 	\begin{definition}[2]
@@ -17,7 +17,7 @@
 	\end{theorem}
 	\begin{proof}
 		\begin{enumerate}
-			\item Опр 1 $\Rightarrow$ Опр 2. Пусть $\varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t},\vec{\xi})} = e^{i(\vec{t}, \vec{m} - (R\vec{t}, \vec{t}))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
+			\item Опр 1 $\Rightarrow$ Опр 2. Пусть $\varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t},\vec{\xi})} = e^{i(\vec{t}, \vec{m} - \frac{1}{2}(R\vec{t}, \vec{t}))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
             \begin{array}{ccccc}
                  d_1                              \\
                            &\ddots &  & \text{\huge0}\\
@@ -56,7 +56,7 @@
             	=\exp[i(\vec{t}, (S\tilde{D})^T\vec{m}) - \frac{1}{2}\underbracket{(\tilde{D}^TS^TRS\tilde{D}\vec{t}, \vec{t})}_{=\sum\limits_{i = 1}^{k}t_i^2}] = 
             \]
             \[
-            	= \exp[i(\vec{t}, (S\tilde{D})^T\vec{m})\prod\limits_{i = 1}^k \varphi_{\eta_i}(t_i)], 
+            	= \exp[i(\vec{t}, (S\tilde{D})^T\vec{m})]\prod\limits_{i = 1}^k \varphi_{\eta_i}(t_i), 
             \]
             $\eta_i \sim N(0;1)\) и независимы по теореме единственности и теореме независимости в терминах характеристической функции \(\Rightarrow\) вектор \(\vec{\eta} = (S\tilde{D})^T(\vec{\xi} - \vec{m})\)~--- искомый, так как \(\vec{\xi} = ((S\tilde{D})^T)^{-1}\vec{\eta}+\vec{m}.$
 
@@ -69,7 +69,7 @@
 	\subsection{Свойства гауссовских векторов}
 	\setcounter{property}{0}
 	\begin{property}
-		Если \(\xi \sim N(a, \Sigma),\) то \(\vec{a} = \left(
+		Если \(\vec{\xi} \sim N(a, \Sigma),\) то \(\vec{a} = \left(
 		\begin{matrix}
 		E\xi_1 \\ \vdots \\ E\xi_n
 		\end{matrix}
@@ -115,7 +115,7 @@
 
 \subsection{Многомерная ЦПТ}
     \begin{theorem}[Многомерная ЦПТ]
-    	Пусть $\{\vec x_i\}_{i \geqslant 1}$ --- независимые одинаково распределенные случайные вектора, $\E x_i = \vec{a}$, $\var x_i = \Sigma$.
+    	Пусть $\{\vec x_i\}_{i \geqslant 1}$ --- независимые одинаково распределенные случайные вектора, $\E \vec{x}_i = \vec{a}$, $\var \vec{x}_i = \Sigma$.
     	
     	Тогда $\sqrt{n} \left(\frac{\vec{x_1} + \ldots + \vec{x_n}}{n} - \vec{a} \right) \xrightarrow{d} N(\vec{0}, \Sigma), n \rightarrow +\infty$.
     \end{theorem}

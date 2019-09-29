@@ -9,6 +9,8 @@ $$ \sum\limits_{n = 1}^\infty \dfrac{\E \xi_n^2}{n \ln^2 n} = \sum\limits_{n = 1
 Следовательно, по теореме Колмогорова-Хинчина о сходимости ряда почти наверное $\sum\limits_{n = 1}^\infty \dfrac{\xi_n}{\sqrt{n} \ln n}$ сходится почти наверное, значит, по лемме Кронекера, 
 $$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{ \sqrt{k} \ln k} = \dfrac{S_n}{\sqrt{n} \ln n} \xrightarrow[n \rightarrow \infty]{\text{п.н.}} 0.$$ Значит $S_n$ не выходит за $\varepsilon \sqrt{n}$ начиная с некоторого момента п.н.
 \begin{theorem} (Теорема Муавра-Лапласа)
+
+    Независимые случайные величины $\xi_i \sim \text{Bern}(p)$. 
     $$\sup_{-\infty \leqslant a < b \leqslant +\infty} \Bigg| \P\bigg( a \leqslant \dfrac{S_n - np}{\sqrt{npq}} \leqslant b \bigg) - \int\limits_a^b \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}dx \Bigg| \xrightarrow{n \rightarrow \infty} 0.$$
 \end{theorem}
 \begin{definition}
