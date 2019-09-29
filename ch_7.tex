@@ -47,7 +47,9 @@
 	\begin{property}
 		Пусть $\varphi(t)$~--- характеристическая функция, тогда $\varphi(t) = \overline{\varphi(-t)}$
 		\begin{proof}
-			$\varphi(t) = \E e^{it\xi} = \E\overline{e^{-it\xi}} = \overline{\E e^{-it\xi}} = \overline{\varphi(-t)}.$
+			$\varphi(t) = \E e^{it\xi} = \E\overline{e^{-it\xi}} \overset{*}{=} \overline{\E e^{-it\xi}} = \overline{\varphi(-t)}.$
+			
+			Комментарий к $(*)$: матожидание можно записать как предел матожиданий простых функций, простые функции -- это конечные суммы, у них можно навесить сопряжение на все выражение. Поэтому в пределе получаем верный переход.
 		\end{proof}
 	\end{property}
 	\begin{property}
@@ -64,7 +66,7 @@
 	\begin{property}
 		Пусть $\varphi_\xi(t)$~--- характеристическая функция случайной величины $\xi$. $\varphi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение $(\xi \overset{d}{=} -\xi)$.
 		\begin{proof}
-			$~(\Leftarrow)$ Пусть распределение $\xi$~---симметрично, тогда $E(\sin(t\xi)) = E(\sin(t(-\xi))) = -E(\sin(t\xi)) = 0.$ Значит $\varphi_\xi(t) = E\cos t\xi + iE\sin t\xi = E\cos t\xi \in \mathbb{R}.$
+			$~(\Leftarrow)$ Пусть распределение $\xi$~--- симметрично, тогда $E(\sin(t\xi)) = E(\sin(t(-\xi))) = -E(\sin(t\xi)) = 0.$ Значит $\varphi_\xi(t) = E\cos t\xi + iE\sin t\xi = E\cos t\xi \in \mathbb{R}.$
 
 			$(\Rightarrow)$ Пусть $\varphi_\xi(t) \in \mathbb{R} ~\forall t.$ Тогда по свойствам $2$ и $4$ $\varphi_\xi(t) = \overline{\varphi_\xi(-t)} = \varphi_\xi(-t) = \varphi_{-\xi}(t) ~\Rightarrow $~$\xi$ и $-\xi$ имеют одинаковую характеристическую функцию $~\Rightarrow$~ $\xi \overset{d}{=} -\xi$ по теореме единственности.
 		\end{proof}
@@ -76,8 +78,8 @@
 		
 		Тогда $\forall k \leqslant n~ \exists \varphi_\xi^{(k)}(t),$ причём
 		\begin{enumerate}
-			\item $\varphi_\xi^{(k)}(t) = \int\limits_\mathbb{R}(ix)^ke^{itx}dF(x)$
-			\item $E\xi^k = \frac{\varphi_\xi^{(k)}(0)}{i^k}$
+			\item $\varphi_\xi^{(k)}(t) = \int\limits_\mathbb{R}(ix)^ke^{itx}dF(x)$,
+			\item $E\xi^k = \frac{\varphi_\xi^{(k)}(0)}{i^k}$,
 			\item $\varphi_\xi(t) = \sum\limits_{k = 0}^{n} \frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t)$, где
 		\end{enumerate}
 		$|\varepsilon_n(t)| \leqslant 3E|\xi|^n, ~\varepsilon_n(t) \to 0, ~ t \to 0.$
@@ -87,7 +89,7 @@
 			\item Рассмотрим $\frac{\varphi_\xi(t + h) - \varphi_\xi(t)}{h} = \frac{Ee^{i(t + h)\xi} - Ee^{it\xi}}{h} = \frac{Ee^{it\xi}(e^{ih\xi} - 1)}{h}.$ при $h \to 0$ $\frac{e^{ih\xi} - 1}{h} \overset{\text{п.н.}}{\longrightarrow}i\xi,$ кроме того, $\left|\frac{e^{ih\xi} - 1}{h}\right| \leqslant |\xi|$ почти наверное, так как хорда меньше дуги. По теореме о мажорируемой сходимости
 			$\lim\limits_{h \to 0}E \frac{e^{ih\xi} - 1}{h}e^{it\xi} = \varphi'_\xi(t) = E(i\xi\cdot e^{it\xi}) = \int\limits_\mathbb{R} ixe^{itx}dF_\xi(x).$ Доказательство формулы для $\varphi^{(k)}$ аналогично.
 			\item Из пункта 1, $\frac{\varphi^{(k)}(0)}{i^k} = \frac{1}{i^k} \int\limits_\mathbb{R}(ix)^ke^{i0x}dF(x) = \int\limits_\mathbb{R}x^k dF_\xi(x) = E\xi^k.$
-			\item Ряд Тейлора $e^{i\eta} = \sum\limits_{k = 0}^{n - 1} \frac{(i\eta)^k}{k!} + \frac{(i\eta)^n}{n!}(\cos\theta_1y + i\sin\theta_2 y), ~|\theta_1| \leqslant 1, ~ |\theta_2| \leqslant 1,$ тогда
+			\item Ряд Тейлора $e^{iy} = \sum\limits_{k = 0}^{n - 1} \frac{(iy)^k}{k!} + \frac{(iy)^n}{n!}(\cos\theta_1y + i\sin\theta_2 y), ~|\theta_1| \leqslant 1, ~ |\theta_2| \leqslant 1,$ тогда
 			$\varphi_\xi(t) = Ee^{it\xi} = E\left[\sum\limits_{k = 0}^{n - 1} \frac{(it\xi)^k}{k!} + \frac{(it\xi)^n}{n!}(\cos\theta_1 t\xi + i\sin \theta_2 t\xi)\right] = \sum\limits_{k = 0}^{n}\frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t), $ где $\varepsilon_n(t) = E(\xi^n\cdot [\cos\theta_1t\xi + i\sin(\theta_2 t\xi) - 1]) \Rightarrow \varepsilon_n(t) \leqslant 3E|\xi|^n;$
 
 			$|\xi^n[\cos(\theta_1t\xi) + i\sin(\theta_2t\xi) - 1]| \leqslant3|\xi|^n$ и $\xi^n(\cos(\theta_1t\xi) - 1 + \underbrace{\sin(\theta_2 t\xi)}_{\to 0}) \overset{\text{п.н.}}{\longrightarrow} 0$ при $t \to 0 \Rightarrow$ по теореме Лебега о мажорируемой сходимости, $\varepsilon_n(t) \underset{t \to 0}{\longrightarrow} 0.$
@@ -98,7 +100,7 @@
 		Если существует и конечна $\varphi^{(2n)}(0),$ то $E|\xi|^{2n} < +\infty.$
 	\end{property}
 	\begin{theorem}[о разложении х.ф. в ряд]
-		Пусть $\xi$ случайная величина, такая что $E|\xi|^n < +\infty~ \forall n.$ 
+		Пусть $\xi$ случайная величина, такая что $\forall n \  E|\xi|^n < +\infty$. 
 		
 		Если для некоторого $T > 0 \hookrightarrow \overline{\lim\limits_{n}}\left(E \frac{|\xi|^n}{n!}\right)^\frac{1}{n} < \frac{1}{T},$ то $\forall t: |t| < T$ выполнено $\varphi_\xi(t) = \sum\limits_{n = 0}^{+\infty} \frac{(it)^n}{n!}E\xi^n.$
 		\begin{proof}
@@ -133,8 +135,8 @@
 		Пусть $\varphi(t)$ характеристическая функция функции распределения $F$. Тогда
 		\begin{enumerate}
 			\item Для $\forall a < b$ (точки непрерывности) $F$ выполнено
-			$F(b) - F(a) = \frac{1}{2\pi} \lim\limits_{c \to +\infty} \int\limits_{-c}^{c} \frac{e^{-itb} - e^{-ita}}{-it}\varphi(t)dt$
-			\item Если $\int\limits_\mathbb{R}|\varphi(t)|dt < +\infty,$ то у функции распределения $F(x)$ существует плотность $f(x)$ и $f(x) = \frac{1}{2\pi}\int\limits_\mathbb{R} e^{-tx}\varphi(t)dt.$
+			$F(b) - F(a) = \frac{1}{2\pi} \lim\limits_{c \to +\infty} \int\limits_{-c}^{c} \frac{e^{-itb} - e^{-ita}}{it}\varphi(t)dt$
+			\item Если $\int\limits_\mathbb{R}|\varphi(t)|dt < +\infty,$ то у функции распределения $F(x)$ существует плотность $f(x)$ и $f(x) = \frac{1}{2\pi}\int\limits_\mathbb{R} e^{-itx}\varphi(t)dt.$
 		\end{enumerate}
 	\end{theorem}
 	
@@ -149,9 +151,9 @@
 			\left|\int\limits_\mathbb{R} f_\varepsilon(x) dF(x) - \int\limits_\mathbb{R} f_\varepsilon(x)dG(x)\right| \leqslant \left|\int\limits_\mathbb{R} f_\varepsilon(x) dF(x) - \int\limits_\mathbb{R} f_\varepsilon^n(x) dF(x)\right| +\\
 			+  \left|\int\limits_\mathbb{R} f_\varepsilon^n(x) dF(x) - \int\limits_\mathbb{R} f_\varepsilon^n(x) dG(x)\right| + \left|\int\limits_\mathbb{R} f_\varepsilon^n(x) dG(x) - \int\limits_\mathbb{R} f_\varepsilon(x) dG(x)\right| \leqslant\\
 			\leqslant \frac{1}{n} \int\limits_{[-n,n]}dF(x) + \frac{1}{n} \int\limits_{[-n,n]}dG(x) +(\underbracket{1 - F(n)}_{\to 0} + \underbracket{F(-n)}_{\to 0} + \underbracket{1 - G(n)}_{\to 0} + \underbracket{G(-n)}_{\to 0}) \leqslant\\
-			\leqslant \frac{2}{n} + o(1) \Rightarrow \forall \varepsilon> 0: \int f_\varepsilon(x) dF(x) = \int f_\varepsilon(x)dG(x).
+			\leqslant \frac{2}{n} + o(1) \Rightarrow \forall \varepsilon> 0 \hookrightarrow \int f_\varepsilon(x) dF(x) = \int f_\varepsilon(x)dG(x).
 		\end{gather*}
-		При \(\varepsilon \to 0 f_\varepsilon(x) \to I_{[a,b]}(x),\) при этом \(|f_\varepsilon(x)| \leqslant 1~ \forall x \in \mathbb{R}.\) По теореме Лебега о мажорировании сходимости(рассматриваем \(f_\varepsilon(x)\) как набор случайных величин на \((\mathbb{R}, \B(\R), P_f) \to (\mathbb{R}, \B(\mathbb{R}))\)).
+		При \(\varepsilon \to 0 f_\varepsilon(x) \to I_{[a,b]}(x),\) при этом \(|f_\varepsilon(x)| \leqslant 1~ \forall x \in \mathbb{R}.\) По теореме Лебега о мажорированной сходимости (рассматриваем \(f_\varepsilon(x)\) как набор случайных величин на \((\mathbb{R}, \B(\R), P_f) \to (\mathbb{R}, \B(\mathbb{R}))\)).
 		\(\int\limits_\R f_\varepsilon(x)dF(x) \to \int\limits_\R I_{[a,b]}dF(x) = F(b) - F(a).\)
 		Аналогично, для функции распределения \(G\) \(\int\limits_\R f_\varepsilon(x)dG(x) \underset{\varepsilon \to 0}{\longrightarrow} G(b) - G(a) \Rightarrow \forall a < b ~ F(b) - F(a) = G(b) - G(a).\)  Полагая \(a = (-\infty), \) получаем требуемое.
 	\end{proof}
@@ -253,7 +255,7 @@
 		Рассмотрим случайные величины \(\eta_i = \frac{\xi_i - a}{\sigma} \Rightarrow 
 		E\eta_i = 0; ~ D\eta_i = 1.\)
 		Тогда \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} = \frac{S_n - na}{\sqrt{n\sigma^2}} = \frac{\eta_1 + \ldots + \eta_n}{\sqrt{n}}.\)
-		Рассмотрим характеристическую функцию \(\eta_i\): по свойствам характеристической функции о разложении в ряд \(\varphi(t) \equiv \varphi_{\eta_i}(t) = 1 + it\underbracket{E\eta_j}_{0} + \frac{1}{2}\underbracket{E\eta_j^2}_1\cdot(it)^2 + o(t^2) = 1 - \frac{t^2}{2} + o(t^2), ~ t \to 0.\) Отсюда, \(\varphi_{T_n}(t) = \varphi_{\sum\limits_{j = 1}^{n}\eta_j}(t) \overset{\text{св-ва х.ф. о независимости}}{=} \left(\varphi\left(\frac{t}{\sqrt{n}}\right)\right)^n = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right)\right)^n \limn e^{- \frac{t^2}{2}} \ \forall t. \)Но \(e^{-\frac{t^2}{2}}\)~--- характеристическая функция \(N(0,1) \Rightarrow\) (по т. непрерывности) \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1).\)
+		Рассмотрим характеристическую функцию \(\eta_i\): по свойствам характеристической функции о разложении в ряд \(\varphi(t) \equiv \varphi_{\eta_i}(t) = 1 + it\underbracket{E\eta_j}_{0} + \frac{1}{2}\underbracket{E\eta_j^2}_1\cdot(it)^2 + o(t^2) = 1 - \frac{t^2}{2} + o(t^2), ~ t \to 0.\) Отсюда, \(\varphi_{T_n}(t) = \varphi_{\sum\limits_{j = 1}^{n}\eta_j}(\frac{t}{\sqrt{n}}) \overset{\text{св-ва х.ф. о независимости}}{=} \left(\varphi\left(\frac{t}{\sqrt{n}}\right)\right)^n = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right)\right)^n \limn e^{- \frac{t^2}{2}} \ \forall t\). Но \(e^{-\frac{t^2}{2}}\)~--- характеристическая функция \(N(0,1) \Rightarrow\) (по т. непрерывности) \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1).\)
 	\end{proof}
 	
 	\begin{theorem}[Линдберга][б/д]
@@ -275,7 +277,7 @@
 	\begin{enumerate}
 		\item Пусть для некоторого \( \delta > 0\) выполнено условие Ляпунова: 
 		\[
-			\frac{1}{D_n^{2 + \delta}} \sum\limits_{i = 1}^{n} E|\xi_k - m_k|^{2 + \delta} \underset{n \to \infty}{\longrightarrow} 0
+			\frac{1}{D_n^{2 + \delta}} \sum\limits_{k = 1}^{n} E|\xi_k - m_k|^{2 + \delta} \underset{n \to \infty}{\longrightarrow} 0
 		\]
 		тогда выполнено условие Линдберга.
 		\begin{proof}
@@ -283,7 +285,7 @@
 			\begin{gather*}
 				E|\xi_k - m_k|^{2 + \delta} = \int\limits_\R |x - m_k|^{2 + \delta} dF_k(x) \geqslant \\
 				\geqslant \int\limits_{|x - m_k| \geqslant \varepsilon D_n} |x - m_k|^{2 + \delta} dF_k(x) \geqslant \varepsilon^\delta D_n^\delta \int\limits_{|x - m_k| > \varepsilon D_n} |x -m_k|^2 dF_k(x)\\
-				\Rightarrow \frac{1}{D^{2 + \delta}} \sum\limits_{k = 1}^{n} E|\xi_k - m_k|^{2 + \delta} \geqslant \frac{\varepsilon^\delta}{D^2_n} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x - m_k| > \varepsilon D_n\}}|x - m_k|^2 dF_k(x).
+				\Rightarrow \frac{1}{D_n^{2 + \delta}} \sum\limits_{k = 1}^{n} E|\xi_k - m_k|^{2 + \delta} \geqslant \frac{\varepsilon^\delta}{D^2_n} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x - m_k| > \varepsilon D_n\}}|x - m_k|^2 dF_k(x).
 			\end{gather*}
 		\end{proof}
 		\item Из условий теоремы Леви вытекает условие Линдберга.
@@ -306,9 +308,9 @@
 	\end{enumerate}
 
 	\begin{note}[Теорема Феллера.]
-		Условие Линдберга является необходимым и достаточным условием для справедливости ЦПТ. При выполнении условия бесконечной малости слагаемых:
+		Условие Линдберга является необходимым и достаточным условием для справедливости ЦПТ при выполнении условия бесконечной малости слагаемых:
 		\[
-			\max\limits_{a < x \leqslant n}P\left(\frac{|\xi_k - m_k|}{D_n} \geqslant \varepsilon\right) \to 0 \text{ при } n \to \infty.
+			\max\limits_{1 \leqslant k \leqslant n}P\left(\frac{|\xi_k - m_k|}{D_n} \geqslant \varepsilon\right) \to 0 \text{ при } n \to \infty.
 		\]
 	\end{note}
 	\begin{theorem}[Берри-Эссена(б/д)]
