@@ -89,7 +89,7 @@
 \end{example}
 
 \begin{example}[$ d \not\Rightarrow \P$] 
-	Пусть $\Omega = \{ \omega_1, \omega_2 \}$, $\P(\omega_i) = \dfrac{1}{2}$, $\forall n \hookrightarrow \xi_n(\omega_1) = 0, \xi_n(\omega_2) = 1$. Тогда $\xi_n \sim \text{Bern} \left( \frac{1}{2} \right)$. $\xi(\omega_1) = 0, \xi(\omega_2) = 1$, значит, $\xi \sim \text{Bern} \left( \frac{1}{2} \right)$, следовательно, по теореме Александрова $\xi_n \xrightarrow{d} \xi$, но $\P \big( | \xi_n - \xi| > 0.5 \big) = 1$, значит, $\xi_n \not\xrightarrow{\P} \xi$. 
+	Пусть $\Omega = \{ \omega_1, \omega_2 \}$, $\P(\omega_i) = \dfrac{1}{2}$, $\forall n \hookrightarrow \xi_n(\omega_1) = 0, \xi_n(\omega_2) = 1$. Тогда $\xi_n \sim \text{Bern} \left( \frac{1}{2} \right)$. $\xi(\omega_1) = 1, \xi(\omega_2) = 0$, значит, $\xi \sim \text{Bern} \left( \frac{1}{2} \right)$, следовательно, по теореме Александрова $\xi_n \xrightarrow{d} \xi$, но $\P \big( | \xi_n - \xi| > 0.5 \big) = 1$, значит, $\xi_n \not\xrightarrow{\P} \xi$. 
 \end{example}
 
 \begin{definition}
@@ -292,7 +292,7 @@
 	$$ \frac{\xi_1 + \ldots + \xi_n}{n} \xrightarrow[n \rightarrow  \infty]{\text{п.н.}} \E \xi_1.$$
 	\begin{proof}
 		Поскольку $\E | \xi_1| < +\infty$, то по предыдущей лемме $\sum\limits_{n = 1}^\infty \P \big( |\xi_1| \geqslant n \big) < +\infty$. Так как $\xi_1 \overset{d}{=} \xi_n$, то $\sum\limits_{n = 1}^\infty \P \big( |\xi_n| \geqslant n \big) < + \infty$, следовательно, по лемме Бореля-Кантелли $\P \Big( \big\{ |\xi_n| \geqslant n \big\}~\text{б.ч.} \Big) = 0$. То есть c вероятностью 1 случается конечное число $\big\{ |\xi_n| \geqslant n \big\}$. Обозначим $\tilde \xi_n \equiv \xi_n \cdot I \big\{ | \xi_n | \leqslant n \big\}$. Тогда с вероятность 1 $\xi_n = \tilde \xi_n$ кроме конечного числа $\xi_n$. Пусть $\E \xi_i = 0$, если это не так, то $\eta_i = \xi_i - \E \xi_i$. Получаем, что 
-		$$ \P \left( \frac{\xi_n + \ldots + \xi_n}{n} \rightarrow 0 \right) = \P \left( \frac{\tilde \xi_1 + \ldots + \tilde \xi_n}{n} \rightarrow 0 \right).$$
+		$$ \P \left( \frac{\xi_1 + \ldots + \xi_n}{n} \rightarrow 0 \right) = \P \left( \frac{\tilde \xi_1 + \ldots + \tilde \xi_n}{n} \rightarrow 0 \right).$$
 		Рассмотрим
 		$$ \E \tilde\xi_n = \E \Big( \xi_n \cdot I \big( | \xi_n | \leqslant n \big) \Big) = \E \Big( \xi_1 \cdot I \big( | \xi_1| \leqslant n \big) \Big) \rightarrow \E \xi_1 = 0$$
 		по теореме Лебега о мажорируемой сходимости, поскольку
