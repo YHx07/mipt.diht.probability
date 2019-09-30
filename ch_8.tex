@@ -17,7 +17,7 @@
 	\end{theorem}
 	\begin{proof}
 		\begin{enumerate}
-			\item Опр 1 $\Rightarrow$ Опр 2. Пусть $\varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t},\vec{\xi})} = e^{i(\vec{t}, \vec{m} - \frac{1}{2}(R\vec{t}, \vec{t}))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
+			\item Опр 1 $\Rightarrow$ Опр 2. Пусть $\varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t},\vec{\xi})} = e^{i(\vec{t}, \vec{m}) - \frac{1}{2}(R\vec{t}, \vec{t}))}\). Так как матрица \(R\)~--- симметричная и неотрицательно определённая, то \(\exists S\)~---  ортогональная, такая что \(S^T RS = D = \left(
             \begin{array}{ccccc}
                  d_1                              \\
                            &\ddots &  & \text{\huge0}\\
@@ -69,7 +69,7 @@
 	\subsection{Свойства гауссовских векторов}
 	\setcounter{property}{0}
 	\begin{property}
-		Если \(\vec{\xi} \sim N(a, \Sigma),\) то \(\vec{a} = \left(
+		Если \(\vec{\xi} \sim N(\vec{a}, \Sigma),\) то \(\vec{a} = \left(
 		\begin{matrix}
 		E\xi_1 \\ \vdots \\ E\xi_n
 		\end{matrix}
@@ -80,9 +80,9 @@
 	\end{property}
 
 	\begin{property}
-		Пусть \(\vec{\xi}\sim N(a, \Sigma), \)тогда \(\xi_i\) независимы \(\Leftrightarrow~\Sigma\) ~--- диагональна.
+		Пусть \(\vec{\xi}\sim N(\vec{a}, \Sigma),\) тогда \(\xi_i\) независимы \(\Leftrightarrow~\Sigma\) ~--- диагональна.
 		\begin{proof}
-			Заметим, что характеристическая функция \(\xi_j\) равна \(\varphi_{\xi_j}(t_j) = e^{et_ja_j - \frac{1}{2}\sigma^2_{jj}t_j^2},\) нужно подставить \(\vec{t} = (0\ldots0, t, 0\ldots0).\) Тогда \((\xi_1, \ldots, \xi_n)\) независимы в совокупности \(\Leftrightarrow ~ \varphi_{\vec{\xi}}(\vec{t}) = \prod\limits_{i =1 }^n \varphi_{\xi_j}(t_j) = e^{i(\vec{a}, \vec{t}) - \frac{1}{2}\sum\limits_{j = 1}^{n}\sigma_{jj}^2t_j^2} \Leftrightarrow \Sigma\) ~--- диагональна.
+			Заметим, что характеристическая функция \(\xi_j\) равна \(\varphi_{\xi_j}(t_j) = e^{it_ja_j - \frac{1}{2}\sigma^2_{jj}t_j^2},\) нужно подставить \(\vec{t} = (0\ldots0, t, 0\ldots0).\) Тогда \((\xi_1, \ldots, \xi_n)\) независимы в совокупности \(\Leftrightarrow ~ \varphi_{\vec{\xi}}(\vec{t}) = \prod\limits_{i =1 }^n \varphi_{\xi_j}(t_j) = e^{i(\vec{a}, \vec{t}) - \frac{1}{2}\sum\limits_{j = 1}^{n}\sigma_{jj}^2t_j^2} \Leftrightarrow \Sigma\) ~--- диагональна.
 		\end{proof}
 	\end{property}
 
@@ -103,7 +103,7 @@
 	\begin{property}
 		Пусть \(\vec{\xi}\)~--- гауссовский. Тогда его компоненты независимые \(\Leftrightarrow\) они некоррелированы.
 		\begin{proof}
-			\((\xi_1, \ldots, \xi_n)\)~--- попарно некоррелированы \(\Leftrightarrow \operatorname{cov}(\xi_i, \xi_j) = 0, \forall i \neq j \Leftrightarrow \Sigma\)~--- диагонально \(\Leftrightarrow\) по свойству \(2\) компоненты \(\vec{\xi}\) независимы в совокупности.
+			\((\xi_1, \ldots, \xi_n)\)~--- попарно некоррелированы \(\Leftrightarrow \operatorname{cov}(\xi_i, \xi_j) = 0, \forall i \neq j \Leftrightarrow \Sigma\)~--- диагональна \(\Leftrightarrow\) по свойству \(2\) компоненты \(\vec{\xi}\) независимы в совокупности.
 		\end{proof}
 	\end{property}
 	

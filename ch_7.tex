@@ -56,7 +56,7 @@
 		Пусть $\varphi(t)$~--- характеристическая функция случайной величины $\xi$, тогда $\varphi(t)$ равномерно непрерывна на $\mathbb{R}.$
 		\begin{proof}
 			Рассмотрим $|\varphi(t + h) - \varphi(t)| = |\E e^{i(t+h)\xi} - \E e^{it\xi}| = |\E e^{it\xi}(e^{ih\xi} - 1)| \leqslant \E (|e^{it\xi}|\cdot |e^{ih\xi} - 1|) = \E |e^{ih\xi} - 1|.$
-			При $h \to 0$ выполнено $e^{ih\xi} - 1 \overset{\text{п.н.}} \longrightarrow 0 $ по теореме о наследовании сходимости. $\forall h: |e^{ih\xi} - 1| \leqslant |e^{ih\xi}| + 1 = 2, ~ \E 2 < +\infty$. Следовательно, по теореме Лебега о мажорируемой сходимости, $\E |e^{ih\xi} - 1| \to \E 0 = 0$. Значит, $\varphi(t)$ равномерно непрерывна.
+			При $h \to 0$ выполнено $e^{ih\xi} - 1 \overset{\text{п.н.}} \longrightarrow 0 $ по теореме о наследовании сходимости. $\forall h \hookrightarrow |e^{ih\xi} - 1| \leqslant |e^{ih\xi}| + 1 = 2, ~ \E 2 < +\infty$. Следовательно, по теореме Лебега о мажорируемой сходимости, $\E |e^{ih\xi} - 1| \to \E 0 = 0$. Значит, $\varphi(t)$ равномерно непрерывна.
 		\end{proof}
 	\end{property}
 		\begin{theorem}[единственности (д-во позже)]
@@ -64,7 +64,7 @@
 	\end{theorem}
 	
 	\begin{property}
-		Пусть $\varphi_\xi(t)$~--- характеристическая функция случайной величины $\xi$. $\varphi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение $(\xi \overset{d}{=} -\xi)$.
+		Пусть $\varphi_\xi(t)$~--- характеристическая функция случайной величины $\xi$. $\varphi_xi(t)$ принимает действительные значения $\Leftrightarrow \xi$ имеет симметричное распределение $(\xi \overset{d}{=} -\xi)$.
 		\begin{proof}
 			$~(\Leftarrow)$ Пусть распределение $\xi$~--- симметрично, тогда $E(\sin(t\xi)) = E(\sin(t(-\xi))) = -E(\sin(t\xi)) = 0.$ Значит $\varphi_\xi(t) = E\cos t\xi + iE\sin t\xi = E\cos t\xi \in \mathbb{R}.$
 
@@ -146,27 +146,31 @@
 	\begin{proof}
 		Пусть \(a < b \in \mathbb{R}\). Рассмотрим \(f_\varepsilon(x)\)(шапочка). Докажем, что \(\forall \varepsilon > 0 \int\limits_{\mathbb{R}} f_\varepsilon(x) dF(x) = \int\limits_\mathbb{R}f_\varepsilon(x)dG(x).\) Рассмотрим отрезок \([-n, n]\) такой, что \([a, b + \varepsilon] \subset [-n, n].\) По теореме Вейерштрасса-Стоуна (приближение любой функции тригонометрическими полиномами), \(f_\varepsilon(x)\) сколь угодно точно приближается тригонометрическими многочленами от \(\frac{\pi x}{n}\), так как \(f_\varepsilon(x)\) непрерывна и периодична на \([-n, n]\) с периодом \(2n\) на \(\mathbb{R}\).
 
-		\noindent \(\Rightarrow \forall n ~ \exists f_\varepsilon^n(x) = \sum\limits_{k \in K} a_k\cdot e^{\frac{ik\pi x}{n}}, ~a_k \in \mathbb{R},\) \(K\)~--- конечное подмножество \(\mathbb{Z},\) такое, что \(\forall x \in [-n, n]: |f_\varepsilon^n(x) - f_\varepsilon(x)| < \frac{1}{n}.\) \(f_\varepsilon^n\)~---периодическая с периодом \(2n\) на \(\mathrm{R}\). Поскольку \(|f_\varepsilon(x)| < 2\) и \(\forall x \in [-n, n]: |f_\varepsilon^n(x) - f_\varepsilon(x)| < \frac{1}{n}\), то \(|f_\varepsilon^n(x)| \leqslant 2 ~ \forall x.\) По условию, \(\forall t~\int\limits_\mathbb{R} e^{itx}dF(x) = \int\limits_\mathbb{R} e^{itx}dG(x) \Rightarrow \int\limits_\mathbb{R} f_\varepsilon^n(x)dF(x) = \int\limits_\mathbb{R} f_\varepsilon^n(x)dG(x).\)
+		\noindent \(\Rightarrow \forall n ~ \exists f_\varepsilon^n(x) = \sum\limits_{k \in K} a_k\cdot e^{\frac{ik\pi x}{n}}, ~a_k \in \mathbb{R},\) \(K\)~--- конечное подмножество \(\mathbb{Z},\) такое, что \(\forall x \in [-n, n] \hookrightarrow |f_\varepsilon^n(x) - f_\varepsilon(x)| < \frac{1}{n}.\) \(f_\varepsilon^n\)~---периодическая с периодом \(2n\) на \(\mathbb{R}\). Поскольку \(|f_\varepsilon(x)| < 2\) и \(\forall x \in [-n, n] \hookrightarrow |f_\varepsilon^n(x) - f_\varepsilon(x)| < \frac{1}{n}\), то \(|f_\varepsilon^n(x)| \leqslant 2 ~ \forall x.\) По условию, \(\forall t~\int\limits_\mathbb{R} e^{itx}dF(x) = \int\limits_\mathbb{R} e^{itx}dG(x) \Rightarrow \int\limits_\mathbb{R} f_\varepsilon^n(x)dF(x) = \int\limits_\mathbb{R} f_\varepsilon^n(x)dG(x).\)
 		\begin{gather*}
 			\left|\int\limits_\mathbb{R} f_\varepsilon(x) dF(x) - \int\limits_\mathbb{R} f_\varepsilon(x)dG(x)\right| \leqslant \left|\int\limits_\mathbb{R} f_\varepsilon(x) dF(x) - \int\limits_\mathbb{R} f_\varepsilon^n(x) dF(x)\right| +\\
 			+  \left|\int\limits_\mathbb{R} f_\varepsilon^n(x) dF(x) - \int\limits_\mathbb{R} f_\varepsilon^n(x) dG(x)\right| + \left|\int\limits_\mathbb{R} f_\varepsilon^n(x) dG(x) - \int\limits_\mathbb{R} f_\varepsilon(x) dG(x)\right| \leqslant\\
 			\leqslant \frac{1}{n} \int\limits_{[-n,n]}dF(x) + \frac{1}{n} \int\limits_{[-n,n]}dG(x) +(\underbracket{1 - F(n)}_{\to 0} + \underbracket{F(-n)}_{\to 0} + \underbracket{1 - G(n)}_{\to 0} + \underbracket{G(-n)}_{\to 0}) \leqslant\\
-			\leqslant \frac{2}{n} + o(1) \Rightarrow \forall \varepsilon> 0 \hookrightarrow \int f_\varepsilon(x) dF(x) = \int f_\varepsilon(x)dG(x).
+			\leqslant \frac{2}{n} + o(1) \Rightarrow \forall \varepsilon> 0 \hookrightarrow \int_\mathbb{R} f_\varepsilon(x) dF(x) = \int_\mathbb{R} f_\varepsilon(x)dG(x).
 		\end{gather*}
-		При \(\varepsilon \to 0 f_\varepsilon(x) \to I_{[a,b]}(x),\) при этом \(|f_\varepsilon(x)| \leqslant 1~ \forall x \in \mathbb{R}.\) По теореме Лебега о мажорированной сходимости (рассматриваем \(f_\varepsilon(x)\) как набор случайных величин на \((\mathbb{R}, \B(\R), P_f) \to (\mathbb{R}, \B(\mathbb{R}))\)).
+		При \(\varepsilon \to 0 \ f_\varepsilon(x) \to I_{[a,b]}(x),\) при этом \(|f_\varepsilon(x)| \leqslant 1~ \forall x \in \mathbb{R}.\) По теореме Лебега о мажорированной сходимости (рассматриваем \(f_\varepsilon(x)\) как набор случайных величин на \((\mathbb{R}, \B(\R), P_f) \to (\mathbb{R}, \B(\mathbb{R}))\)).
 		\(\int\limits_\R f_\varepsilon(x)dF(x) \to \int\limits_\R I_{[a,b]}dF(x) = F(b) - F(a).\)
 		Аналогично, для функции распределения \(G\) \(\int\limits_\R f_\varepsilon(x)dG(x) \underset{\varepsilon \to 0}{\longrightarrow} G(b) - G(a) \Rightarrow \forall a < b ~ F(b) - F(a) = G(b) - G(a).\)  Полагая \(a = (-\infty), \) получаем требуемое.
 	\end{proof}
 
 	\begin{theorem}[критерий назависимости]
-		Пусть \(\vec{\xi} = (\xi_1, \ldots, \xi_n).\) Тогда \((\xi_1, \ldots, \xi_n)\)~--- назависимые в совокупности \(\Leftrightarrow \varphi_{\vec{\xi}(\vec{t})} = \prod\limits_{i = 1}^n \varphi_{\xi_i}(t_i) ~\forall \vec{t} = (t_1, \ldots, t_n) \in \R^n.\)
+		Пусть \(\vec{\xi} = (\xi_1, \ldots, \xi_n).\) 
+		
+		Тогда \((\xi_1, \ldots, \xi_n)\)~--- назависимые в совокупности $\Leftrightarrow$ 
+		
+		\(\varphi_{\vec{\xi}}(\vec{t}) = \prod\limits_{i = 1}^n \varphi_{\xi_i}(t_i) ~\forall \vec{t} = (t_1, \ldots, t_n) \in \R^n.\)
 	\end{theorem}
 
 	\begin{proof}
-		\((\Rightarrow) ~ \varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t}, \vec{\xi}}) = Eei^{\sum\limits_{k = 1}^{n}t_k\xi_k} \overset{\text{нез-сть}}{=} \prod\limits_{k = 1}^n Ee^{it_k\xi_k} = \prod\limits_{k = 1}^n \varphi_{\xi_x}(t_k).\)
+		\((\Rightarrow) ~ \varphi_{\vec{\xi}}(\vec{t}) = Ee^{i(\vec{t}, \vec{\xi})} = Ee^{i\sum\limits_{k = 1}^{n}t_k\xi_k} \overset{\text{нез-сть}}{=} \prod\limits_{k = 1}^n Ee^{it_k\xi_k} = \prod\limits_{k = 1}^n \varphi_{\xi_k}(t_k).\)
 
 		\((\Leftarrow)\) Пусть \(F_k(x)\)~--- функция распределения случайной величины \(\xi_k.\) Пусть \(G(x_1, \ldots, x_n) = F_1(x)\cdot\ldots\cdot F_n(x)\)~--- это функция распределения. Посчитаем её характеристическую функцию:
-		\(\varphi_G(t) = \int\limits_{\R^n}e^{i(\vec{t}, \vec{x})}dG(\vec{x}) = \int\limits_\R e^{i(\vec{t}, \vec{x})}dF_1(x_1)\cdot\ldots\cdot dF_n(x_n) = \)(по теореме Фубини) \(\prod\limits_{k = 1}^n \int\limits_\R e^{it_kx_k} dF_k(x_k) = \prod\limits_{k = 1}^n\varphi_{\xi_k}(t_k) \overset{\text{по усл}}{=}\varphi_{\vec{\xi}}(\vec{t}) \Rightarrow\) характеристическая функция \(G\) и \(\vec{\xi}\) совпадают \(\Rightarrow\) по теореме единственности \(F_\xi = G \Rightarrow F_{\vec{\xi}}(\vec{x}) = \prod\limits_{k = 1}^n F_{\xi_k}(x_k) \Rightarrow \xi_1, \ldots, \xi_n\) независимы в совокупности по критерию независимости в терминах функции распределения.
+		\(\varphi_G(t) = \int\limits_{\R^n}e^{i(\vec{t}, \vec{x})}dG(\vec{x}) = \int\limits_\R e^{i(\vec{t}, \vec{x})}dF_1(x_1)\cdot\ldots\cdot dF_n(x_n) \overset{\text{Фубини}}{=} \prod\limits_{k = 1}^n \int\limits_\R e^{it_kx_k} dF_k(x_k) = \prod\limits_{k = 1}^n\varphi_{\xi_k}(t_k) \overset{\text{усл}}{=}\varphi_{\vec{\xi}}(\vec{t}) \Rightarrow\) характеристическая функция \(G\) и \(\vec{\xi}\) совпадают \(\Rightarrow\) по теореме единственности \(F_\xi = G \Rightarrow F_{\vec{\xi}}(\vec{x}) = \prod\limits_{k = 1}^n F_{\xi_k}(x_k) \Rightarrow \xi_1, \ldots, \xi_n\) независимы в совокупности по критерию независимости в терминах функции распределения.
 	\end{proof}
 
 	\subsection{Проверка того, что \(\varphi\)~---характеристическая функция}
@@ -187,7 +191,7 @@
 			\forall t_1, \ldots, t_n \in \R~\forall z_1, \ldots, z_n \in \mathbb{C}\\
 			\sum\limits_{j, k = 1}^{n}\varphi(t_j - t_k)z_j \overline{z_k} =
 			\sum\limits_{j, k = 1}^{n}Ee^{i(t_j - t_k)\xi}z_j\overline{z_k} = E\bigg(\Big(\sum\limits_{j = 1}^ne^{it_j\xi}z_j\Big)\overline{\Big(\sum\limits_{k = 1}^ne^{it_k\xi}z_k\Big)}\bigg) =\\
-			= E \sum\limits_{k, k = 1}^{n}e^{it_j\xi}\cdot z_j \cdot \overline{e^{et_k\xi}}\cdot \overline{z_k} = E\left|\sum\limits_{j = 1}^{n} e^{it_j\xi}z_j\right|^2 \geqslant 0
+			= E \sum\limits_{j, k = 1}^{n}e^{it_j\xi}\cdot z_j \cdot \overline{e^{it_k\xi}}\cdot \overline{z_k} = E\left|\sum\limits_{j = 1}^{n} e^{it_j\xi}z_j\right|^2 \geqslant 0
 		\end{gather*}
 	
 		\((\Leftarrow)\) [б/д]
@@ -294,17 +298,17 @@
 			\begin{gather*}
 				\frac{1}{D_n^2} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x-a|>\varepsilon D_n\}} |x - a|^2 dF_k(x)=\\
 				= \frac{1}{n\sigma^2} \sum\limits_{k = 1}^{n} \int\limits_{\{x:|x-a| > \varepsilon D_n\}} |x-a|^2dF_1(x) = \\
-				\frac{1}{\sigma^2} \int\limits_{|x-a| > \varepsilon \sqrt{n}\sigma} |x-a|^2 dF_1(x) \to 0, \text{ т.к. }\{x:|x-a| > \varepsilon\sqrt{n}\sigma\} \to \varnothing;\\
+				= \frac{1}{\sigma^2} \int\limits_{|x-a| > \varepsilon \sqrt{n}\sigma} |x-a|^2 dF_1(x) \to 0, \text{ т.к. }\{x:|x-a| > \varepsilon\sqrt{n}\sigma\} \to \varnothing;\\
 				\int\limits_\R |x-a|^2 dF_1(x) < +\infty.
 			\end{gather*}
 		\end{proof}
 		\item Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые случайные величины, \(|\xi_k| \leqslant K; ~D_n \to +\infty\). Тогда 
 		\begin{gather*}
 			\int\limits_{|x-m_k| > \varepsilon D_n}(x - m_k)^2 dF_k(x) = \\
-			= E((\xi_k - m_k)^2\cdot T(|\xi_k - m_k| > \varepsilon D_n)) \leqslant (2k)^2 EI(|\xi_k - m_k| > \varepsilon D_n) =\\
-			=  (2k)^2P(|\xi_k - m_k| > \varepsilon D_n),
+			= E((\xi_k - m_k)^2\cdot I(|\xi_k - m_k| > \varepsilon D_n)) \leqslant (2K)^2 EI(|\xi_k - m_k| > \varepsilon D_n) =\\
+			=  (2K)^2P(|\xi_k - m_k| > \varepsilon D_n),
 		\end{gather*}
-		то по неравенству Чебышева это не превосходит \[(2k)^2 \frac{\sigma_k^2}{\varepsilon^2 D_n^2}.\] Рассмотрим сумму \[\frac{1}{D_n^2} \sum\limits_{k = 1}^{n} \int\limits_{x: |x- m_k| > \varepsilon D_n} |x-m_k|^2 dF_k(x) \leqslant \frac{(2k)^2}{D_n^2} \sum\limits_{k = 1}^{n} \frac{\sigma^2_k}{\varepsilon^2 D_n^2} = \frac{(2k)^2}{\varepsilon^2D_n^2} \overset{n \to \infty}{\to 0} \text{ т.к. } D_n \to \infty.\]
+		то по неравенству Чебышева это не превосходит \[(2K)^2 \frac{\sigma_k^2}{\varepsilon^2 D_n^2}.\] Рассмотрим сумму \[\frac{1}{D_n^2} \sum\limits_{k = 1}^{n} \int\limits_{\{x: |x- m_k| > \varepsilon D_n\}} |x-m_k|^2 dF_k(x) \leqslant \frac{(2K)^2}{D_n^2} \sum\limits_{k = 1}^{n} \frac{\sigma^2_k}{\varepsilon^2 D_n^2} = \frac{(2K)^2}{\varepsilon^2D_n^2} \overset{n \to \infty}{\to 0} \text{ т.к. } D_n \to \infty.\]
 	\end{enumerate}
 
 	\begin{note}[Теорема Феллера.]
@@ -314,7 +318,7 @@
 		\]
 	\end{note}
 	\begin{theorem}[Берри-Эссена(б/д)]
-		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(E|\xi_i|^3 < +\infty, ~ E\xi_i = a, ~ D\xi_i = \sigma^2, ~S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ T_n = \dfrac{S_n - ES_n}{\sqrt{DS_n}}.\) Тогда 
+		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(E|\xi_1|^3 < +\infty, ~ E\xi_1 = a, ~ D\xi_1 = \sigma^2, ~S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ T_n = \dfrac{S_n - ES_n}{\sqrt{DS_n}}.\) Тогда 
 		\[
 			\sup\limits_{x\in \R}|F_{T_n}(x) - \Phi(x)| \leqslant C\cdot \frac{E|\xi_1 - a|^3}{\sigma^3\sqrt{n}}, \text{ где } \frac{1}{\sqrt{2\pi}} < C < 0,48,
 		\]
