@@ -1,4 +1,4 @@
-\section{Глава 8.}
+\section{Глава 8. Гауссовские векторы.}
 \subsection{Гауссовские случайные векторы}
 	\begin{definition}[1]
 		Случайный вектор $\vec{\xi} \sim N(\vec{m}, \Sigma)$~--- гауссовский, если его характеристическая функция $\varphi_{\vec{\xi}}(\vec{t}) = \E e^{i(\vec{t},\vec{\xi})} = \exp\left(i(\vec{m}, \vec{t}) - \frac{1}{2}(\Sigma \vec{t}, \vec{t})\right), ~ \vec{m} \in \R^n, ~\Sigma \in \operatorname{Mat}_{n \times n}$~--- симметричная неотрицательно определённая матрица.
@@ -66,7 +66,7 @@
 		\end{enumerate}
 	\end{proof}
 
-	\subsection{Свойства гауссовских векторов}
+	\subsection{Свойства гауссовских векторов (6 штук)}
 	\setcounter{property}{0}
 	\begin{property}
 		Если \(\vec{\xi} \sim N(\vec{a}, \Sigma),\) то \(\vec{a} = \left(
@@ -113,7 +113,8 @@
     	$f(\vec{x}) = \frac{1}{(2\pi)^{n / 2}|\Sigma|^{1/2}} \exp\left(-\frac{1}{2}(\Sigma^{-1}(\vec{x} - \vec{m}), (\vec{x} - \vec{m}))\right), x \in \R^n$.
     \end{property}
 
-\subsection{Многомерная ЦПТ}
+\subsection{Многомерная ЦПТ}~
+
     \begin{theorem}[Многомерная ЦПТ]
     	Пусть $\{\vec x_i\}_{i \geqslant 1}$ --- независимые одинаково распределенные случайные вектора, $\E \vec{x}_i = \vec{a}$, $\var \vec{x}_i = \Sigma$.
     	

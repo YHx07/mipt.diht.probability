@@ -1,9 +1,10 @@
-\section{Глава 7.}
+\section{Глава 7. Характеристические функции. ЦПТ.}
 
 \subsection{Характеристические функции}
 \begin{definition}
 	Характеристической функцией случайной величины $\xi$ называется $\varphi_\xi(t) = \E e^{it\xi}, t \in \R$. (Формально это преобразование Фурье случайной величины $\xi$).
 \end{definition}
+
 \begin{definition}
 	Пусть $F(x)$~--- функция распределения, тогда ее характеристическая функция $\varphi_F (t) = \int\limits_\R e^{i t x} \, d F(x)$.
 \end{definition}
@@ -14,10 +15,12 @@
  \begin{definition}
  	Пусть $\vec \xi = ( \xi_1, \ldots, \xi_n)$~--- случайный вектор. Его характеристической функцией называется $\varphi_{\vec \xi} \left(\vec t \right) = \E e^{i \left( \vec t, \vec \xi \right)}, t \in \R^n$.
  \end{definition}
+ 
  \begin{definition}
  	Пусть $F \left( \vec x \right), \vec x \in \R^n$~--- функция распределения в $\R^n$, тогда его характеристической функцией называется $\varphi_F \left( \vec t \right) = \int\limits_\R e^{i \left( \vec t, \vec x \right)} \, d F \left( \vec x \right), \vec x \in \R^n$.
  \end{definition}
- \subsection{Свойства характеристических функций}
+ 
+ \subsection{Свойства характеристических функций (8 штук)}
  Свойство №0. Харфункция существует всегда.
  \setcounter{property}{0}
  \begin{property}
@@ -28,7 +31,7 @@
  \end{property}
  
  \begin{property}
-		Пусть $\varphi(t)$~---характеристическая функция случайной величины $\xi$, а $\eta = a\xi + b$, где $a, b \in \mathbb{R}$, тогда $\varphi_\eta(t) = e^{itb}\cdot \varphi_\xi(at).$
+		Пусть $\varphi(t)$~--- характеристическая функция случайной величины $\xi$, а $\eta = a\xi + b$, где $a, b \in \mathbb{R}$, тогда $\varphi_\eta(t) = e^{itb}\cdot \varphi_\xi(at).$
 		\begin{proof}
 			$\varphi_\eta(t) = \E e^{it\eta} = \E e^{it(a\xi + b)} = e^{itb} \E e^{ita\xi} = e^{itb}\cdot \varphi_\xi(at)$ ($e^{itb} = const$, значит можем вытащить за матожидание).
 		\end{proof}
@@ -44,6 +47,7 @@
 			$= \prod\limits_{k = 1}^{n}\E e^{it\xi_k} = \prod\limits_{k = 1}^{n}\varphi_{\xi_k}(t).$
 		\end{proof}
 	\end{property}
+	
 	\begin{property}
 		Пусть $\varphi(t)$~--- характеристическая функция, тогда $\varphi(t) = \overline{\varphi(-t)}$
 		\begin{proof}
@@ -52,6 +56,7 @@
 			Комментарий к $(*)$: матожидание можно записать как предел матожиданий простых функций, простые функции -- это конечные суммы, у них можно навесить сопряжение на все выражение. Поэтому в пределе получаем верный переход.
 		\end{proof}
 	\end{property}
+	
 	\begin{property}
 		Пусть $\varphi(t)$~--- характеристическая функция случайной величины $\xi$, тогда $\varphi(t)$ равномерно непрерывна на $\mathbb{R}.$
 		\begin{proof}
@@ -131,18 +136,23 @@
 		\underline{\text{Условие теоремы}}: $\left(\frac{E|\xi|^m}{m!}\right)^{\frac{1}{m}} \leqslant \left(\frac{(m - 1)!!}{m!}\right)^{\frac{1}{m}} = \left(\frac{1}{m!!}\right)^{\frac{1}{m}} \approx \frac{1}{\sqrt{2}}\left(\left(\frac{m}{2e}\right)^{\frac{m}{2}}\right)^{\frac{1}{m}} \sim \frac{C}{\sqrt{m}} \to 0 \Rightarrow T = + \infty.$ (В приближении воспользовались формулой Стирлинга.)
 	\end{example}
 
-	\begin{theorem}[формула обращения (б/д)]
-		Пусть $\varphi(t)$ характеристическая функция функции распределения $F$. Тогда
+	\begin{theorem}[формула обращения (б/д)]~
+	
+		Пусть $\varphi(t)$ характеристическая функция функции распределения $F$. 
+		
+		Тогда
 		\begin{enumerate}
-			\item Для $\forall a < b$ (точки непрерывности) $F$ выполнено
+			\item $\forall a < b$ (точки непрерывности) $F$ выполнено
 			$F(b) - F(a) = \frac{1}{2\pi} \lim\limits_{c \to +\infty} \int\limits_{-c}^{c} \frac{e^{-itb} - e^{-ita}}{it}\varphi(t)dt$
 			\item Если $\int\limits_\mathbb{R}|\varphi(t)|dt < +\infty,$ то у функции распределения $F(x)$ существует плотность $f(x)$ и $f(x) = \frac{1}{2\pi}\int\limits_\mathbb{R} e^{-itx}\varphi(t)dt.$
 		\end{enumerate}
 	\end{theorem}
 	
-	\begin{theorem}[единственности]
+	\begin{theorem}[единственности]~
+	
 		Пусть \(F\) и \(G\)~--- функции распределения, такие что \(\varphi_{F(x)} = \varphi_{G(x)} \Rightarrow \forall x~F(x) = G(x).\)
 	\end{theorem}
+	
 	\begin{proof}
 		Пусть \(a < b \in \mathbb{R}\). Рассмотрим \(f_\varepsilon(x)\)(шапочка). Докажем, что \(\forall \varepsilon > 0 \int\limits_{\mathbb{R}} f_\varepsilon(x) dF(x) = \int\limits_\mathbb{R}f_\varepsilon(x)dG(x).\) Рассмотрим отрезок \([-n, n]\) такой, что \([a, b + \varepsilon] \subset [-n, n].\) По теореме Вейерштрасса-Стоуна (приближение любой функции тригонометрическими полиномами), \(f_\varepsilon(x)\) сколь угодно точно приближается тригонометрическими многочленами от \(\frac{\pi x}{n}\), так как \(f_\varepsilon(x)\) непрерывна и периодична на \([-n, n]\) с периодом \(2n\) на \(\mathbb{R}\).
 
@@ -158,7 +168,8 @@
 		Аналогично, для функции распределения \(G\) \(\int\limits_\R f_\varepsilon(x)dG(x) \underset{\varepsilon \to 0}{\longrightarrow} G(b) - G(a) \Rightarrow \forall a < b ~ F(b) - F(a) = G(b) - G(a).\)  Полагая \(a = (-\infty), \) получаем требуемое.
 	\end{proof}
 
-	\begin{theorem}[критерий назависимости]
+	\begin{theorem}[критерий назависимости]~
+	
 		Пусть \(\vec{\xi} = (\xi_1, \ldots, \xi_n).\) 
 		
 		Тогда \((\xi_1, \ldots, \xi_n)\)~--- назависимые в совокупности $\Leftrightarrow$ 
@@ -179,7 +190,8 @@
 		Функция \(\varphi(t)\) является неотрицательно определённой, если \(\forall n ~ \forall t_1, \ldots, t_n \in \R, ~\forall z_1, \ldots, z_n \in \mathbb{C}, ~ \sum\limits_{i, j = 1}^{n}\varphi(t_i - t_j)z_i\overline{z_j} \geqslant 0\).
 	\end{definition}
 
-	\begin{theorem}[Бохнера-Хинчина]
+	\begin{theorem}[Бохнера-Хинчина]~
+	
 		Пусть \(\varphi(t)\) такая, что \(\varphi(0) = 1\) и \(\varphi(t)\) непрерывна в нуле. 
 		
 		Тогда \(\varphi(t)\)~--- характеристическая функция \(\Leftrightarrow \varphi(t)\) неотрицательно определённая.
@@ -205,7 +217,8 @@
 		Все три условия из теоремы Бохнера-Хинчина выполнены.
 	\end{proof}
 	
-	\begin{theorem}[Пойа(б/д)]
+	\begin{theorem}[Пойа(б/д)]~
+	
 		Пусть непрерывная, чётная и выпуклая вниз на \((0; + \infty)\) функция \(\varphi(t)\) такова, что \(\varphi(t) \geqslant 0, ~ \varphi(0) = 1, ~\varphi(t) \underset{t \to +\infty}{\longrightarrow} 0\). 
 		
 		Тогда \(\varphi(t)\)~---характеристическая функция.
@@ -214,29 +227,31 @@
 	\begin{example}
 		Любая функция вида
 		\begin{center}
-			\includegraphics[scale=0.4]{img/img1.png}
+			\includegraphics[scale=0.32]{img/img1.png}
 		\end{center}
 		является характеристической.
 	\end{example}
 
-	\begin{theorem}[Марцинкевича(б/д)]
+	\begin{theorem}[Марцинкевича(б/д)]~
+	
 		Если характеристическая функция \(\varphi(t)\) имеет вид ~\(\exp(P(t)),\) где \(P(t)\)~--- полином, то степень этого полинома \(\leqslant 2 ~(\deg P(t) \leqslant 2).\)
 	\end{theorem}
 	\begin{example}
 		\(e^{-t^n}\) не является характеристической функцией.
 	\end{example}
 
-	\begin{definition}
+	\begin{definition}[
 		Последовательность функций \(F_n(x)\) слабо сходится к \(F(x)\), если \(\forall f(x)\)~---  непрерывна и ограничена, то верно \(\int\limits_\R f(x) dF_n(x) \to \int\limits_\R f(x)dF(x).\) Обозначение \(F_n \overset{w}{\longrightarrow}F.\)
 		\((\xi_n \overset{d}{\longrightarrow}\xi \Leftrightarrow F_{\xi_n} \overset{w}{\longrightarrow}F).\)
 	\end{definition}
-	\begin{theorem}[непрерывности для х.ф.]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-		\noindent1. ~Пусть \(\{F_n\}_{n \geqslant 1}\)~--- последовательность функций распределения на \(\R\), \({\varphi_n(t)}_{n \in \mathbb{N}}\) --- их х.ф. 
+	
+	\begin{theorem}[непрерывности для х.ф.]~
+	
+		1. Пусть \(\{F_n\}_{n \geqslant 1}\)~--- последовательность функций распределения на \(\R\), \({\varphi_n(t)}_{n \in \mathbb{N}}\) --- их х.ф. 
 		
 		Тогда  \(F_n \overset{w}{\longrightarrow}F \Rightarrow \forall t \in \R~\varphi_n(t) \to \varphi(t)\), где \(\varphi\)~--- характеристическая функция \(F\).
 		
-		\noindent2.(б/д)~ Пусть \(\forall t \in \R ~ \exists \varphi(t) = \lim\limits_{n \to +\infty} \varphi_n(t), \) причём \(\varphi(t)\) непрерывна в нуле. 
+		2. (б/д) Пусть \(\forall t \in \R ~ \exists \varphi(t) = \lim\limits_{n \to +\infty} \varphi_n(t), \) причём \(\varphi(t)\) непрерывна в нуле. 
 		
 		Тогда \(\exists F\)~--- функция распределения такая, что \(F_n \overset{w}{\longrightarrow}F\) и \(\varphi(t)\)~---характеристическая функция \(F\).
 	\end{theorem}
@@ -246,7 +261,8 @@
 	\end{proof}
 
 	\subsection{Центральная предельная теорема}
-	\begin{theorem}[ЦПТ в форме Леви]
+	\begin{theorem}[ЦПТ в форме Леви]~
+	
 		Пусть \(\{\xi_n\}_{n\geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(0 < D\xi < +\infty.\)
 		Обозначим \(S_n = \sum\limits_{i = 1}^{n}\xi_i.\) 
 		
@@ -262,7 +278,8 @@
 		Рассмотрим характеристическую функцию \(\eta_i\): по свойствам характеристической функции о разложении в ряд \(\varphi(t) \equiv \varphi_{\eta_i}(t) = 1 + it\underbracket{E\eta_j}_{0} + \frac{1}{2}\underbracket{E\eta_j^2}_1\cdot(it)^2 + o(t^2) = 1 - \frac{t^2}{2} + o(t^2), ~ t \to 0.\) Отсюда, \(\varphi_{T_n}(t) = \varphi_{\sum\limits_{j = 1}^{n}\eta_j}(\frac{t}{\sqrt{n}}) \overset{\text{св-ва х.ф. о независимости}}{=} \left(\varphi\left(\frac{t}{\sqrt{n}}\right)\right)^n = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right)\right)^n \limn e^{- \frac{t^2}{2}} \ \forall t\). Но \(e^{-\frac{t^2}{2}}\)~--- характеристическая функция \(N(0,1) \Rightarrow\) (по т. непрерывности) \(T_n = \frac{S_n - ES_n}{\sqrt{DS_n}} \overset{d}{\longrightarrow} N(0,1).\)
 	\end{proof}
 	
-	\begin{theorem}[Линдберга][б/д]
+	\begin{theorem}[Линдберга][б/д]~
+	
 		Пусть 
 		\begin{enumerate}
 		    \item случайные величины \(\{\xi_k\}_{k \geqslant 1}\) независимы, и \(\forall k~ E\xi_k^2 < +\infty\).
@@ -312,12 +329,14 @@
 	\end{enumerate}
 
 	\begin{note}[Теорема Феллера.]
+	
 		Условие Линдберга является необходимым и достаточным условием для справедливости ЦПТ при выполнении условия бесконечной малости слагаемых:
 		\[
 			\max\limits_{1 \leqslant k \leqslant n}P\left(\frac{|\xi_k - m_k|}{D_n} \geqslant \varepsilon\right) \to 0 \text{ при } n \to \infty.
 		\]
 	\end{note}
-	\begin{theorem}[Берри-Эссена(б/д)]
+	\begin{theorem}[Берри-Эссена(б/д)]~
+	
 		Пусть \(\{\xi_k\}_{k \geqslant 1}\)~--- независимые одинаково распределённые случайные величины, \(E|\xi_1|^3 < +\infty, ~ E\xi_1 = a, ~ D\xi_1 = \sigma^2, ~S_n = \sum\limits_{i = 1}^{n}\xi_i; ~ T_n = \dfrac{S_n - ES_n}{\sqrt{DS_n}}.\) Тогда 
 		\[
 			\sup\limits_{x\in \R}|F_{T_n}(x) - \Phi(x)| \leqslant C\cdot \frac{E|\xi_1 - a|^3}{\sigma^3\sqrt{n}}, \text{ где } \frac{1}{\sqrt{2\pi}} < C < 0,48,

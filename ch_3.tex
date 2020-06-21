@@ -1,4 +1,4 @@
-\section{Глава 3.}
+\section{Глава 3. Матожидание и дисперсия.}
 
 \subsection{Интеграл Лебега}
 \begin{definition}
@@ -20,7 +20,8 @@
     Пусть $\xi$~--- случайная величина, тогда введем обозначения $\xi_+ = \max(\xi, 0),\  \xi_- = \max(-\xi, 0)$. $\xi = \xi_+ - \xi_-$.
 \end{definition}
 
-\begin{lemma}[][б/д]
+\begin{lemma}[][б/д]~
+
 	$\forall \xi \geqslant 0$ существует набор простых случайных величин $\xi_n$: $\xi_n \uparrow \xi$ ($\xi_n$~--- простая, если $\xi_n = \sum\limits_{i = 1}^k c_iI_{A_i}$).
 \end{lemma}
 
@@ -60,8 +61,11 @@
     Для случайной величины $\xi \sim \text{Cauchy}(\theta)$ матожидание $\E\xi = +\infty$, то есть матожидание не определено.
 
 \subsection{Свойства матожидания (9 штук)}
-\begin{property}
-	Пусть $\xi$~--- случайная величина, $\E \xi$~--- конечно, тогда $\forall c \in \R \hookrightarrow \E(c\xi)$~--- конечно и $\E(c\xi) = c\E\xi$.
+\begin{property}~
+
+	Пусть $\xi$~--- случайная величина, $\E \xi$~--- конечно. 
+	
+	Тогда $\forall c \in \R \hookrightarrow \E(c\xi)$~--- конечно и $\E(c\xi) = c\E\xi$.
 	\begin{proof}
 	    \begin{enumerate}
     	    \item Для простых случайных величин свойство очевидно --- выносим константу $c$ за сумму. 
@@ -92,8 +96,11 @@
 	\end{proof}
 \end{property}
 
-\begin{property}[Аддитивность]
-	Пусть $\xi$ и $\eta$~--- случайные величины, $\E\xi$ и $\E\eta$~--- конечные, тогда $\E(\xi + \eta) = \E\xi + \E\eta$.
+\begin{property}[Аддитивность]~
+
+	Пусть $\xi$ и $\eta$~--- случайные величины, $\E\xi$ и $\E\eta$~--- конечные. 
+	
+	Тогда $\E(\xi + \eta) = \E\xi + \E\eta$.
 	\begin{proof}
 	    \begin{enumerate}
     	    \item Для простых случайных величин~--- очевидно. 
@@ -105,7 +112,8 @@
 	\end{proof}
 \end{property}
 
-\begin{property}
+\begin{property}~
+
 	\begin{enumerate}
 		\item Пусть $|\xi| \leqslant \eta$, $\E\eta$~--- конечное, тогда $\E \xi$~--- конечная.
 		\item Пусть $\xi \leqslant \eta$, $\E\eta$~--- конечное, тогда $\E\xi < + \infty$. \\
@@ -153,22 +161,31 @@
 	\end{proof}
 \end{property}
 
-\begin{property}
-	Пусть $\xi \geqslant 0$ и $\E \xi = 0$, тогда $\xi = 0$ почти наверное.
+\begin{property}~
+
+	Пусть $\xi \geqslant 0$ и $\E \xi = 0$.
+	
+	Тогда $\xi = 0$ почти наверное.
 	\begin{proof}
 		Рассмотрим события $A = \{ \xi > 0 \}$ и $A_n = \left\{ \xi > \frac{1}{n} \right\} $, следовательно, $A_n \uparrow A$. Имеем $\P (A_n) = \E I_{A_n}$, так как $n\xi > 1$ на $A_n$, то  $\E I_{A_n} \leqslant \E (n\xi \cdot I_A) \leqslant n \E \xi = 0$, значит, $\P(A) = \lim\limits_{n \rightarrow +\infty} \P (A_n) = 0$.
 	\end{proof}
 \end{property}
 
-\begin{property}
-	Пусть $\E \xi$ и $\E \eta$ конечны, $\forall A \in \F \hookrightarrow \E (\xi \cdot I_A) \leqslant \E ( \eta \cdot I_A)$. Тогда  $\xi \leqslant \eta$ почти наверное.
+\begin{property}~
+
+	Пусть $\E \xi$ и $\E \eta$ конечны, $\forall A \in \F \hookrightarrow \E (\xi \cdot I_A) \leqslant \E ( \eta \cdot I_A)$.
+	
+	Тогда  $\xi \leqslant \eta$ почти наверное.
 	\begin{proof}
 		Рассмотрим событие $B = \{ \xi > \eta \}$. Из условия и построения $B$ получаем, что $\E (\eta \cdot I_B) \leqslant \E (\xi \cdot I_B) \leqslant \E (\eta \cdot I_B)$, следовательно, $\E( \xi \cdot I_B) = \E(\eta \cdot I_B)$, значит $\E \big( (\xi - \eta) \cdot I_B \big) = 0$. Так как $(\xi - \eta) \cdot I_B \geqslant 0$, то по свойству 8 $(\xi - \eta) \cdot I_B = 0$ почти наверное, следовательно $I_B = 0$ почти наверное, потому что $\xi- \eta > 0$ на $B$.
 	\end{proof}
 \end{property}
 
-\begin{theorem}[о математическом ожидании произведения случайных величин]
-	Пусть $\xi \indep \eta$, причем $\E \xi$ и $\E \eta$ конечны, тогда $\E \xi \eta$ конечно и $\E \xi \eta = \E \xi \cdot \E \eta$.
+\begin{theorem}[о математическом ожидании произведения случайных величин]~
+
+	Пусть $\xi \indep \eta$, причем $\E \xi$ и $\E \eta$ конечны. 
+	
+	Тогда $\E \xi \eta$ конечно и $\E \xi \eta = \E \xi \cdot \E \eta$.
 	\begin{proof}
 	    \begin{enumerate}
 	        \item Пусть $\xi$ и $\eta$~--- простые случайные величины, то есть $\xi$ принимает значения $\{ x_1, \ldots, x_n \}$, $\eta$ принимает значения $\{ y_1, \ldots, y_n \}$. Тогда по линейности
@@ -189,7 +206,8 @@
 	
 Пусть $\xi = \sum\limits_{i = 1}^n x_i \cdot I (\xi = x_i)$~--- простая случайная величина. Тогда $\E g(\xi) = \sum\limits_{i=1}^{n} g(x_i) \cdot \P(\xi = x_i) = \sum\limits_{i = 1}^n g(x_i) \Delta F_\xi (x_i)$, где $\Delta F_\xi(x_i) = F_\xi(x_i) - F_\xi (x_i - 0)$.
 
-\begin{theorem}[о замене переменной в интеграле Лебега][б/д]
+\begin{theorem}[о замене переменной в интеграле Лебега][б/д]~
+
 	Пусть 
 	\begin{enumerate}
 	    \item $(\Omega, \F)$ и $(E, \mathcal{E})$~--- два измеримых пространства;
@@ -212,26 +230,30 @@
 \subsection{Прямое произведение вероятностных пространств и формула свертки}
 
 \begin{definition}
-	Пусть $(\Omega_1, \F_1, \P_1)$ и $(\Omega_2, \F_2, \P_2)$~--- два вероятностных пространства. Тогда $(\Omega, \F, \P)$~--- их прямое произведение, если 
+	Пусть $(\Omega_1, \F_1, \P_1)$ и $(\Omega_2, \F_2, \P_2)$~--- два вероятностных пространства.
+	
+	Тогда $(\Omega, \F, \P)$~--- их прямое произведение, если 
 	\begin{enumerate}
 		\item $\Omega = \Omega_1 \times \Omega_2$, то есть $\omega = (\omega_1, \omega_2)$;
 		\item $\F = \F_1 \otimes \F_2$, то есть $\F = \sigma\big\{ \{ B_1 \times B_2 \} | B_1 \in \F_1, B_2 \in \F_2 \big\}$;
 		\item $\P = \P_1 \otimes \P_2$, то есть  $\P$~--- продолжение вероятностной меры $\P_1 \times \P_2$, заданное на прямоугольнике $B_1 \times B_2, B_1 \in \F_1, B_2 \in \F_2$ по правилу $\P(B_1 \times B_2) = \P_1 (B_1) \cdot \P_2 (B_2)$. Так как $\{B_1 \times B_2 \}$~--- полукольцо, то $\P$ существует и единственна по теореме Каратеодори.
 	\end{enumerate}
 \end{definition}
-\begin{theorem}[Фубини][б/д]
+\begin{theorem}[Фубини][б/д]~
+
 	Пусть 
 	\begin{enumerate}
 	    \item $(\Omega, \F, \P)$~--- прямое произведение вероятностных пространств $(\Omega_1, \F_1, \P_1)$ и $(\Omega_2, \F_2, \P_2)$.
-	    \item $\xi : \Omega \rightarrow \R$ такая, что $\int\limits_\Omega \big| \xi (\omega_1, \omega_2) \big| \, d \P < + \infty$.
+	    \item $\xi : \Omega \rightarrow \R$ такая, что $\int\limits_{\Omega} \big| \xi (\omega_1, \omega_2) \big| \, d \P < + \infty$.
 	\end{enumerate}
-     Тогда интегралы $$\int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \text{ и } \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2)$$
-     \begin{enumerate}
-         \item определены почти наверное относительно $\P_2$ и $\P_1$ соответственно;
-         \item являются измеримыми случайными величинами относительно $\F_2$ и $\F_1$.
-         \item $$\int\limits_\Omega \xi (\omega_1, \omega_2) \, d \P = \int\limits_{\Omega_2} \int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \P_2 (d \omega_2) = \int\limits_{\Omega_1} \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2) \P_1 (d \omega_1).$$
-     \end{enumerate}
-	 Из всего этого следует, что двойной интеграл равен повторному.
+	
+    Тогда интегралы $$\int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \text{ и } \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2)$$
+    \begin{enumerate}
+        \item определены почти наверное относительно $\P_2$ и $\P_1$ соответственно;
+        \item являются измеримыми случайными величинами относительно $\F_2$ и $\F_1$.
+        \item $$\int\limits_\Omega \xi (\omega_1, \omega_2) \, d \P = \int\limits_{\Omega_2} \int\limits_{\Omega_1} \xi (\omega_1, \omega_2) \P_1 (d \omega_1) \P_2 (d \omega_2) = \int\limits_{\Omega_1} \int\limits_{\Omega_2} \xi(\omega_1, \omega_2) \P_2 (d \omega_2) \P_1 (d \omega_1).$$
+    \end{enumerate}
+	Из всего этого следует, что двойной интеграл равен повторному.
 \end{theorem}
 
 \begin{statement}
@@ -245,8 +267,11 @@
  	\end{proof}
 \end{statement}
 
-\begin{lemma}[о свертке]
-	Пусть случайные величины $\xi$ и $\eta$ независимы c функциями распределения $F_\xi$ и $F_\eta$. Тогда
+\begin{lemma}[о свертке]~
+
+	Пусть случайные величины $\xi$ и $\eta$ независимы c функциями распределения $F_\xi$ и $F_\eta$.
+	
+	Тогда
 	\begin{enumerate}
 	    \item Выполняется равенство: $$ F_{\xi + \eta} (z) = \int\limits_\R F_\xi (z - x) \, dF_\eta (x) = \int\limits_\R F_\eta(z - x) \, d F_\xi(x).$$
 	    \item Если $\xi$ и $\eta$ имеют плотности распределения $f_\xi$ и $f_\eta$ соответственно, то $\xi + \eta$ имеет плотность распределения $$f_{\xi + \eta} (z) = \int\limits_\R f_\xi (z - x) f_\eta (x) \, dx = \int\limits_\R f_\eta (z - x) f_\xi(x) \, dx$$.
@@ -305,7 +330,8 @@
 	\end{proof}
 \end{property}
 
-\begin{property}[Неравенство Коши-Буняковского]
+\begin{property}[Неравенство Коши-Буняковского]~
+
 	$\left| \E \xi \eta \right|^2 \leqslant \E \xi^2 \cdot \E \eta^2$
 	\begin{proof}
 		Рассмотрим для $\lambda \in \R$ функцию $f( \lambda ) = \E (\xi - \lambda \eta)^2 \geqslant 0$. Имеем $f( \lambda ) = \E \xi^2 + 2 \lambda \E \xi \eta + \lambda^2 \E \eta^2 \geqslant 0$. Для выполнения неравенства дискриминант  полученного многочлена должен быть меньше нуля: $D = 4 \E \xi \eta - 4 \E \xi^2 \eta^2 \leqslant 0$, откуда следует неравенство.
@@ -365,21 +391,24 @@
 \end{lemma}
 
 \subsection{Неравенства (3 штуки)}
-\begin{lemma}[Неравенство Маркова]
+\begin{lemma}[Неравенство Маркова]~
+
 	Пусть $\xi \geqslant 0$~--- случайная величина, $\E \xi < +\infty$. Тогда $\forall \varepsilon > 0 \hookrightarrow \P (\xi \geqslant \varepsilon ) \leqslant \dfrac{\E \xi}{\varepsilon}$.
 	\begin{proof}
 		$\P (\xi \geqslant \varepsilon ) = \E I(\xi \geqslant \varepsilon)$. На множестве ${ \xi \geqslant \varepsilon}$ случайная величина $\dfrac{\xi}{\varepsilon} \geqslant 1$, следовательно $\E I(\xi \geqslant \varepsilon) \leqslant \E \left( \dfrac{\xi}{\varepsilon} \cdot I (\xi \geqslant \varepsilon) \right) \leqslant \dfrac{1}{\varepsilon} \cdot  \E \xi$.
 	\end{proof}
 \end{lemma}
 
-\begin{lemma}[Неравенство Чебышёва]
+\begin{lemma}[Неравенство Чебышёва]~
+
 	Пусть $\xi$~--- случайная величина такая, что $\D \xi < + \infty$, тогда $\forall \varepsilon > 0 \hookrightarrow \P \big(|\xi - \E \xi | \geqslant \varepsilon \big) \leqslant \dfrac{\D \xi}{\varepsilon^2}$.
 	\begin{proof}
 		$\P \big(|\xi - \E \xi | \geqslant \varepsilon\big) = \P \big( | \xi - \E \xi |^2 \geqslant \varepsilon^2 \big)$. Из неравенства Маркова имеем, что $\P \big( | \xi - \E \xi |^2 \geqslant \varepsilon^2 \big) \leqslant \dfrac{\E (\xi - \E \xi )^2}{\varepsilon^2} = \dfrac{\D \xi}{\varepsilon^2}$.
 	\end{proof} 
 \end{lemma}
 
-\begin{lemma}[Неравенство Йенсена]
+\begin{lemma}[Неравенство Йенсена]~
+
 	Пусть $g(x)$~--- борелевская выпуклая вниз (вверх) функция и $\E \xi < +\infty$. 
 	Тогда $\E g(\xi) \geqslant g(\E \xi )$ (~$\E g(\xi) \leqslant g(\E \xi )$\,).
 	\begin{proof}
@@ -391,7 +420,8 @@
 %	Пусть $\xi$ и $\{\xi_i\}_{i=1}^{+\infty}$~--- случайные величины, тогда $\xi_n \overset{\P}{\rightarrow} \xi$ сходится по вероятности, если $\forall \varepsilon > 0 : \P \big(\omega : | \xi_n (\omega) - \xi ( \omega ) | > \varepsilon \big) \rightarrow 0$ при $n \rightarrow +\infty$.
 %\end{definition}
 
-\begin{theorem}[ЗБЧ в форме Чебышёва]
+\begin{theorem}[ЗБЧ в форме Чебышёва]~
+
 	Пусть 
 	\begin{enumerate}
 	    \item $\{\xi_i\}_{i=1}^{+\infty}$~---  попарно некоррелированные случайные величины, причем $\forall n \hookrightarrow \D \xi_n \leqslant C$.
@@ -406,7 +436,8 @@
 	\end{proof}
 \end{theorem}
 
-\begin{consequence}
+\begin{consequence}~
+
 	Пусть $\{ \xi_n \}_{i=1}^{+\infty}$~--- независимые случайные величины такие, что:
 	\begin{enumerate}
 	    \item $\forall n \in \N \hookrightarrow \D \xi_n \leqslant C$,
