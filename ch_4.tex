@@ -1,4 +1,5 @@
-\section{Глава 4.}
+\section{Глава 4. Условное математическое ожидание. Условные распределения.}
+
 \subsection{Условные математические ожидания (УМО)}
 Пусть $(\Omega, \F, \P)$~--- вероятностное пространство; $\xi: \Omega \rightarrow \R$~--- случайная величина; $\F_\xi = \{ \xi^{-1}(B), B \in \B(\R) \}$~--- $\sigma$-алгебра, порожденная $\xi$. 
 
@@ -10,7 +11,8 @@
     \end{enumerate}
 \end{definition}
 
-\begin{definition}
+\begin{definition}~
+
 	Пусть $\xi$~--- случайная величина на $(\Omega, \F, \P)$, $\G$~--- под$\sigma$-алгебра $\F$. 
 	
 	Условным математическим ожиданием случайной величины $\xi$ относительно $\G$ называется случайная величина $\E (\xi | \G)$, обладающая следующими свойствами:
@@ -20,8 +22,12 @@
 	\end{enumerate}
 	Обозначаем $\E (\xi | \eta ) \equiv \E (\xi | \F_\eta )$, если такая $\eta$ существует.
 \end{definition}
-\begin{definition}
-	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство. Функция множеств $\nu: \F \rightarrow \R$~--- заряд (мера со знаком), если $\nu$~--- $\sigma$-аддитивна на $\F$, то есть $\nu \left( \bigsqcup\limits_{i=1}^{+\infty} A_i \right) = \sum\limits_{i=1}^{+\infty} \nu (A_i)$ для $\{ A_i \}_{i=1}^{+\infty} \in \F$, ряд в правой части сходится абсолютно и  $\sup\limits_{A \in \F} | \nu(A) | < + \infty$.
+
+\begin{definition}~
+
+	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство.
+	
+	Функция множеств $\nu: \F \rightarrow \R$~--- заряд (мера со знаком), если $\nu$~--- $\sigma$-аддитивна на $\F$, то есть $\nu \left( \bigsqcup\limits_{i=1}^{+\infty} A_i \right) = \sum\limits_{i=1}^{+\infty} \nu (A_i)$ для $\{ A_i \}_{i=1}^{+\infty} \in \F$, ряд в правой части сходится абсолютно и  $\sup\limits_{A \in \F} | \nu(A) | < + \infty$.
 	
 	Любой заряд можно разложить в разность двух мер.
 \end{definition}
@@ -30,7 +36,8 @@
 	Заряд $\nu$ называется абсолютно непрерывным относительно меры $\P$ (не обязательно вероятностной), если $\forall A \in \F \hookrightarrow \big(\P (A) = 0~\Rightarrow~\nu (A) = 0\big)$.
 \end{definition}
 
-\begin{theorem}[Радона-Никодима][б/д]
+\begin{theorem}[Радона-Никодима][б/д]~
+
 	Пусть $(\Omega, \F, \P)$~--- вероятностное пространство, $\nu$~--- заряд на $\F$, абсолютно непрерывный относительно меры $\P$. 
 	
 	Тогда существует и единственна почти наверное случайная величина $\eta$ на $(\Omega, \F, \P)$ такая, что $\E \eta < +\infty$ и $\nu(A) = \int\limits_A \eta \, d \P = \E \eta \cdot I_A$.
@@ -40,7 +47,8 @@
     Вероятностная мера $\P(A) = \int\limits_A p(x)dx$, то есть плотность~--- это производная Радона-Никодима $\P_{\xi}$ по мере Лебега на $\R$.
 \end{statement}
 
-\begin{lemma}[о существовании УМО]
+\begin{lemma}[о существовании УМО]~
+
 	Пусть $\xi$~--- случайная величина с $\E | \xi| < +\infty$. 
 	
 	Тогда $\forall \G \subset \F~\text{(под}\sigma\text{-алгебра)} \hookrightarrow \E( \xi | \G )$ существует и единственно почти наверное.
@@ -49,7 +57,8 @@
 	\end{proof}
 \end{lemma}
 
-\begin{theorem}
+\begin{theorem}~
+
 	Пусть $\sigma$-алгебра $\G$ порождена разбиением $\Omega$ на $\{ D_n \}_{n = 1}^{+\infty}$, причем, $\P(D_n) > 0$, $\E \xi < +\infty$.
 	
 	Тогда $\E(\xi | \G ) = \sum\limits_{n=1}^{+\infty} \dfrac{\E ( \xi \cdot I(\omega \in D_n) )}{\P(D_n)} \cdot I(\omega \in D_n) $.
@@ -81,14 +90,16 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 	\end{proof}
 \end{property}
 
-\begin{property}[формула полной вероятности]
+\begin{property}[формула полной вероятности]~
+
 	 $\E \big( \E( \xi | \G) \big) = \E\xi$.
 	 \begin{proof}
 	 	Так как $\Omega \in \G$, то по интегральному свойству $\E \big( \E(\xi | \G) \big) = \E \big( \E(\xi | \G ) \cdot I_\Omega \big) = \E( \xi \cdot I_\Omega) = \E\xi$.
 	 \end{proof}
 \end{property}
 
-\begin{property}[линейность]
+\begin{property}[линейность]~
+
 	$\E (\alpha \xi + \beta \eta | \G ) = \alpha \E( \xi | \G) + \beta \E(\eta |\G)$.
 	\begin{proof}
 		$\alpha \E(\xi | \G) + \beta \E(\eta | \G)$ $\G$-измерима. Осталось проверить интегральное свойство:
@@ -100,15 +111,21 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 	\end{proof}
 \end{property}
 
-\begin{property}
-	Пусть $\xi$ не зависит от $\G$, то есть $\F_\xi \indep \G$. Тогда $\E ( \xi | \G) = \E \xi$ почти наверное.
+\begin{property}~
+
+	Пусть $\xi$ не зависит от $\G$, то есть $\F_\xi \indep \G$. 
+	
+	Тогда $\E ( \xi | \G) = \E \xi$ почти наверное.
 	\begin{proof}
 		Пусть $\xi \indep \G$, что равносильно $\forall A \in \G \hookrightarrow \xi \indep I_A$. $\E \xi$~--- константа, следовательно, она измерима относительно $\G$, так как $\F_{\E \xi} = \{ \Omega, \varnothing \}$. Интегральное свойство УМО: $\E ( \xi \cdot I_A) = \boxed{\E \big( \E( \xi | \G) \cdot I_A \big)} = \E \xi \cdot \P(A) = \boxed{\E(\E(\xi) \cdot I_A \big)}$, следовательно, $\E \xi = \E( \xi | \G)$.
 	\end{proof}
 \end{property}
 
-\begin{property} (Свойство монотонности.)
-	Пусть $\xi \leqslant \eta$ почти наверное, тогда $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
+\begin{property} (Свойство монотонности.)~
+
+	Пусть $\xi \leqslant \eta$ почти наверное. 
+	
+	Тогда $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
 	\begin{proof}
 		$\xi \leqslant \eta$ почти наверное, следовательно, $\forall A \in \G \hookrightarrow  \int\limits_A \xi \, d \P \leqslant \int\limits_A \eta \, d\P$, что равносильно $\int\limits_A \E (\xi | \G ) \, d\P \leqslant \int\limits_A \E( \eta | \G) \, d \P$, а из свойств математического ожидания вытекает, что $\E(\xi | \G) \leqslant \E( \eta | \G)$ почти наверное.
 	\end{proof}
@@ -121,7 +138,8 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 	\end{proof}
 \end{property}
 
-\begin{property}[телескопическое свойство]
+\begin{property}[телескопическое свойство]~
+
 	Пусть $\G_1 \subset \G_2 \subset \F$, тогда
 	\begin{enumerate}
 		\item $\E \big( \E( \xi | \G_1) \big| \G_2 \big) = \E( \xi | \G_1 )$ почти наверное,
@@ -141,13 +159,15 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 	\end{proof}
 \end{property}
 
-\begin{property}[][б/д]
+\begin{property}[][б/д]~
+
 	Пусть $\forall n > 1 \hookrightarrow | \xi_n | \leqslant \eta$, $\E \eta < +\infty$ и $\xi_n \xrightarrow{\text{п.н.}} \xi$. 
 	
 	Тогда $ \forall \G \subset \F \hookrightarrow \E(\xi_n | \G) \xrightarrow{\text{п.н.}} \E(\xi | \G)$.
 \end{property}
 
-\begin{property}
+\begin{property}~
+
 	Пусть $\eta$~--- $\G$-измерима, $\E |\xi \eta | < +\infty$, $\E |\xi | < +\infty$. 
 	
 	Тогда $\E(\xi \eta | \G) = \eta \E(\xi | \G)$ почти наверное.
@@ -163,8 +183,11 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
 	\end{proof} 
 \end{property}
 
-\begin{theorem}[о наилучшем квадратичном прогнозе]
-	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. Обозначим $\mathcal{A}_\G = \{ \eta \text{ - сл. вел.}| \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. 
+\begin{theorem}[о наилучшем квадратичном прогнозе]~
+
+	Пусть $\xi$~--- случайная величина, $\G$~--- под$\sigma$-алгебра $\F$. 
+	
+	Обозначим $\mathcal{A}_\G = \{ \eta \text{ - сл. вел.}| \eta~\text{---}~\G\text{-измеримая сл.\,вел.} \}$. 
 	
 	Тогда $\inf\limits_{\eta \in \mathcal{A}_\G} \E( \xi - \eta)^2 = \E\big( \xi - \E(\xi | \G) \big)^2$.
 	\begin{proof}
@@ -223,7 +246,8 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
  	Условной плотностью случайной величины $\xi$ относительно $\eta$ называется плотность условного распределения $\P(\xi \in B | \eta = y)$, то есть борелевская функция $f_{\xi | \eta} (x | y)$ такая, что $\P (\xi \in B | \eta = y) = \int\limits_B f_{\xi | \eta} (x | y) \, dx$.
  \end{definition}
  
- \begin{theorem}[о свойстве условной плотности]
+ \begin{theorem}[о свойстве условной плотности]~
+ 
  	Пусть существует условная плотность случайной величины $\xi$ относительно случайной величины $\eta$~--- $f_{\xi|\eta} (x|y)$.
  	
  	Тогда  для любой борелевской функции $g(x)$ такой, что $\E \big| g(\xi) \big|$ существует, выполнено $\E\big( g( \xi) | \eta = y \big) = \int\limits_\R g(x) f_{\xi|\eta} (x|y) \, dx$ относительно $\P_\eta$ почти наверное.
@@ -240,7 +264,8 @@ $\E(\xi|\G )$~--- усреднение $\xi$ по $\sigma$-алгебре $\G$.
  	\end{proof}
  \end{theorem}
  
- \begin{theorem}[Достаточное условие существования условной плотности.]
+ \begin{theorem}[Достаточное условие существования условной плотности.]~
+ 
  	Пусть $\xi$ и $\eta$~--- случайные величины такие, что существует их совместная плотность $f_{(\xi, \eta)} (x, y)$. Пусть $f_\eta (y)$~--- плотность случайной величины $\eta$.
  	
  	Тогда функция $$\varphi(x, y) = \dfrac{f_{(\xi, \eta)} (x, y)}{f_\eta (y)} \cdot I \big(f_\eta(y) > 0 \big)$$ есть условная плотность $f_{\xi |\eta} (x | y)$.

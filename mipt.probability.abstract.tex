@@ -45,6 +45,10 @@
 
 \renewcommand{\qedsymbol}{{\footnotesize$\blacksquare$}}
 
+
+\renewcommand{\thesection}{\arabic{section}\hskip-12pt}
+\renewcommand{\thesubsection}{}
+
 \makeatletter
   \renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}%
@@ -56,10 +60,6 @@
     \popQED\endtrivlist\@endpefalse
   }
   \makeatother
-
-\renewcommand{\thesection}{\arabic{section}\hskip-12pt}
-\renewcommand{\thesubsection}{}
-
 
 \title{Конспект лекций по курсу\\ <<Теория вероятностей>>}
 \author{Лектор: к. ф.-м. н. Родионов Игорь Владимирович}
@@ -75,14 +75,8 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\hyperlink{page.1}{Конспект лекций по курсу <<Теория вероятностей>>}}
-\fancyhead[R]{Лекция \thesection\kern1em}
-\renewcommand{\headrulewidth}{0.5pt} 
-\renewcommand{\footrulewidth}{0.5pt}
 \fancyfoot{} 
 \fancyfoot[C]{\thepage}
-
-
 
 \renewcommand{\P}{\mathsf{P}}
 \newcommand{\E}{\mathsf{E}}
@@ -107,6 +101,7 @@
 %\binoppenalty=\maxdimen
 %\relpenalty=\maxdimen
 
+\setcounter{secnumdepth}{0} % Без нумерации section
 
 \begin{document}
 	\maketitle
@@ -119,4 +114,4 @@
 	\input{ch_6.tex}
 	\input{ch_7.tex}
 	\input{ch_8.tex}
-\end{document}	
+\end{document}

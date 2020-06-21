@@ -1,4 +1,4 @@
-\section{Глава 6.}
+\section{Глава 6. Случайные блуждания.}
 \subsection{Случайные блуждания и закон повторного логарифма}
 Пусть $\{ \xi_i\}_{i \geqslant 1}$~--- последовательность независимых одинаково распределенных случайных величин таких, что $\E \xi_n = 0, \E \xi_n^2 = \sigma^2$.
 \begin{definition}
@@ -35,7 +35,8 @@ $$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{
 	\end{multline*}
 
 Отметим, $\forall \varepsilon > 0 \hookrightarrow \varphi_\varepsilon^* = (1 + \varepsilon) \varphi~\text{--- верхняя} \quad \Leftrightarrow \quad  \P\left( \varlimsup\limits_{n \rightarrow \infty} \dfrac{S_n}{\varphi(n)} \leqslant 1 \right) = 1$. Аналогично, $\forall \varepsilon > 0 \hookrightarrow \varphi_\varepsilon^* = (1 + \varepsilon) \varphi~\text{--- нижняя} \quad \Leftrightarrow \quad  \P\left( \varliminf\limits_{n \rightarrow \infty} \dfrac{S_n}{\varphi(n)} \geqslant 1 \right) = 1$.
-\begin{theorem}[закон повторного логарифма (ЗПЛ)][б/д]
+\begin{theorem}[закон повторного логарифма (ЗПЛ)][б/д]~
+
 	Пусть $\{ \xi_n \}_{n \geqslant 1}$~--- независимые одинаково распределенные случайные величины, $\E \xi_1 = 0, \E \xi_1^2 = \sigma^2, 0 < \sigma^2 < + \infty$. 
 	
 	Тогда 
@@ -46,7 +47,8 @@ $$ \dfrac{1}{\sqrt{n} \ln n} \sum\limits_{k = 1}^n \sqrt{k} \ln k \dfrac{\xi_k}{
 	Применяя ЗПЛ к $S_n$, получаем, что $\P \left(\varliminf\limits_{n \rightarrow \infty} \dfrac{S_n}{\varphi(n)} = -1 \right) = 1$.
 \end{note}
 
-За нижнюю ветку $S_n$ выходит бесконечно часто (см.~Рис.\,\ref{pic:lrl}), а за верхнюю лишь конечное число раз (почти наверное не выходит).
+За нижнюю ветку $S_n$ выходит бесконечно часто (см.~Рис.\,\ref{pic:lrl}), а за верхнюю лишь конечное число раз (почти наверное не выходит). Траектория пересекает горизонтальную ось бесконечное число раз.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 7cm]{lrl}

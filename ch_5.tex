@@ -1,4 +1,4 @@
-\section{Глава 5.}
+\section{Глава 5. Сходимости случайных величин. УЗБЧ.}
  \subsection{Виды сходимости случайных величин}
  \begin{definition}
     $\xi_n$ и $\xi$~--- случайные величины. 
@@ -13,14 +13,17 @@
  	\end{enumerate}
  \end{definition}
  
- \begin{theorem}[Александрова][б/д]
+ \begin{theorem}[Александрова][б/д]~
+ 
  	$\xi_n \xrightarrow{d} \xi$ тогда только тогда, когда 
  	$F_{\xi_n}(x) \xrightarrow{\text{в основном}} F_\xi (x)$, то есть 
  	$F_{\xi_n}(x) \rightarrow F_\xi(x)$ во всех точках непрерывности 
  	функции распределения $F_\xi(x)$. 
  \end{theorem}
- \begin{lemma}[критерий сходимости почти наверное]
- 	$\xi_n \xrightarrow{\text{п.н.}} \xi$ тогда и только тогда, когда $\forall \varepsilon > 0 \hookrightarrow \P \big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi(\omega) | \geqslant \varepsilon \big) \limn 0$.
+ 
+ \begin{lemma}[критерий сходимости почти наверное]~
+ 
+ 	$\xi_n \xrightarrow{\text{п.н.}} \xi \Leftrightarrow \forall \varepsilon > 0 \hookrightarrow \P \big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi(\omega) | \geqslant \varepsilon \big) \limn 0$.
  	\begin{proof}
  		Пусть $A_k^\varepsilon = 
  		\big\{ \omega: | \xi_k - \xi | \geqslant \varepsilon \big\}$, $A^\varepsilon = 
@@ -77,30 +80,41 @@
  \end{theorem}
  
  \subsection{Контрпримеры}
-\begin{example}[п.н. $\not\Rightarrow L_p$, а значит, $\P \not\Rightarrow \L_p$ и $d \not\Rightarrow L_p$]
-	Рассмотрим $\Omega = [0, 1]$, $\F = \B\big([0,1] \big)$, $\P$ --- мера Лебега на $[0, 1]$. Пусть $\xi_n = e^n \cdot I_{\left[0, \frac{1}{n} \right]}$, тогда $\forall \omega \in (0, 1) \ \exists n : \omega > \dfrac{1}{n} \Rightarrow \forall k \geqslant n \ \xi_k(\omega) = 0$ (значит имеется сходимость п.н.), следовательно $\xi_n \xrightarrow{\text{п.н.}} \xi = 0$, но $\E | \xi_n - \xi |^p = e^{np} \cdot \dfrac{1}{n} \rightarrow + \infty$, значит сходимости в $L_p$ нет.
+\begin{example}[п.н. $\not\Rightarrow L_p$, а значит, $\P \not\Rightarrow \L_p$ и $d \not\Rightarrow L_p$]~
+
+	Рассмотрим $\Omega = [0, 1]$, $\F = \B\big([0,1] \big)$, $\P$ --- мера Лебега на $[0, 1]$.
+	
+	Пусть $\xi_n = e^n \cdot I_{\left[0, \frac{1}{n} \right]}$, тогда $\forall \omega \in (0, 1) \ \exists n : \omega > \dfrac{1}{n} \Rightarrow \forall k \geqslant n \ \xi_k(\omega) = 0$ (значит имеется сходимость п.н.), следовательно $\xi_n \xrightarrow{\text{п.н.}} \xi = 0$, но $\E | \xi_n - \xi |^p = e^{np} \cdot \dfrac{1}{n} \rightarrow + \infty$, значит сходимости в $L_p$ нет.
 \end{example}
 
-\begin{example}[$L_p \not\Rightarrow~\text{п.н.}$, $\P \not\Rightarrow~\text{п.н.}$, $d \not\Rightarrow~\text{п.н.}$]
+\begin{example}[$L_p \not\Rightarrow~\text{п.н.}$, $\P \not\Rightarrow~\text{п.н.}$, $d \not\Rightarrow~\text{п.н.}$]~
+
 	Рассмотрим $\Omega = [0, 1]$, $\F = \B\big([0,1] \big)$, $\P$ --- мера Лебега на $[0, 1]$. 
+	
 	Возьмем $\xi_{2^n + i} = I \left( \omega \in \left[ \dfrac{i}{2^n}, \dfrac{i + 1}{2^n} \right) \right), ~~i = 0,\ldots, 2^n - 1;~~n \in \Z_+$. 
+	
 	Тогда $\xi_k \xrightarrow{L_p} 0$ при $k \rightarrow + \infty$, так как $\E | \xi_k  - 0 |^p = \dfrac{1}{2^n} \cdot 1^p \rightarrow 0$, где $n = \left[ \log_2 k \right]$. 
 	Но $\forall \omega$ из $[0,1]$ $\exists$ бесконечно много $\xi_i$ таких, что $\xi_i(\omega) = 1$ и $\xi_i(\omega) = 0$, следовательно, $\forall \omega \hookrightarrow \xi_i(\omega) \nrightarrow 0$, ровно как и к 1, в смысле почти наверное.
 \end{example}
 
-\begin{example}[$ d \not\Rightarrow \P$] 
-	Пусть $\Omega = \{ \omega_1, \omega_2 \}$, $\P(\omega_i) = \dfrac{1}{2}$, $\forall n \hookrightarrow \xi_n(\omega_1) = 0, \xi_n(\omega_2) = 1$. Тогда $\xi_n \sim \text{Bern} \left( \frac{1}{2} \right)$. $\xi(\omega_1) = 1, \xi(\omega_2) = 0$, значит, $\xi \sim \text{Bern} \left( \frac{1}{2} \right)$, следовательно, по теореме Александрова $\xi_n \xrightarrow{d} \xi$, но $\P \big( | \xi_n - \xi| > 0.5 \big) = 1$, значит, $\xi_n \not\xrightarrow{\P} \xi$. 
+\begin{example}[$ d \not\Rightarrow \P$]~
+
+	Пусть $\Omega = \{ \omega_1, \omega_2 \}$, $\P(\omega_i) = \dfrac{1}{2}$, $\forall n \hookrightarrow \xi_n(\omega_1) = 0, \xi_n(\omega_2) = 1$.
+	
+	Тогда $\xi_n \sim \text{Bern} \left( \frac{1}{2} \right)$. $\xi(\omega_1) = 1, \xi(\omega_2) = 0$, значит, $\xi \sim \text{Bern} \left( \frac{1}{2} \right)$, следовательно, по теореме Александрова $\xi_n \xrightarrow{d} \xi$, но $\P \big( | \xi_n - \xi| > 0.5 \big) = 1$, значит, $\xi_n \not\xrightarrow{\P} \xi$. 
 \end{example}
 
 \begin{definition}
     Последовательность случайных величин $\{ \xi_n \}$ фундаментальна почти наверное, если $\P  \big( \omega : | \xi_n(\omega) - \xi_m(\omega) | \rightarrow 0 \big) = 1$ при $n, m \rightarrow + \infty$.
 \end{definition}
 
-\begin{lemma}[критерий фундаментальности почти наверное][б/д]
-	Последовательность случайных величин $\{ \xi_n \}$ фундаментальна почти наверное тогда и только тогда, когда $\forall \varepsilon > 0 \hookrightarrow \P\big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi_n(\omega) | \geqslant \varepsilon \big) \limn 0$.
+\begin{lemma}[критерий фундаментальности почти наверное][б/д]~
+
+	Последовательность случайных величин $\{ \xi_n \}$ фундаментальна почти наверное тогда и только тогда, когда $\forall \varepsilon > 0 \hookrightarrow \P\big(\omega: \sup\limits_{k \geqslant n} | \xi_k(\omega) - \xi_n(\omega) | \geqslant \varepsilon \big)~\limn~0$.
 \end{lemma}
 
-\begin{theorem}[критерий Коши сходимость почти наверное]
+\begin{theorem}[критерий Коши сходимость почти наверное]~
+
 	Последовательно случайных величин $\{ \xi_n \}$ сходится почти наверное тогда и только тогда, когда $\{ \xi_n \}$ фундаментальна почти наверное.
 	\begin{proof}
 		($\Rightarrow$)\quad Пусть $\xi_n \xrightarrow{\text{п.н.}} \xi$, тогда, если $\omega \in \big\{ \omega: \xi_n(\omega) \rightarrow \xi(\omega) \big\}$, то по критерию Коши для числовых последовательностей $\omega \in \big\{ \omega: \{\xi_n\}~\text{--- фундаментальная} \big\}$, следовательно, $\P \big( \omega: \{ \xi_n(\omega)\}~\text{--- фундаментальная} \big) \geqslant \P \big( \omega: \xi_n(\omega) \rightarrow \xi(\omega) \big) = 1$.\\
@@ -113,7 +127,8 @@
 	Пусть $ \{A_n \}_{n \in \N}$~--- последовательность событий, тогда событием $\{ A_n~\text{бесконечно часто (б.ч.)} \}$ называется событие $\{ \omega: \forall n \ \exists k \geqslant n: \omega \in A_k \}$, то есть все такие $\omega$, что $\omega$ принадлежит бесконечному числу элементов из $\{ A_n \}_{n \in \N}$. $\{ A_n~\text{б.ч.} \} = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}^{\infty} A_k$.
 \end{definition}
 
-\begin{lemma}[Бореля-Кантелли]
+\begin{lemma}[Бореля-Кантелли]~
+
 	\begin{enumerate}
 		\item {Если $\sum\limits_{k = 1}^{\infty} \P(A_k) < +\infty$, то $\P ( A_n~\text{б.ч.}) = 0$.}
 		\item {Если $\sum\limits_{k = 1}^{\infty} \P(A_k) = +\infty$ и $\{A_k\}$ независимы в совокупности, то $\P ( A_n~\text{б.ч.}) = 1$.}
@@ -141,7 +156,8 @@
 		$$\forall \varepsilon > 0 \hookrightarrow \P \big(\omega: | \xi_k - \xi_n | > \varepsilon \big) \xrightarrow[n, k \rightarrow \infty]{} 0.$$ 
 \end{definition}
 
-\begin{theorem}[Рисса]
+\begin{theorem}[Рисса]~
+
 	Если последовательность случайных величин $\{ \xi_n \}$ фундаментальна (или сходится) по вероятности, то из нее можно выделить подпоследовательность $\{ \xi_{n_k} \}$ фундаментальную (сходящуюся) почти наверное.
 	\begin{proof}
 		Т.к. фундаментальность п.н. $\Leftrightarrow$ сходимость п.н., то докажем, что можно выделить подпоследовательность $\{ \xi_{n_k} \}$, сходящуюся почти наверное. Пусть $n_1=1$. По индукции определим $n_k$, как наименьшее $n > n_{k-1}$ такое, что $\forall s \geqslant n, t \geqslant n \hookrightarrow \P \big( | \xi_t - \xi_s | > 2^{-k} \big) < 2^{-k}$. Тогда $\sum\limits_{k = 1}^{\infty} \P \big( | \xi_{n_{k+1}} - \xi_{n_k} | > 2^{-k} \big) < \sum\limits_{k = 1}^{\infty} 2^{-k} < +\infty$, следовательно, по лемме Бореля-Кантелли $\P \big( | \xi_{n_{k+1}} - \xi_{n_k}| > 2^{-k}~\text{б.ч.} \big) = 0$, значит, почти наверное $\sum\limits_{k = 1}^{+\infty} | \xi_{n_{k+1}} - \xi_{n_k} | < + \infty$. Пусть $\mathcal{N} = \left\{ \omega: \sum\limits_{n = 1}^{+\infty} \big| \xi_{n_{k+1}}(\omega) - \xi_{n_k}(\omega) \big| = +\infty \right\}$, тогда $\P(\mathcal{N}) = 0$. Положим $\xi(\omega) =  \left( \xi_{n_1} (\omega) + \sum\limits_{k = 1}^{+\infty} \big(\xi_{n_{k+1}} (\omega) - \xi_{n_k}(\omega) \big) \right) \cdot I(\omega \in \mathcal{N})$, где ряд в скобках сходится на $\omega \in \Omega / \mathcal{N}$.
@@ -153,7 +169,8 @@
 	\end{proof}
 \end{theorem}
 
-\begin{theorem}[критерий Коши сходимости по вероятности]
+\begin{theorem}[критерий Коши сходимости по вероятности]~
+
 	$\xi_n \xrightarrow{\P} \xi$ тогда и только тогда, когда $\{\xi_n\}$ фундаментальна по вероятности.
 	\begin{proof}
 		($\Rightarrow$) \quad Следует из теоремы Рисса.
@@ -162,7 +179,8 @@
 	\end{proof}
 \end{theorem}
 
-\begin{theorem}[Неравенство Колмогорова]
+\begin{theorem}[Неравенство Колмогорова]~
+
 	Пусть $\xi_1,  \ldots, \xi_n$~--- независимые случайные величины такие, что
 	\begin{enumerate}
 	    \item $\E \xi_i = 0$, $\E \xi_i^2 < +\infty$.
@@ -188,7 +206,8 @@
 	\end{proof}
 \end{theorem}
 
-\begin{theorem}[Колмогорова-Хинчина о сходимости ряда]
+\begin{theorem}[Колмогорова-Хинчина о сходимости ряда]~
+
 	Пусть $\{\xi_n \}_{n \geqslant 1}$~--- последовательность независимых случайных величин такая, что $\E \xi_n = 0 $ и $\E \xi_n^2 < +\infty$. 
 	
 	Тогда, если $\sum\limits_{n = 1}^{\infty} \E \xi_n^2 < +\infty$, то $ \sum\limits_{n = 1}^{\infty} \xi_n$ сходится почти наверное.
@@ -208,7 +227,8 @@
 	\end{proof}
 \end{theorem}
 
-\begin{lemma}[Тёплица]
+\begin{lemma}[Тёплица]~
+
 	Пусть $x_n \rightarrow x$~--- числовая последовательность, числа $\{a_n\}_{n \geqslant 1}$ таковы, что $ \forall n \hookrightarrow a_n \geqslant 0$ и $ b_n = \sum\limits_{k = 1}^n a_k \uparrow +\infty$. 
 	
 	Тогда $\dfrac{1}{b_n} \sum\limits_{i = 1}^n a_i x_i \limn x$.
@@ -220,7 +240,8 @@
 	\end{proof}
 \end{lemma}
 
-\begin{lemma}[Кронекера]
+\begin{lemma}[Кронекера]~
+
 	Пусть ряд $\sum\limits_{n = 1}^{\infty} x_n$ сходится, $\{a_n\}_{n \geqslant 1}$ такова, что $a_n \geqslant 0$, $b_n = \sum\limits_{k=1}^n a_k \uparrow + \infty$. 
 	
 	Тогда $\dfrac{1}{b_n} \sum\limits_{k = 1}^n b_k x_k \limn 0$.
@@ -234,7 +255,8 @@
 	\end{proof}
 \end{lemma}
 
-\begin{theorem}[УЗБЧ в форме Колмогорова-Хинчина]
+\begin{theorem}[УЗБЧ в форме Колмогорова-Хинчина]~
+
 	Пусть 
 	\begin{enumerate}
 	    \item случайные величины $\{\xi_n\}_{n \geqslant 1}$ независимы и $\forall n \hookrightarrow \D \xi_n < +\infty$;
@@ -285,7 +307,8 @@
 \end{proof}	
 \end{statement}
 
-\begin{theorem}[УЗБЧ в форме Колмогорова]
+\begin{theorem}[УЗБЧ в форме Колмогорова]~
+
 	Пусть $\{\xi_n\}_{n \in \N}$~--- независимые одинаково распределенные случайные величины такие, что $\E | \xi_1| < + \infty$. 
 	
 	Тогда
@@ -320,7 +343,8 @@
 	\end{proof}
 \end{theorem}
 
-\begin{theorem}[Беппо-Леви]
+\begin{theorem}[Беппо-Леви]~
+
 	Пусть $\{ \xi_n \}_{n \geqslant 1}$~--- случайные величины, $\forall n \hookrightarrow \xi_n \geqslant 0$.
 	
 	Тогда $\E \sum\limits_{n = 1}^\infty \xi_n = \sum\limits_{n = 1}^\infty \E \xi_n$.
@@ -330,7 +354,8 @@
 	\end{proof}	
 \end{theorem}
 
-\begin{theorem}[о монотонной сходимости][б/д]
+\begin{theorem}[о монотонной сходимости][б/д]~
+
 	Пусть $\{\xi_n\}_{n \geqslant 1}, \xi, \eta$~--- случайные величины, тогда
 	\begin{enumerate}
 		\item {Если $\xi_n \uparrow \xi$ почти наверное и $ \forall n \in \N \hookrightarrow \xi_n \geqslant \eta, \E \eta > - \infty$, то $\E \xi = \lim\limits_{n \rightarrow \infty} \E \xi_n$.}
@@ -338,7 +363,8 @@
 	\end{enumerate}
 \end{theorem}
 
-\begin{lemma}[Фату]
+\begin{lemma}[Фату]~
+
 	Пусть $\{ \xi_n \}_{n \geqslant 1}$ и $\eta$~--- случайные величины, $\E | \eta| < + \infty$, тогда 
 	\begin{enumerate}
 		\item { Если $\forall n \hookrightarrow \xi_n \geqslant \eta$, то $ \varliminf\limits_{n \rightarrow \infty} \E \xi_n \geqslant \E \varliminf\limits_{n \rightarrow \infty} \xi_n$.}
@@ -357,7 +383,8 @@
 	\end{proof}
 \end{lemma}
 
-\begin{theorem}[Лебега о мажорируемой сходимости]
+\begin{theorem}[Лебега о мажорируемой сходимости]~
+
 	Пусть $\xi_n \xrightarrow{\text{п.н.}} \xi, |\xi| \leqslant \eta, \E \eta < + \infty$.
 	
 	Тогда $\E \xi_n \limn \E\xi$ и $\E | \xi_n - \xi| \limn 0$ (не требуем независимости!).

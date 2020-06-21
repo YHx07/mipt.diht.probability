@@ -1,4 +1,4 @@
-\section{Глава 2.}
+\section{Глава 2. Случайные величины.}
 \subsection{Случайные величины}
 \begin{definition}
 	Пусть $\big(\Omega, \F \big)$ и $\big( E, \mathcal{E} \big)$~--- два измеримых пространства. Отображение $X: \Omega \rightarrow E$, такое что $\forall B \in \mathcal{E} \hookrightarrow X^{-1}(B) \in \F$  называется случайным элементом, так же его называются $\F$-измеримым или $\F|\mathcal{E}$-измеримым. \\
@@ -14,7 +14,8 @@
 	Любая непрерывная и кусочно-непрерывная функция~--- борелевская.
 \end{statement}
 
-\begin{theorem}[критерий измеримости][б/д]
+\begin{theorem}[критерий измеримости][б/д]~
+
 	Пусть $\big(\Omega, \F\big), \big(E, \mathcal{E}\big)$~--- два измеримых пространства, $X: \Omega \rightarrow E$~--- случайный элемент тогда, и только тогда, когда существует система событий $\M \subseteq \mathcal{E}$, такая что $\sigma(\M) = \mathcal{E}$ и $\forall B \in \M \hookrightarrow X^{-1}(B) \in \F$.
 \end{theorem}
 
@@ -38,7 +39,8 @@
 	Пусть $\xi$, $\eta$~--- случайные величины, $c \in \R$,тогда $\xi + \eta$, $\xi - \eta$, $c\xi$, $\xi \cdot \eta$ и $\xi / \eta$, если $\forall \omega \in \Omega : \eta \neq 0$, тоже случайные величины.
 \end{consequence}
 
-\begin{lemma}[О пределах случайной величины]
+\begin{lemma}[О пределах случайной величины]~
+
 	Пусть $\{ \xi_n \}_{n \in \N}$ последовательность случайных величин, тогда, если пределы $\overline{\lim}~\xi_n$, $\underline{\lim}~\xi_n$, $\inf\xi_n$, $\sup\xi_n$ существуют, они являются случайными величинами.
 	\begin{proof}
 		$\big\{\omega : \sup \xi_n \leqslant x \big\} = \bigcap\limits_{n = 1}^{+\infty}\big\{\omega : \xi_n(\omega) \leqslant x \big\} \in \F$. По критерию измеримости, так как $\sigma\big(x : (-\infty, x]\big) = \B(\R)$, мы доказали, что $\sup\xi_n$~--- случайная величина. Аналогично, $\big\{\omega : \inf \xi_n \geqslant x \big\} = \bigcup\limits_{k = 1}^{+\infty}\big\{\omega : \xi_n(\omega) \geqslant x \big\} \in \F$, так как $\sigma\big((x, +\infty)\big) = \B(\R)$, по критерию измеримости $\inf\xi_n$~--- случайная величина. Отсюда $\overline{\lim}~\xi_n = \inf\limits_n\sup\limits_{m \geqslant n}~\xi_m$ и $\underline{\lim}~\xi_n = \sup\limits_n\inf\limits_{m \geqslant n}~\xi_m$ тоже случайные величины.
@@ -115,7 +117,8 @@
 	Случайные величины $\{\xi_i\}_{i = 1}^\infty$ независимы (в совокупности), если для любого конечного набора индексов $\alpha_1, \ldots, \alpha_n \hookrightarrow \P(\xi_{\alpha_1} \in B_1, \ldots, \xi_{\alpha_n} \in B_n) = \prod\limits_{i = 1}^n\P(\xi_{\alpha_i} \in B_i),\; B_i \in \B(\R), i = 1, \ldots, n$.
 \end{definition}
 
-\begin{theorem}[Критерий независимости в терминах функции распределения]
+\begin{theorem}[Критерий независимости в терминах функции распределения]~
+
 	Случайные величины $\{\xi_i\}_{i = 1}^n$ независимы в совокупности тогда, и только тогда, когда $\forall x_1, \ldots, x_n \in \R \hookrightarrow \P(\xi_1 \leqslant x_1, \ldots, \xi_n \leqslant x_n) = \prod\limits_{i = 1}^n\P(\xi_i \leqslant x_i)$.
 	\begin{proof}
 		$\Rightarrow$. Возьмем в качестве $B_i = (-\infty, x_i]$.
